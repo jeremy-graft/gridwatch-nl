@@ -1,0 +1,25 @@
+name: tests
+
+# Offline logic tests — no network, so they're safe to run on every push/PR.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**"        # the archiver's own snapshot commits don't need a test run
+      - "backfill/raw/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest test_archiver.py -q
