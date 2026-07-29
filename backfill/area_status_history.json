@@ -1,0 +1,6768 @@
+{
+  "_comment": "Historical congestion COLOUR per area, aggregated from the archived capaciteitskaart CSV exports (backfill/raw/) via the live find endpoint's postcode->area mapping. Colour only; queue/relief/projects did not exist in these old exports. Area ids match data/area_ids.json (RNB areas).",
+  "color_legend": {
+    "0": "white/available",
+    "1": "yellow/limited",
+    "2": "orange/investigation+queue",
+    "3": "red/shortage+queue"
+  },
+  "cm_legend": {
+    "0": "no congestion management",
+    "1": "congestion management active"
+  },
+  "snapshot_dates": [
+    "2023-03-27",
+    "2023-06-11",
+    "2023-09-28",
+    "2023-12-07",
+    "2024-01-11",
+    "2024-03-03",
+    "2024-05-26"
+  ],
+  "snapshot_notes": "2024-01-11 and 2024-03-03 are full-national; the other 5 are Archive-truncated (~postcodes <=2585, Randstad-north only). 3-column snapshots (pre 2023-09) have no congestion-management flag.",
+  "coverage_per_snapshot": {
+    "2023-03-27": {
+      "afname_areas": 26,
+      "invoeding_areas": 19
+    },
+    "2023-06-11": {
+      "afname_areas": 26,
+      "invoeding_areas": 19
+    },
+    "2023-09-28": {
+      "afname_areas": 21,
+      "invoeding_areas": 13
+    },
+    "2023-12-07": {
+      "afname_areas": 21,
+      "invoeding_areas": 13
+    },
+    "2024-01-11": {
+      "afname_areas": 191,
+      "invoeding_areas": 194
+    },
+    "2024-03-03": {
+      "afname_areas": 191,
+      "invoeding_areas": 194
+    },
+    "2024-05-26": {
+      "afname_areas": 21,
+      "invoeding_areas": 13
+    }
+  },
+  "areas_mapped": 273,
+  "areas": {
+    "AMLM": {
+      "operator": "Coteq, Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7609AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ARI": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5741AR",
+        "invoeding": "5741AR"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "Amstelveen": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1184TB"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2023-09-28": {
+          "color": 1,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "BBS": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "4251AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BD": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4816AA",
+        "invoeding": "4816AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BEEK": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6199AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BELF": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "5932AA",
+        "invoeding": "5932AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BGMR": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7828AA",
+        "invoeding": "7828AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "BL": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7851AA",
+        "invoeding": "7851AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "BLER": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "5914AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BOZ": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4651AA",
+        "invoeding": "4651AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BT": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5089NA",
+        "invoeding": "5089NA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "BUGG": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6081AA",
+        "invoeding": "6081AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 1
+        }
+      }
+    },
+    "BXT": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5291AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "Bijlmer Noord 10kV totaal": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1101AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2023-09-28": {
+          "color": 1,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM00": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4308AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM08": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2741AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "CM10": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "invoeding": "3454AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "CM12": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3722AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM13": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "1428RV"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM14": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3601AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM15": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3744AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM20": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2665AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM22": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2964AA",
+        "invoeding": "2964AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM26": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2581AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM29/64": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "3264AA",
+        "invoeding": "3264AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "CM31": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2811AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "CM34/46": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4352AA",
+        "invoeding": "4352AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "CM36": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3947BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "CM37": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3701AA",
+        "invoeding": "3701AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "CM38": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "invoeding": "3901AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "CM39": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3432AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "CM44": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4414AA",
+        "invoeding": "4414AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM47": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3072AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "CM48": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2902AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "CM56/78": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2266AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM57": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "invoeding": "3417AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "CM58": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3411AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "CM60": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3513AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "CM63": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "3312AA",
+        "invoeding": "3312AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM66": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2954AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM73": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4303AA",
+        "invoeding": "4303AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "CM74": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3231AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM79": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "invoeding": "4691AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "CM80": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "invoeding": "4401AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM84": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3223AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CM85": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3216AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "CVD": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7742AB",
+        "invoeding": "7742AB"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "DDV": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7702AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "DTO": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4794AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "DVTB": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7423AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "DVTP": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7414AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "De Lier": {
+      "operator": "Westland",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2636AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "EHAVM": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9996VC"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "EHAVO": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9908PA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "EHVO": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5614AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "EHVW": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "5504AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "EHVZ": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5553AA",
+        "invoeding": "5553AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "EMW": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7815AA",
+        "invoeding": "7815AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ERD": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5464NA",
+        "invoeding": "5464NA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "ESDH": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7511AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ESDV": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7524AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ETN": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4711AA",
+        "invoeding": "4711AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "GENN": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6587AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "GLTK": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7858TA",
+        "invoeding": "7858TA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "GNHK": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9746AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "GNHU": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9756AA",
+        "invoeding": "9756AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "GO": {
+      "operator": "Coteq, Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7468AA",
+        "invoeding": "7468AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "GT": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4273BA",
+        "invoeding": "4273BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HBG": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7482AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "HDB": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7772AA",
+        "invoeding": "7772AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "HELD": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "5986AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "HGLW": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7491AA",
+        "invoeding": "7491AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "HGV": {
+      "operator": "Enexis, Rendo",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7902AA",
+        "invoeding": "7902AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "HMO": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "5709AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HMZ": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5701AA",
+        "invoeding": "5701AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HPS": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5445AA",
+        "invoeding": "5445AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HPT": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5096BA",
+        "invoeding": "5096BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HRST": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "5766PB",
+        "invoeding": "5766PB"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HTN": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5212AA",
+        "invoeding": "5212AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "HUSK": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6413AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "ISM": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "8274AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "KELP": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6092NB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "KP": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "8261AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "KWD": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9615AA",
+        "invoeding": "9615AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "KZVZ": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7885AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "LIMM": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6214AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 1
+        }
+      }
+    },
+    "LUTT": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6129AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "Lemmer 10kV": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8516DC",
+        "invoeding": "8516DC"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "MAK": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "9481AA",
+        "invoeding": "9481AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "MDK": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4765AP",
+        "invoeding": "4765AP"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "MEE": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9697LA",
+        "invoeding": "9697LA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "MLBK": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "5954AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "MP": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7941AA",
+        "invoeding": "7941AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "MSBT": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6014AA",
+        "invoeding": "6014AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 1
+        }
+      }
+    },
+    "MSKZ": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "7877TA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "MZ": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5595AA",
+        "invoeding": "5595AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "NEDW": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6034PA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "NVD": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "7447AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ODZ": {
+      "operator": "Coteq, Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7572AA",
+        "invoeding": "7572AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "OL": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "8196KA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OMD": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7715PA",
+        "invoeding": "7715PA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "OS": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5341AA",
+        "invoeding": "5341AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS 'S-GRAVELAND 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1243HV"
+      },
+      "afname": {
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ALKMAAR 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1815AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ALMERE 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "invoeding": "1325AG"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS ALPHEN WEST 10-1i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2481AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ANNA PAULOWNA 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1756AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS APELDOORN 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "7316AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS APELDOORN 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7312AA",
+        "invoeding": "7312AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS BERGUM CENTRALE 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "9261VA",
+        "invoeding": "9261VA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS BERGUM CENTRALE 10-2i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "9297WN",
+        "invoeding": "9297WN"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS BORCULO 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "7261AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS CULEMBORG 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4196AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS CULEMBORG 10-9i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4103NC"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS DALE 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7055AA",
+        "invoeding": "7055AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DODEWAARD 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4033AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS DODEWAARD 10-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6674AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS DOETINCHEM 10-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "7003AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DOETINCHEM 10-5i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6998AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DOETINCHEM 20-6i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6984AA",
+        "invoeding": "6984AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DOETINCHEM 20-7i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "7227DA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DOKKUM 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "9143DM",
+        "invoeding": "9143DM"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DOKKUM 20kV 20-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "9162DA",
+        "invoeding": "9162DA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DRACHTEN 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "9205AA",
+        "invoeding": "9205AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DRONTEN 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8253AA",
+        "invoeding": "8253AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS DRUTEN 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6631AB"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS EDAM 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1131AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS EDAM 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1145PK"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "OS EDE 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6732AA",
+        "invoeding": "6732AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS EERBEEK 10-1i + 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6953AA",
+        "invoeding": "6953AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS EIBERGEN 10-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "7152AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS ELST 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6844AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS EMMELOORD 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8308AA",
+        "invoeding": "8308AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS EMMELOORD 20-5i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8323BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS GORREDIJK 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8404BJ",
+        "invoeding": "8404BJ"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS HARDERWIJK 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "3852AA",
+        "invoeding": "3852AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS HARSELAAR 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "3776LL",
+        "invoeding": "3776LL"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS HARSELAAR 20-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "3772AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS HATTEM 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "8095PA",
+        "invoeding": "8095PA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS HEERENVEEN 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8442AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS HERBAYUM 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8804NA",
+        "invoeding": "8804NA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS HERBAYUM 20KV 20-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8822VA",
+        "invoeding": "8822VA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS HOOFDDORP 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "2132AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS HOORN GELDELOZEWEG 50-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1625AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS KATWIJK 10-2i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2224AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS LEEUWARDEN 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8833KA",
+        "invoeding": "8833KA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS LEIDERDORP 10-1i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2353AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS LELYSTAD 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8221RA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS LEMMER 20-4i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8313AA",
+        "invoeding": "8313AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "OS LISSE 10-1i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2204AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS LOCHEM 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7245AA",
+        "invoeding": "7245AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS MARNEZIJL 10-2i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8733EL"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS MARNEZIJL 20-3i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8611JG",
+        "invoeding": "8611JG"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS MEDEMBLIK 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1676EA",
+        "invoeding": "1676EA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS MIDDENMEER 20-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1775AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 1
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS NAARDEN 50-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1403AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2023-09-28": {
+          "color": 1,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS NIEUW VENNEP 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "2152AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS NIEUWKOOP 10-1i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2432CA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS NIJKERK 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "3862AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS NIJKERK 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "3863AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS NUNSPEET 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "8071AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS NUNSPEET 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "8084AA",
+        "invoeding": "8084AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OOSTERBEEK 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6865AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS OOSTERHOUT 20-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6685AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OOSTERHOUT 20-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6663AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS OOSTERWOLDE 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8422DE",
+        "invoeding": "8422DE"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OOSTERWOLDE 10-2i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "invoeding": "8431AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OTERLEEK 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1703AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OTERLEEK 10-4i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1485ET"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OUDEHASKE 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8464NA",
+        "invoeding": "8464NA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OUDEHASKE 10-2i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8468BA",
+        "invoeding": "8468BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS OUDORP 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1847LH"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS OUDORP 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1811AE"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS OVERVEEN 10-2i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "2041AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS PRESIKHAAF 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "6825AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS PRESIKHAAF 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6883AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS PURMEREND SCHAEPMANSTRAAT 50-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1441AA",
+        "invoeding": "1441AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS RAUWERD 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8635LA",
+        "invoeding": "8635LA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS RENKUM 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6705AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS SCHAGEN 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1746AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS SCHENKENSCHANS 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8911AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS SNEEK 10-1i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8601AA",
+        "invoeding": "8601AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS TEERSDIJK 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6536AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS TEERSDIJK 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6603AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS TEXEL 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1794AA",
+        "invoeding": "1794AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS TIEL 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4003AA",
+        "invoeding": "4003AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS TIEL 20-4i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "4023AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS UITGEEST 50-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1901AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ULFT 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7071AA",
+        "invoeding": "7071AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ULKESLUIS 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1777AA",
+        "invoeding": "1777AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "OS VAASSEN 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "8162AA",
+        "invoeding": "8162AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS VELSEN 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1949AG"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS VLIEGENBOS 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1024AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS WAARDERPOLDER 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "2026AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS WARMENHUIZEN 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1832AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS WASSENAAR 10-1i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2243AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 1
+        },
+        "2023-06-11": {
+          "color": 1
+        },
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS WESTWOUD 10-4i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1608EA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "OS WESTZAANSTRAAT 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1015AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2023-09-28": {
+          "color": 0,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS WINSELINGSEWEG 10-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6573AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS WINTERSWIJK 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7102AA",
+        "invoeding": "7102AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS WOLVEGA 10-2i": {
+      "operator": "Liander",
+      "province": "Friesland",
+      "representative_pc6": {
+        "afname": "8388MA",
+        "invoeding": "8388MA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS WOUDHUIS 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7382AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ZAANDAM WEST 10-1i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "afname": "1502AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 1
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ZALTBOMMEL 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "5316BA",
+        "invoeding": "5316BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZALTBOMMEL 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "5305BB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZALTBOMMEL 20-5i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4063CA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ZEEWOLDE 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "3892AA",
+        "invoeding": "3892AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZEEWOLDE 20KV 20-7i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "3896LA",
+        "invoeding": "3896LA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZEVENAAR 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6903AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZEVENAAR 10-3i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "invoeding": "6916AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZOETERWOUDE 10-2i": {
+      "operator": "Liander",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2394AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "OS ZUIDERVELD 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "invoeding": "8212AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OS ZUILICHEM 20-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "4155BA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ZUTPHEN 10-1i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7204AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "OS ZUTPHEN 10-2i": {
+      "operator": "Liander",
+      "province": "Gelderland",
+      "representative_pc6": {
+        "afname": "7211AA",
+        "invoeding": "7211AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "OTD": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "4903PA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "PCH": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "4812AB"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "RS": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7462AA",
+        "invoeding": "7462AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "RS HOOGWOUD 10-4i": {
+      "operator": "Liander",
+      "province": "Noord-Holland",
+      "representative_pc6": {
+        "invoeding": "1655KC"
+      },
+      "afname": {},
+      "invoeding": {
+        "2023-03-27": {
+          "color": 3
+        },
+        "2023-06-11": {
+          "color": 3
+        },
+        "2023-09-28": {
+          "color": 3,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "RSD": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4702AA",
+        "invoeding": "4702AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "RT": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "8102AA",
+        "invoeding": "8102AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "SBRN": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6255AA",
+        "invoeding": "6255AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 1
+        }
+      }
+    },
+    "SKN": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9503AA",
+        "invoeding": "9503AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "SW": {
+      "operator": "Enexis, Rendo",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7975AA",
+        "invoeding": "7975AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "TBG": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7615NA",
+        "invoeding": "7615NA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "TBN": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5059AB",
+        "invoeding": "5059AB"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "TBW": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "invoeding": "5043AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "TBZ": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5021AA",
+        "invoeding": "5021AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "TERW": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6369AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "TH009_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2806AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "TH086_13": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "3243AA",
+        "invoeding": "3243AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TH201_10_A": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4433AA",
+        "invoeding": "4433AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "TH201_10_B": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4486AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "TH203_10_A": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4539PA",
+        "invoeding": "4539PA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "TH210_10": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4501AA",
+        "invoeding": "4501AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TH212_10_AB": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4334AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "TH215_10_A": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "invoeding": "4455AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TRBK": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6361AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "TS040_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3474GA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "TS043_10": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3754LV"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "TS049_10": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "invoeding": "3831AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "TS069_10": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "1391AB"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 2
+        },
+        "2023-06-11": {
+          "color": 2
+        },
+        "2023-09-28": {
+          "color": 2,
+          "cm": 0
+        },
+        "2023-12-07": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-05-26": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "TS073_10": {
+      "operator": "Stedin",
+      "province": "Utrecht",
+      "representative_pc6": {
+        "afname": "3769AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "TT026_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "3079AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "TT029_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3142AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TT034_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "3123AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "TT076_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2865AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TT091_13": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "3248AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TT104_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "invoeding": "2651AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      }
+    },
+    "TT110_10": {
+      "operator": "Stedin",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2627AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "TT220_10": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4562AA",
+        "invoeding": "4562AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      }
+    },
+    "TT228_10": {
+      "operator": "Stedin",
+      "province": "Zeeland",
+      "representative_pc6": {
+        "afname": "4421AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "UD": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "5364MV",
+        "invoeding": "5364MV"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "VDM": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "invoeding": "9464TD"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "VENR": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "5803AA",
+        "invoeding": "5803AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "VH": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7676AA",
+        "invoeding": "7676AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "VLH": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "invoeding": "8363TH"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "VLH DE VOORST 61 10-1i": {
+      "operator": "Liander",
+      "province": "Flevoland",
+      "representative_pc6": {
+        "afname": "8317AA",
+        "invoeding": "8317AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 0
+        }
+      }
+    },
+    "VO": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "7764AA",
+        "invoeding": "7764AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "VVL10": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9363AA",
+        "invoeding": "9363AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "WDT": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4612PA",
+        "invoeding": "4612PA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "WEW": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9945MA",
+        "invoeding": "9945MA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "WRTH": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "invoeding": "6002AA"
+      },
+      "afname": {},
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "WS": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9685AA",
+        "invoeding": "9685AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 1,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 1,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "WSMR": {
+      "operator": "Enexis",
+      "province": "Groningen",
+      "representative_pc6": {
+        "afname": "9995NC",
+        "invoeding": "9995NC"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "WVV": {
+      "operator": "Enexis",
+      "province": "Limburg",
+      "representative_pc6": {
+        "afname": "6325AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {}
+    },
+    "WW": {
+      "operator": "Enexis",
+      "province": "Noord-Brabant",
+      "representative_pc6": {
+        "afname": "4261AA",
+        "invoeding": "4261AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 3,
+          "cm": 1
+        },
+        "2024-03-03": {
+          "color": 3,
+          "cm": 1
+        }
+      }
+    },
+    "Westerlee": {
+      "operator": "Westland",
+      "province": "Zuid-Holland",
+      "representative_pc6": {
+        "afname": "2291AA"
+      },
+      "afname": {
+        "2023-03-27": {
+          "color": 0
+        },
+        "2023-06-11": {
+          "color": 0
+        },
+        "2024-01-11": {
+          "color": 0,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 0,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "ZLH": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7722AA",
+        "invoeding": "7722AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ZLW": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "8012AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {}
+    },
+    "ZS": {
+      "operator": "Enexis",
+      "province": "Overijssel",
+      "representative_pc6": {
+        "afname": "7946AA",
+        "invoeding": "7946AA"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    },
+    "ZYV": {
+      "operator": "Enexis",
+      "province": "Drenthe",
+      "representative_pc6": {
+        "afname": "9489TH",
+        "invoeding": "9489TH"
+      },
+      "afname": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      },
+      "invoeding": {
+        "2024-01-11": {
+          "color": 2,
+          "cm": 0
+        },
+        "2024-03-03": {
+          "color": 2,
+          "cm": 0
+        }
+      }
+    }
+  }
+}
