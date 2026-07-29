@@ -1,0 +1,59 @@
+name: daily snapshot
+
+# ~06:00 Europe/Amsterdam (05:00 UTC winter / 04:00 UTC summer — cron is UTC-only, so this
+# fires 06:00 CET / 07:00 CEST; close enough, the source updates at most daily).
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Force a full per-area sweep regardless of manifest change"
+        type: boolean
+        default: false
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Fetch snapshot
+        env:
+          GRIDWATCH_CONTACT: ${{ secrets.GRIDWATCH_CONTACT }}
+        run: |
+          python fetch.py ${{ (github.event_name == 'workflow_dispatch' && inputs.full) && '--full' || '' }}
+
+      - name: Commit changes
+        run: |
+          git config user.name  "gridwatch-nl bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "snapshot $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      # No external alerting service. fetch.py exits non-zero on any hard failure (403/HTML
+      # block, too many area errors, API down), which fails this job — and GitHub emails you
+      # for failed runs on your own repos (Settings → Notifications → Actions). The weekly
+      # external self-check is the backstop for the one case this can't cover: a scheduled run
+      # that never fires at all.
+      - name: Flag failure in the run log
+        if: failure()
+        run: echo "::error::gridwatch-nl daily snapshot failed — see the steps above."

@@ -1,0 +1,42 @@
+name: heartbeat
+
+# Catches the failure mode the daily job cannot report on itself: the scheduled run
+# silently stops firing (GitHub disables schedules on inactive repos; a runner outage; a
+# broken cron). Runs a few times a week and alerts if the newest snapshot commit is stale.
+on:
+  schedule:
+    - cron: "0 9 * * 1,4"   # Mon & Thu 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check freshness of last snapshot
+        id: check
+        run: |
+          # Last commit that touched data/ (the archiver only ever writes there).
+          last_epoch=$(git log -1 --format=%ct -- data/ || echo 0)
+          now_epoch=$(date -u +%s)
+          age_h=$(( (now_epoch - last_epoch) / 3600 ))
+          echo "Last data/ commit was ${age_h}h ago."
+          echo "age_h=${age_h}" >> "$GITHUB_OUTPUT"
+          if [ "$age_h" -gt 48 ]; then
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Failing this job is the alert: GitHub emails you for failed runs on your own repos.
+      - name: Fail if stale
+        if: steps.check.outputs.stale == 'true'
+        run: |
+          echo "::error::gridwatch-nl heartbeat: no snapshot in ${{ steps.check.outputs.age_h }}h — the daily cron may have stopped."
+          exit 1
