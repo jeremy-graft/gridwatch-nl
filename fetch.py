@@ -45,10 +45,13 @@ from tenacity import (
 )
 
 BASE = "https://data.partnersinenergie.nl/api"
+# Placeholder contact: a GitHub noreply address isn't actually reachable, so the repo URL below
+# carries the "be identifiable and contactable" duty (issues are open). Set GRIDWATCH_CONTACT
+# (env var / Actions secret) to a real monitored address when there is one.
 CONTACT = os.environ.get("GRIDWATCH_CONTACT", "jeremy-graft@users.noreply.github.com")
 USER_AGENT = (
     f"gridwatch-nl archiver (contact: {CONTACT}; "
-    "+https://github.com/jerrrr92/gridwatch-nl)"
+    "+https://github.com/jeremy-graft/gridwatch-nl)"
 )
 DELAY = float(os.environ.get("GRIDWATCH_DELAY", "2.0"))  # seconds between sweep requests
 TIMEOUT = 30.0

@@ -1,0 +1,37 @@
+name: verify-once (temporary)
+
+# TEMPORARY, DELETE AFTER USE.
+# Purpose: prove the full 301-area sweep works from GitHub's runner IPs before we trust the
+# daily cron. The daily job can't be dispatched without a token, so this runs the same sweep
+# on push instead. `--full` forces the sweep even though the manifest hasn't changed.
+# It does NOT commit anything — this is a read-only reachability test.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/verify-once.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Full sweep from a GitHub runner (no commit)
+        run: python fetch.py --full
+
+      - name: Show run status
+        if: always()
+        run: |
+          echo "--- data/_status.json ---"
+          cat data/_status.json
+          echo "--- did any file change? (not committed) ---"
+          git status --porcelain data/ | head -20
