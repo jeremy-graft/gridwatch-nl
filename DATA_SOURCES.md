@@ -340,13 +340,39 @@ sweep from a real Actions runner, verify it isn't 403/challenged, and if it is, 
 a scheduled self-hosted/alternative runner or an allowlisted egress. Bake a hard "any 403 or
 HTML-instead-of-JSON ⇒ fail loud + alert" check into fetch.py.
 
-### 5.6 Volatile fields to strip before commit (for stable diffs)
-No request-scoped fields seen inside `serviceArea` bodies. **Strip at the HTTP layer:** never
-persist response headers (`cf-ray`, `x-tx-id`, `date`, `cf-cache-status`). For `manifests`,
-note `dataUpdate.id` (UUID) and `executedOn` change on every republish **even if the actual
-data is identical** — that's fine for detecting "they ran the pipeline," but the *authoritative*
-"did data change" signal is the `gridOperatorUpdates[].updatedAt` set and the diff of the
-swept `serviceArea` bodies. Canonicalise all JSON with sorted keys + pretty-print.
+### 5.6 Volatile fields — MEASURED 2026-07-30, supersedes the original guess
+
+The first real ingest re-run corrected two things this section previously got wrong.
+
+**(a) The bodies DO contain volatile fields.** The backend regenerates database row ids on
+every ingest run. On 2026-07-30 all **5101 `projects[].id`** values shifted by exactly +591 and
+`gridOperatorUpdates[].id` by +24, producing a ~5100-line diff that contained only **62 real
+changes**. Array order is also non-deterministic (project and update rows arrive shuffled).
+
+Stripped / normalised before commit (by `normalize_area` / `normalize_manifest` in fetch.py):
+
+| field | why |
+|---|---|
+| `projects[].id` | rotating DB row id, no information, ~5100 lines of noise per re-run |
+| `gridOperatorUpdates[].id` | same |
+| order of `projects[]` | non-deterministic → sorted by (gridOperator, name, dateString) |
+| order of `gridOperatorUpdates[]` | non-deterministic → sorted by (gridOperator, categoryShort) |
+
+**Kept:** `dataUpdate.executedOn` + `dataUpdate.id` (two lines, and the change trigger — see
+(b)). Never persisted: response headers (`cf-ray`, `x-tx-id`, `date`, `cf-cache-status`).
+Verified: a live re-fetch of 6 changed areas normalises byte-identically to the stored copy.
+
+⚠️ **Phase-2 consequence:** a project's identity across snapshots is **(gridOperator, name)**.
+`projects[].id` is NOT stable and must never be used as a join key.
+
+**(b) `updatedAt` is NOT a reliable change signal — `dataUpdate` is.** The original claim that
+the "authoritative" signal is the `gridOperatorUpdates[].updatedAt` set was **wrong**. On
+2026-07-30, Enexis and Liander shipped real changes (relief years moved, e.g. Oldenzaal
+2026→2029) while their `updatedAt` stayed frozen at 07-15 / 05-29; only Stedin/`KI` moved.
+Triggering on `updatedAt` alone would have missed all 62 changes. `manifest_fingerprint`
+therefore keys on `dataUpdate.id` **and** the updatedAt set. Observed pipeline cadence:
+2026-07-17 → 2026-07-29, both 11:30:04 UTC ⇒ roughly every 12 days, so ~2–3 sweeps/month.
+Do not "simplify" this; a regression test pins it.
 
 ---
 

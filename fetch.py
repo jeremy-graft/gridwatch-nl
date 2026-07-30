@@ -83,6 +83,45 @@ def canonical(obj) -> str:
     return json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
+# --- Volatile-field stripping (DATA_SOURCES.md §5.6) -------------------------------------
+# The backend regenerates its database row ids on every ingest run. On 2026-07-30 this made
+# all 5101 `projects[].id` values shift by +591, producing a ~5100-line diff that contained
+# only 62 real changes. Array order is also non-deterministic. Both are stripped/sorted before
+# commit so git diffs show real data changes only — as the brief requires. Nothing with
+# information content is removed.
+#
+# Consequence for Phase 2: a project's identity across snapshots is (gridOperator, name),
+# NOT `id` — the id is not stable and must never be used as a join key.
+
+def normalize_area(sa: dict) -> dict:
+    """Drop rotating project row ids and impose a deterministic project order."""
+    sa = dict(sa)
+    projects = sa.get("projects")
+    if isinstance(projects, list):
+        cleaned = [{k: v for k, v in p.items() if k != "id"} for p in projects]
+        cleaned.sort(key=lambda p: (str(p.get("gridOperator") or ""),
+                                    str(p.get("name") or ""),
+                                    str(p.get("dateString") or "")))
+        sa["projects"] = cleaned
+    return sa
+
+
+def normalize_manifest(m: dict) -> dict:
+    """Drop rotating row ids and impose a deterministic order on the update rows.
+
+    `dataUpdate` (executedOn + id) is deliberately KEPT: it is the only reliable
+    change signal (see manifest_fingerprint) and is just two lines.
+    """
+    m = dict(m)
+    ups = m.get("gridOperatorUpdates")
+    if isinstance(ups, list):
+        cleaned = [{k: v for k, v in u.items() if k != "id"} for u in ups]
+        cleaned.sort(key=lambda u: (str(u.get("gridOperator") or ""),
+                                    str(u.get("categoryShort") or "")))
+        m["gridOperatorUpdates"] = cleaned
+    return m
+
+
 def operator_bucket(op: str | None) -> str:
     o = (op or "").lower()
     if "liander" in o:
@@ -137,8 +176,19 @@ def _post_area(client: httpx.Client, area_id: str) -> object:
 
 
 def manifest_fingerprint(manifest: dict) -> dict:
-    """Stable signal for 'did the underlying data change'. Uses the pipeline version id and
-    the authoritative per-operator/category updatedAt set (DATA_SOURCES.md §5.6)."""
+    """Signal for 'might the underlying data have changed' — decides whether to sweep.
+
+    IMPORTANT (measured 2026-07-30, do not "simplify" this):
+    `dataUpdate` is the RELIABLE trigger; the per-operator `updatedAt` values are NOT.
+    On 2026-07-30 the ingest pipeline re-ran (executedOn 07-17 -> 07-29) and 62 real changes
+    landed — including relief years moving (Oldenzaal 2026->2029) — while Enexis's and
+    Liander's `updatedAt` stayed frozen at 07-15 / 05-29. Only Stedin/KI moved. Triggering on
+    `updatedAt` alone would have missed all of it.
+
+    So: include the pipeline version id (catches everything, at the cost of an occasional
+    no-op sweep) AND the updatedAt set (belt and braces). Observed pipeline cadence is roughly
+    every 12 days, so this still means ~2-3 sweeps a month, not daily.
+    """
     du = manifest.get("dataUpdate") or {}
     updates = sorted(
         (u.get("gridOperator"), u.get("categoryShort"), u.get("updatedAt"))
@@ -207,7 +257,7 @@ def run(full: bool) -> int:
         new_fp = manifest_fingerprint(manifest)
         changed = prev_fp is None or prev_fp != new_fp
         status["manifest_changed"] = changed
-        MANIFESTS.write_text(canonical(manifest), encoding="utf-8")
+        MANIFESTS.write_text(canonical(normalize_manifest(manifest)), encoding="utf-8")
 
         # 3. decide whether to sweep
         first_run = not any(
@@ -254,7 +304,7 @@ def run(full: bool) -> int:
                 sa = data.get("serviceArea") if isinstance(data, dict) else None
                 if not sa:
                     raise ValueError("empty serviceArea in response")
-                buckets.setdefault(bucket, {})[aid] = sa
+                buckets.setdefault(bucket, {})[aid] = normalize_area(sa)
                 status["areas_ok"] += 1
             except BlockedError as e:
                 # A block is systemic — stop immediately and fail loud rather than

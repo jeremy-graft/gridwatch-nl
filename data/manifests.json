@@ -5,172 +5,148 @@
   },
   "gridOperatorUpdates": [
     {
+      "category": "Aanwezige transportcapaciteit",
+      "categoryShort": "ATC",
+      "gridOperator": "Enexis",
+      "updatedAt": "2026-07-15T02:00:00+02:00"
+    },
+    {
       "category": "Benodigde transportcapaciteit",
       "categoryShort": "BTC",
       "gridOperator": "Enexis",
-      "id": 2359,
-      "updatedAt": "2026-07-15T02:00:00+02:00"
-    },
-    {
-      "category": "Netuitbreidingen",
-      "categoryShort": "NU",
-      "gridOperator": "Enexis",
-      "id": 2360,
-      "updatedAt": "2026-07-15T02:00:00+02:00"
-    },
-    {
-      "category": "Kleurinformatie",
-      "categoryShort": "KI",
-      "gridOperator": "Enexis",
-      "id": 2361,
       "updatedAt": "2026-07-15T02:00:00+02:00"
     },
     {
       "category": "Jaartal congestie opgelost",
       "categoryShort": "JC",
       "gridOperator": "Enexis",
-      "id": 2362,
-      "updatedAt": "2026-07-15T02:00:00+02:00"
-    },
-    {
-      "category": "Aanwezige transportcapaciteit",
-      "categoryShort": "ATC",
-      "gridOperator": "Enexis",
-      "id": 2363,
-      "updatedAt": "2026-07-15T02:00:00+02:00"
-    },
-    {
-      "category": "Wachtrij",
-      "categoryShort": "WR",
-      "gridOperator": "Enexis",
-      "id": 2364,
       "updatedAt": "2026-07-15T02:00:00+02:00"
     },
     {
       "category": "Kleurinformatie",
       "categoryShort": "KI",
-      "gridOperator": "Liander",
-      "id": 2365,
-      "updatedAt": "2026-05-29T02:00:00+02:00"
+      "gridOperator": "Enexis",
+      "updatedAt": "2026-07-15T02:00:00+02:00"
+    },
+    {
+      "category": "Netuitbreidingen",
+      "categoryShort": "NU",
+      "gridOperator": "Enexis",
+      "updatedAt": "2026-07-15T02:00:00+02:00"
+    },
+    {
+      "category": "Wachtrij",
+      "categoryShort": "WR",
+      "gridOperator": "Enexis",
+      "updatedAt": "2026-07-15T02:00:00+02:00"
     },
     {
       "category": "Aanwezige transportcapaciteit",
       "categoryShort": "ATC",
       "gridOperator": "Liander",
-      "id": 2366,
-      "updatedAt": "2026-05-29T02:00:00+02:00"
-    },
-    {
-      "category": "Wachtrij",
-      "categoryShort": "WR",
-      "gridOperator": "Liander",
-      "id": 2367,
-      "updatedAt": "2026-05-29T02:00:00+02:00"
-    },
-    {
-      "category": "Jaartal congestie opgelost",
-      "categoryShort": "JC",
-      "gridOperator": "Liander",
-      "id": 2368,
-      "updatedAt": "2026-05-29T02:00:00+02:00"
-    },
-    {
-      "category": "Netuitbreidingen",
-      "categoryShort": "NU",
-      "gridOperator": "Liander",
-      "id": 2369,
       "updatedAt": "2026-05-29T02:00:00+02:00"
     },
     {
       "category": "Benodigde transportcapaciteit",
       "categoryShort": "BTC",
       "gridOperator": "Liander",
-      "id": 2370,
+      "updatedAt": "2026-05-29T02:00:00+02:00"
+    },
+    {
+      "category": "Jaartal congestie opgelost",
+      "categoryShort": "JC",
+      "gridOperator": "Liander",
+      "updatedAt": "2026-05-29T02:00:00+02:00"
+    },
+    {
+      "category": "Kleurinformatie",
+      "categoryShort": "KI",
+      "gridOperator": "Liander",
       "updatedAt": "2026-05-29T02:00:00+02:00"
     },
     {
       "category": "Netuitbreidingen",
       "categoryShort": "NU",
-      "gridOperator": "Stedin",
-      "id": 2371,
-      "updatedAt": "2026-06-25T02:00:00+02:00"
+      "gridOperator": "Liander",
+      "updatedAt": "2026-05-29T02:00:00+02:00"
     },
     {
       "category": "Wachtrij",
       "categoryShort": "WR",
-      "gridOperator": "Stedin",
-      "id": 2372,
-      "updatedAt": "2026-06-25T02:00:00+02:00"
+      "gridOperator": "Liander",
+      "updatedAt": "2026-05-29T02:00:00+02:00"
     },
     {
       "category": "Aanwezige transportcapaciteit",
       "categoryShort": "ATC",
       "gridOperator": "Stedin",
-      "id": 2373,
-      "updatedAt": "2026-06-25T02:00:00+02:00"
-    },
-    {
-      "category": "Jaartal congestie opgelost",
-      "categoryShort": "JC",
-      "gridOperator": "Stedin",
-      "id": 2374,
       "updatedAt": "2026-06-25T02:00:00+02:00"
     },
     {
       "category": "Benodigde transportcapaciteit",
       "categoryShort": "BTC",
       "gridOperator": "Stedin",
-      "id": 2375,
+      "updatedAt": "2026-06-25T02:00:00+02:00"
+    },
+    {
+      "category": "Jaartal congestie opgelost",
+      "categoryShort": "JC",
+      "gridOperator": "Stedin",
       "updatedAt": "2026-06-25T02:00:00+02:00"
     },
     {
       "category": "Kleurinformatie",
       "categoryShort": "KI",
       "gridOperator": "Stedin",
-      "id": 2376,
       "updatedAt": "2026-07-28T02:00:00+02:00"
     },
     {
       "category": "Netuitbreidingen",
       "categoryShort": "NU",
-      "gridOperator": "TenneT",
-      "id": 2377,
-      "updatedAt": "2026-04-23T02:00:00+02:00"
+      "gridOperator": "Stedin",
+      "updatedAt": "2026-06-25T02:00:00+02:00"
     },
     {
       "category": "Wachtrij",
       "categoryShort": "WR",
-      "gridOperator": "TenneT",
-      "id": 2378,
-      "updatedAt": "2026-07-01T02:00:00+02:00"
-    },
-    {
-      "category": "Jaartal congestie opgelost",
-      "categoryShort": "JC",
-      "gridOperator": "TenneT",
-      "id": 2379,
-      "updatedAt": "2026-04-23T02:00:00+02:00"
+      "gridOperator": "Stedin",
+      "updatedAt": "2026-06-25T02:00:00+02:00"
     },
     {
       "category": "Aanwezige transportcapaciteit",
       "categoryShort": "ATC",
       "gridOperator": "TenneT",
-      "id": 2380,
-      "updatedAt": "2026-04-23T02:00:00+02:00"
-    },
-    {
-      "category": "Kleurinformatie",
-      "categoryShort": "KI",
-      "gridOperator": "TenneT",
-      "id": 2381,
       "updatedAt": "2026-04-23T02:00:00+02:00"
     },
     {
       "category": "Benodigde transportcapaciteit",
       "categoryShort": "BTC",
       "gridOperator": "TenneT",
-      "id": 2382,
       "updatedAt": "2026-04-23T02:00:00+02:00"
+    },
+    {
+      "category": "Jaartal congestie opgelost",
+      "categoryShort": "JC",
+      "gridOperator": "TenneT",
+      "updatedAt": "2026-04-23T02:00:00+02:00"
+    },
+    {
+      "category": "Kleurinformatie",
+      "categoryShort": "KI",
+      "gridOperator": "TenneT",
+      "updatedAt": "2026-04-23T02:00:00+02:00"
+    },
+    {
+      "category": "Netuitbreidingen",
+      "categoryShort": "NU",
+      "gridOperator": "TenneT",
+      "updatedAt": "2026-04-23T02:00:00+02:00"
+    },
+    {
+      "category": "Wachtrij",
+      "categoryShort": "WR",
+      "gridOperator": "TenneT",
+      "updatedAt": "2026-07-01T02:00:00+02:00"
     }
   ]
 }
