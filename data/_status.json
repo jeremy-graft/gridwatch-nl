@@ -2,12 +2,18 @@
   "api_up": true,
   "areas_expected": 301,
   "areas_failed": 0,
-  "areas_ok": 0,
+  "areas_ok": 301,
   "failures": [],
-  "manifest_changed": false,
+  "manifest_changed": true,
   "ok": true,
-  "per_bucket": {},
-  "run_at": "2026-07-29T00:08:14Z",
-  "sweep_reason": null,
-  "swept": false
+  "per_bucket": {
+    "enexis": 101,
+    "liander": 122,
+    "other": 2,
+    "stedin": 55,
+    "tennet": 21
+  },
+  "run_at": "2026-07-30T07:28:04Z",
+  "sweep_reason": "manifest changed",
+  "swept": true
 }
