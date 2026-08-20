@@ -405,6 +405,21 @@ its publish moment even if our snapshot lands days later. Missing days blur *our
 window, not the source's own timestamp.
 
 
+### 5.8 Data-quality quirks — PHASE-2 PARSER REQUIREMENTS (observed 2026-08-20)
+
+Per the brief we do **not** correct archived data; these are recorded so the parser handles
+them. Each would silently produce wrong numbers if treated naively.
+
+| quirk | observed | why it breaks things | required handling |
+|---|---|---|---|
+| **`2099` is a "no date" sentinel, not a year** | `EHVO` 2030→2099, `NEDW` 2032→2099 | any mean/median relief year or "years until relief" is wildly skewed | treat `year >= 2090` as **NULL / indefinite**; report it as its own category ("relief date withdrawn"), never as a 70-year slip |
+| **projects dated in the past** | 4 rows at 2020, 2022, 2024 | yields negative time-to-relief | clamp/flag as `overdue-or-stale`; never silently negative |
+| **relief dates oscillate** | `MDK` 2032→2028 (07-30) → 2032 (08-11) | a single diff reads as a slip that later reverses; naive alerting would cry wolf | slippage must be a **trend across ≥2 ingest cycles**, not a single diff. Record every move, but only call it slippage when it persists |
+| **`queue*` / capacity are unit-suffixed strings** | `"9.2 MW"`, `"-"` for n/a | string compare / float() both fail | parse to numeric + unit; `-` → NULL. NB `serviceArea.history[]` carries the same measures as **clean floats** — prefer it where present |
+| **`history[]` is forward projections, not history** | years 2026–2036, 253 areas | the name invites treating it as past data | it is a **forecast** series; never merge into the observed time-series |
+| **ids carry stray whitespace** | `"Groningen Oost "` (trailing space) | breaks joins against the tile-derived id list | strip before joining, but keep the raw form as archived |
+
+
 ---
 
 ## 6. Open decisions for Jeremy (before Phase 1)
