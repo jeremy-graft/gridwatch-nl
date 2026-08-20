@@ -374,6 +374,37 @@ therefore keys on `dataUpdate.id` **and** the updatedAt set. Observed pipeline c
 2026-07-17 → 2026-07-29, both 11:30:04 UTC ⇒ roughly every 12 days, so ~2–3 sweeps/month.
 Do not "simplify" this; a regression test pins it.
 
+### 5.7 Retired areas & inventory churn — MEASURED 2026-08-20
+
+**Behaviour:** when the source stops serving an area id, `POST /serviceArea/get` answers
+**HTTP 200 with an empty body and no content-type** — not a 404. Four Liander ids
+(`OS BORCULO 10-1i`, `OS GORREDIJK 10-1i`, `OS OOSTERWOLDE 10-2i`, `RS HOOGWOUD 10-4i`)
+started doing this after the 2026-08-17 republish.
+
+**Why it mattered:** `_guard_json` classified "200 + non-JSON" as a Cloudflare block, and the
+sweep treats a block as *systemic* (immediate abort, exit 1). So **4 dead ids out of 301 took
+the archiver down for three days** (2026-08-18..20) — the 1.3% failure rate never even reached
+the 5% tolerance gate. Fixed: `EmptyAreaError` is a per-area soft failure (last known value is
+kept, id recorded in `_status.json.missing`); genuine blocks (403, or HTML body) still abort.
+A new `MAX_MISSING_RATE = 0.15` gate still refuses a sweep if a large share vanishes at once.
+Pinned by a regression test.
+
+**Inventory churn is normal and large.** The 2026-08-17 republish retired **58** ids and added
+**62** (301 → 305). So `data/area_ids.json` goes stale silently, and a stale list is what
+surfaces the empty-body responses. Re-run `python tools/enumerate_area_ids.py` whenever
+`_status.json` reports `missing` ids (or monthly).
+
+**Retired areas are NOT deleted from the archive.** The sweep merges fresh results over the
+previously stored ones, so a retired area keeps its last known values forever. That is correct
+for an archive; Phase 2 should treat "present in the file but absent from `area_ids.json`" as
+*retired-as-of* rather than current.
+
+**Damage from a gap is bounded:** `manifests.json → dataUpdate.executedOn` records when the
+source itself last re-ingested (here 2026-08-17T09:15:04Z), so a change can still be dated to
+its publish moment even if our snapshot lands days later. Missing days blur *our* observation
+window, not the source's own timestamp.
+
+
 ---
 
 ## 6. Open decisions for Jeremy (before Phase 1)

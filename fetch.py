@@ -65,6 +65,9 @@ STATUS_OUT = DATA / "_status.json"
 
 # Fraction of areas allowed to fail before the whole sweep is considered a hard failure.
 MAX_SWEEP_FAILURE_RATE = 0.05
+# Areas answering 200+empty are normally a handful of retired stations. A large jump means
+# something systemic (source outage / id list badly stale) — refuse the sweep in that case.
+MAX_MISSING_RATE = 0.15
 
 
 class BlockedError(RuntimeError):
@@ -73,6 +76,16 @@ class BlockedError(RuntimeError):
 
 class TransientError(RuntimeError):
     """A retryable network/5xx error."""
+
+
+class EmptyAreaError(RuntimeError):
+    """The source returned 200 with an empty body for one area.
+
+    Observed 2026-08-20: four Liander areas (retired/renamed in the source's 2026-08-17
+    republish) began answering 200 + zero-length body. This is the source saying "no such
+    area", NOT a bot challenge — so it must be a per-area soft failure, never a systemic
+    abort. Conflating the two took the archiver down for three days.
+    """
 
 
 def now_utc() -> str:
@@ -139,8 +152,12 @@ def _guard_json(resp: httpx.Response) -> object:
     """Turn a response into JSON, treating blocks/HTML/empties as loud, specific errors."""
     if resp.status_code == 403:
         raise BlockedError(f"HTTP 403 (likely Cloudflare block) for {resp.request.url}")
-    ctype = resp.headers.get("content-type", "")
+    ctype = resp.headers.get("content-type", "") or ""
     body = resp.text
+    # 200 + empty body = "this area no longer exists". Distinct from a block, which arrives
+    # as 403 or an HTML challenge page with a non-empty body.
+    if resp.status_code == 200 and not body.strip():
+        raise EmptyAreaError(f"empty 200 body for {resp.request.url}")
     if "application/json" not in ctype:
         head = body[:80].replace("\n", " ")
         raise BlockedError(
@@ -225,6 +242,8 @@ def run(full: bool) -> int:
         "areas_expected": len(areas),
         "areas_ok": 0,
         "areas_failed": 0,
+        "areas_missing": 0,
+        "missing": [],
         "failures": [],
         "per_bucket": {},
         "ok": False,
@@ -306,6 +325,12 @@ def run(full: bool) -> int:
                     raise ValueError("empty serviceArea in response")
                 buckets.setdefault(bucket, {})[aid] = normalize_area(sa)
                 status["areas_ok"] += 1
+            except EmptyAreaError:
+                # The source no longer serves this id (retired/renamed area). Soft, per-area:
+                # keep whatever we last archived for it and carry on. NOT a systemic block.
+                status["areas_missing"] += 1
+                status["missing"].append(aid)
+                print(f"  - {aid}: empty response (area retired?); keeping last known value")
             except BlockedError as e:
                 # A block is systemic — stop immediately and fail loud rather than
                 # committing a half-empty sweep over good data.
@@ -320,6 +345,16 @@ def run(full: bool) -> int:
                 time.sleep(DELAY)
 
         # 5. gate on health BEFORE writing — never commit a suspicious partial sweep.
+        missing_rate = status["areas_missing"] / max(1, status["areas_expected"])
+        if missing_rate > MAX_MISSING_RATE:
+            _write_status(
+                status,
+                hard_error=f"{status['areas_missing']}/{status['areas_expected']} areas returned "
+                f"empty — too many to be routine retirements; refusing to trust this sweep",
+            )
+            print("HARD FAIL: too many empty areas", file=sys.stderr)
+            return 1
+
         failure_rate = status["areas_failed"] / max(1, status["areas_expected"])
         if status["areas_ok"] == 0 or failure_rate > MAX_SWEEP_FAILURE_RATE:
             _write_status(

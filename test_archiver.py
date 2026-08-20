@@ -285,6 +285,22 @@ def test_guard_json_rejects_403_and_html():
         fetch._guard_json(_Resp(200, "text/html", "<html>Just a moment...</html>"))
 
 
+def test_empty_200_is_a_missing_area_not_a_block():
+    """Regression (cost 3 days of snapshots, 2026-08-18..20): four retired Liander areas began
+    answering 200 with an empty body. _guard_json classed that as a Cloudflare block, and the
+    sweep treats a block as systemic -> the whole 301-area run aborted over 4 dead ids."""
+    with pytest.raises(fetch.EmptyAreaError):
+        fetch._guard_json(_Resp(200, "", ""))
+    with pytest.raises(fetch.EmptyAreaError):
+        fetch._guard_json(_Resp(200, "application/json", "   "))
+    # a real block must still be a block
+    with pytest.raises(fetch.BlockedError):
+        fetch._guard_json(_Resp(200, "text/html", "<html>Just a moment...</html>"))
+    with pytest.raises(fetch.BlockedError):
+        fetch._guard_json(_Resp(403, "application/json", "{}"))
+    assert not issubclass(fetch.EmptyAreaError, fetch.BlockedError),         "a missing area must never be catchable as a block"
+
+
 def test_guard_json_retries_on_5xx_and_passes_valid_json():
     with pytest.raises(fetch.TransientError):
         fetch._guard_json(_Resp(503, "application/json", "{}"))
