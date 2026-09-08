@@ -903,10 +903,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2034"
+        "year": "2032"
       },
       {
         "dateString": "Tussen 2032 en 2034",
@@ -918,10 +918,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2034"
+        "year": "2032"
       },
       {
         "dateString": "2026",
@@ -1974,10 +1974,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2033"
       },
       {
         "dateString": "Tussen 2033 en 2035",
@@ -1989,10 +1989,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2033"
       },
       {
         "dateString": "2038 - 2041",
@@ -2482,7 +2482,7 @@
         "projectPhase": "inProgress",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2027"
@@ -2497,10 +2497,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2031"
       },
       {
         "dateString": "Tussen 2034 en 2036",
@@ -3235,7 +3235,7 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2028"
@@ -3325,10 +3325,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2035"
       },
       {
         "dateString": "Tussen 2031 en 2033",
@@ -3340,10 +3340,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2031"
       },
       {
         "dateString": "2026",
@@ -3415,10 +3415,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2032"
+        "year": "2034"
       },
       {
         "dateString": "2031 - 2033",
@@ -4241,10 +4241,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2033"
       },
       {
         "dateString": "Tussen 2033 en 2035",
@@ -4271,10 +4271,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2037"
+        "year": "2035"
       },
       {
         "dateString": "Tussen 2029 en 2033",
@@ -4289,7 +4289,7 @@
         "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2030"
+        "year": "2033"
       },
       {
         "dateString": "Tussen 2029 en 2030",
@@ -4301,10 +4301,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2030"
+        "year": "2029"
       },
       {
         "dateString": "Tussen 2032 en 2034",
@@ -4331,10 +4331,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2031"
       },
       {
         "dateString": "2031 - 2033",
@@ -7798,10 +7798,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2035"
       },
       {
         "dateString": "2026",
@@ -13146,7 +13146,7 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2028"

@@ -3694,13 +3694,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Buggenum",
-        "projectPhase": "inProgress",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2026"
+        "year": "2033"
       },
       {
         "dateString": "2035 - 2038",
@@ -24310,13 +24310,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Tilburg Noord",
-        "projectPhase": "approved",
+        "projectPhase": "inProgress",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2030"
+        "year": "2028"
       },
       {
         "dateString": "2026",
@@ -27553,7 +27553,7 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Vierverlaten",
-        "projectPhase": "approved",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
@@ -29594,13 +29594,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Zwolle Weteringkade",
-        "projectPhase": "approved",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2030"
+        "year": "2031"
       },
       {
         "dateString": "2034 - 2037",
