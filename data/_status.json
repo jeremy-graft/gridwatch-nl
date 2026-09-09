@@ -3,19 +3,13 @@
   "areas_expected": 305,
   "areas_failed": 0,
   "areas_missing": 0,
-  "areas_ok": 305,
+  "areas_ok": 0,
   "failures": [],
-  "manifest_changed": true,
+  "manifest_changed": false,
   "missing": [],
   "ok": true,
-  "per_bucket": {
-    "enexis": 109,
-    "liander": 157,
-    "other": 2,
-    "stedin": 73,
-    "tennet": 22
-  },
-  "run_at": "2026-09-08T09:15:02Z",
-  "sweep_reason": "manifest changed",
-  "swept": true
+  "per_bucket": {},
+  "run_at": "2026-09-09T09:18:23Z",
+  "sweep_reason": null,
+  "swept": false
 }
