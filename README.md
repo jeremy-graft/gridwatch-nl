@@ -88,12 +88,28 @@ last-commit date and pings you only if it's stale or failed. (Set up separately 
 > ⚠️ Before trusting the cron: run `daily.yml` once via **workflow_dispatch** and confirm the
 > sweep isn't 403/challenged from GitHub's IP ranges. If it is, move to a self-hosted runner.
 
+## The report — `REPORT.md`
+
+Once a month `parse/report.py` reads the archive's git history and writes the
+**[Netcongestie Monitor](REPORT.md)**: national queue trend, relief-date moves, and how reliable
+each operator's published dates have been. Its one design rule matters more than anything else:
+
+> A relief-date move is only called **slippage** once it has held for two consecutive source
+> publications. Roughly 40% of observed moves revert, so a single-publication move is reported
+> as *unconfirmed*, never as a slip.
+
+The same numbers ship as `parse/report_data.json` for anything built on top later. Regenerate
+locally with `python parse/report.py` (needs full git history).
+
 ## Status
 
 - **Phase 0 — discovery & legality:** ✅ done. GO decision in [DATA_SOURCES.md](DATA_SOURCES.md).
-- **Phase 1 — the archiver:** ✅ built (this repo). Needs 14 consecutive clean daily snapshots.
-- **Phase 2 — parser + Postgres + CHANGES.md:** not started; build after ≥14 clean days.
-
+- **Phase 1 — the archiver:** ✅ live since 2026-07-29.
+- **Phase 2 — analysis layer:** ✅ `parse/report.py` + monthly `REPORT.md`. (Reframed from the
+  original "Postgres + change list": a DB is deferred until there is a live consumer, and a plain
+  change list would be ~40% false alarms — see the persistence rule above.)
+- **Phase 3 — anything public-facing:** not started; gated on ≥3 months of history and a
+  conversation with a potential user.
 ## Notes
 
 - Never edit files under `data/` by hand — `fetch.py` (and the enumerate tool) are the only
