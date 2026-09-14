@@ -41,10 +41,16 @@ gridwatch-nl/
       tennet.json
       other.json
     _status.json               # last run: what happened, counts, any failures
-  parse/                       # Phase 2 (not built yet): loads data/ into Postgres, writes CHANGES.md
+  parse/
+    report.py                  # Phase 2: persistence-aware analysis over git history (reads data/ only)
+    report_data.json           # machine-readable output of the report
+  REPORT.md                    # the Netcongestie Monitor — auto-generated monthly
+  backfill/                    # one-off 2023-24 colour history from the Internet Archive (see its README)
   .github/workflows/
     daily.yml                  # cron 05:00 UTC + manual; commits changes; alerts on failure
     heartbeat.yml              # Mon/Thu: alert if no snapshot in 48h (catches a silently-stopped cron)
+    report.yml                 # 1st of month: regenerate REPORT.md from git history
+    test.yml                   # offline regression tests on every push
 ```
 
 ## Running it

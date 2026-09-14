@@ -1,0 +1,1240 @@
+{
+  "area_relief": {
+    "confirmed": [
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 3,
+        "first": 2026,
+        "key": [
+          "DVTB",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 6,
+        "first": 2027,
+        "key": [
+          "KELP",
+          "invoeding"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 2,
+        "first": 2026,
+        "key": [
+          "MSBT",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2028,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
+    "counts": {
+      "confirmed_slip": 3,
+      "insufficient": 360,
+      "stable": 350,
+      "unconfirmed_pull": 6,
+      "unconfirmed_slip": 5
+    },
+    "reverted": [],
+    "this_cycle": [
+      {
+        "key": [
+          "OS ALKMAAR 10-1i",
+          "afname"
+        ],
+        "now": 2035,
+        "was": 2033
+      },
+      {
+        "key": [
+          "OS CULEMBORG 10-1i",
+          "invoeding"
+        ],
+        "now": 2036,
+        "was": 2035
+      },
+      {
+        "key": [
+          "OS DRUTEN 10-1i",
+          "invoeding"
+        ],
+        "now": 2027,
+        "was": 2026
+      },
+      {
+        "key": [
+          "OS MEDEMBLIK 10-2i",
+          "afname"
+        ],
+        "now": 2027,
+        "was": 2031
+      },
+      {
+        "key": [
+          "OS NUNSPEET 10-1i",
+          "afname"
+        ],
+        "now": 2029,
+        "was": 2030
+      },
+      {
+        "key": [
+          "OS NUNSPEET 10-2i",
+          "afname"
+        ],
+        "now": 2029,
+        "was": 2030
+      },
+      {
+        "key": [
+          "OS OVERVEEN 10-2i",
+          "afname"
+        ],
+        "now": 2028,
+        "was": 2030
+      },
+      {
+        "key": [
+          "OS TEXEL 10-1i",
+          "afname"
+        ],
+        "now": 2028,
+        "was": 2032
+      },
+      {
+        "key": [
+          "OS ZALTBOMMEL 10-1i",
+          "afname"
+        ],
+        "now": 2035,
+        "was": 2026
+      },
+      {
+        "key": [
+          "OS HOORN HOLENWEG 10-1i",
+          "afname"
+        ],
+        "now": 2030,
+        "was": 2031
+      }
+    ],
+    "unconfirmed": [
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 2,
+        "first": 2033,
+        "key": [
+          "OS ALKMAAR 10-1i",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2035,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 1,
+        "first": 2035,
+        "key": [
+          "OS CULEMBORG 10-1i",
+          "invoeding"
+        ],
+        "kind": "slip",
+        "last": 2036,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 1,
+        "first": 2026,
+        "key": [
+          "OS DRUTEN 10-1i",
+          "invoeding"
+        ],
+        "kind": "slip",
+        "last": 2027,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -4,
+        "first": 2031,
+        "key": [
+          "OS MEDEMBLIK 10-2i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2027,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "OS NUNSPEET 10-1i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "OS NUNSPEET 10-2i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -2,
+        "first": 2030,
+        "key": [
+          "OS OVERVEEN 10-2i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2028,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -4,
+        "first": 2032,
+        "key": [
+          "OS TEXEL 10-1i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2028,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 9,
+        "first": 2026,
+        "key": [
+          "OS ZALTBOMMEL 10-1i",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2035,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": false,
+        "delta": 4,
+        "first": 2026,
+        "key": [
+          "ESDH",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2030,
+        "n": 3,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -1,
+        "first": 2031,
+        "key": [
+          "OS HOORN HOLENWEG 10-1i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2030,
+        "n": 2,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
+    "withdrawn": []
+  },
+  "generated": "2026-09-14",
+  "inventory_changes": [
+    {
+      "added": 61,
+      "added_ids": [
+        "BORN",
+        "CM23",
+        "CM29/45",
+        "CM35/72",
+        "CM51",
+        "CM56",
+        "CM59",
+        "CM71",
+        "CM76",
+        "EHVN",
+        "ESDW",
+        "GNBH"
+      ],
+      "ingest": "2026-08-17",
+      "retired": 58,
+      "retired_ids": [
+        "Amstelveen",
+        "BEEK",
+        "Bijlmer Noord 10kV totaal",
+        "CM08",
+        "CM10",
+        "CM20",
+        "CM26",
+        "CM31",
+        "CM47",
+        "CM56/78",
+        "CM57",
+        "CM60"
+      ]
+    }
+  ],
+  "project_relief": {
+    "confirmed": [
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -4,
+        "first": 2030,
+        "key": [
+          "BLER",
+          "Enexis",
+          "Extra capaciteit op Blerick"
+        ],
+        "kind": "pull",
+        "last": 2026,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-17",
+        "confirmed": true,
+        "delta": -3,
+        "first": 2030,
+        "key": [
+          "EHVW",
+          "Enexis",
+          "Extra capaciteit op Eindhoven West"
+        ],
+        "kind": "pull",
+        "last": 2027,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 4,
+        "first": 2026,
+        "key": [
+          "EHVZ",
+          "Enexis",
+          "Extra capaciteit op Eindhoven Zuid"
+        ],
+        "kind": "slip",
+        "last": 2030,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 1,
+        "first": 2028,
+        "key": [
+          "HPS",
+          "Enexis",
+          "Extra capaciteit op Haps"
+        ],
+        "kind": "slip",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-17",
+        "confirmed": true,
+        "delta": 3,
+        "first": 2026,
+        "key": [
+          "ODZ",
+          "Enexis",
+          "Extra capaciteit op Oldenzaal"
+        ],
+        "kind": "slip",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-17",
+        "confirmed": true,
+        "delta": -2,
+        "first": 2033,
+        "key": [
+          "CM00",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Oosterland"
+        ],
+        "kind": "pull",
+        "last": 2031,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -2,
+        "first": 2034,
+        "key": [
+          "CM13",
+          "Stedin",
+          "Nieuw transformatorstation - De Bocht"
+        ],
+        "kind": "pull",
+        "last": 2032,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": 2,
+        "first": 2031,
+        "key": [
+          "CM20",
+          "Stedin",
+          "Nieuw Transformatorstation - Bleiswijk"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 3,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-17",
+        "confirmed": true,
+        "delta": 2,
+        "first": 2032,
+        "key": [
+          "CM22",
+          "Stedin",
+          "Nieuw Transformatorstation - Leerdam Oost"
+        ],
+        "kind": "slip",
+        "last": 2034,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 2,
+        "first": 2032,
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Sterrenburg"
+        ],
+        "kind": "slip",
+        "last": 2034,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "CM31",
+          "Stedin",
+          "Nieuw Transformatorstation - Reeuwijk"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 3,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "CM63",
+          "Stedin",
+          "Verbindingen Verzwaren - Hardinxveld"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "CM84",
+          "Stedin",
+          "Nieuw transformatorstation - Hellevoetsluis 2"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-07-29",
+        "confirmed": true,
+        "delta": -1,
+        "first": 2030,
+        "key": [
+          "TS073_10",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Zeist"
+        ],
+        "kind": "pull",
+        "last": 2029,
+        "n": 3,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
+    "counts": {
+      "confirmed_pull": 9,
+      "confirmed_slip": 7,
+      "reverted": 17,
+      "stable": 6109,
+      "unconfirmed_pull": 4,
+      "unconfirmed_slip": 4,
+      "withdrawn": 2
+    },
+    "reverted": [
+      {
+        "excursion": [
+          2026
+        ],
+        "key": [
+          "BUGG",
+          "Enexis",
+          "Extra capaciteit op Buggenum"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2033
+      },
+      {
+        "excursion": [
+          2028
+        ],
+        "key": [
+          "MDK",
+          "Enexis",
+          "Extra capaciteit op Moerdijk"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2032
+      },
+      {
+        "excursion": [
+          2030
+        ],
+        "key": [
+          "TBN",
+          "Enexis",
+          "Extra capaciteit op Tilburg Noord"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2028
+      },
+      {
+        "excursion": [
+          2030
+        ],
+        "key": [
+          "ZLW",
+          "Enexis",
+          "Extra capaciteit op Zwolle Weteringkade"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2031
+      },
+      {
+        "excursion": [
+          2034
+        ],
+        "key": [
+          "CM12",
+          "Stedin",
+          "Nieuw Transformatorstation - Bilthoven 2"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2032
+      },
+      {
+        "excursion": [
+          2034
+        ],
+        "key": [
+          "CM12",
+          "Stedin",
+          "Nieuw transformatorstation - De Bilt"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2032
+      },
+      {
+        "excursion": [
+          2035
+        ],
+        "key": [
+          "CM14",
+          "Stedin",
+          "Nieuw Transformatorstation - Utrecht Noord"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2033
+      },
+      {
+        "excursion": [
+          2034
+        ],
+        "key": [
+          "CM15",
+          "Stedin",
+          "Nieuw transformatorstation - Baarn 2"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2036
+      },
+      {
+        "excursion": [
+          2031
+        ],
+        "key": [
+          "CM22",
+          "Stedin",
+          "Transformatorstation Uitbreiden, Verbindingen Verzwaren - Nieuwpoort"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2030
+      },
+      {
+        "excursion": [
+          2032
+        ],
+        "key": [
+          "CM22",
+          "Stedin",
+          "Nieuw Transformatorstation - Vianen 2"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2034
+      },
+      {
+        "excursion": [
+          2032
+        ],
+        "key": [
+          "CM22",
+          "Stedin",
+          "Verbindingen Verzwaren - Vianen"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2034
+      },
+      {
+        "excursion": [
+          2037
+        ],
+        "key": [
+          "CM22",
+          "Stedin",
+          "Nieuw transformatorstation - Meerkerk"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2035
+      },
+      {
+        "excursion": [
+          2034
+        ],
+        "key": [
+          "CM22",
+          "Stedin",
+          "Nieuw transformatorstation - Arkel 2"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2036
+      },
+      {
+        "excursion": [
+          2030
+        ],
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Oud Beijerland"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2029
+      },
+      {
+        "excursion": [
+          2033
+        ],
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Verbindingen Aanleggen - Klaaswaal"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2031
+      },
+      {
+        "excursion": [
+          2034
+        ],
+        "key": [
+          "CM63",
+          "Stedin",
+          "Nieuw Transformatorstation - Hendrik-Ido-Ambacht"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2032
+      },
+      {
+        "excursion": [
+          2031
+        ],
+        "key": [
+          "TT220_10",
+          "Stedin",
+          "Verbindingen Verzwaren - Cambron"
+        ],
+        "n": 5,
+        "status": "reverted",
+        "year": 2030
+      }
+    ],
+    "this_cycle": [
+      {
+        "key": [
+          "BUGG",
+          "Enexis",
+          "Extra capaciteit op Buggenum"
+        ],
+        "now": 2033,
+        "was": 2026
+      },
+      {
+        "key": [
+          "TBN",
+          "Enexis",
+          "Extra capaciteit op Tilburg Noord"
+        ],
+        "now": 2028,
+        "was": 2030
+      },
+      {
+        "key": [
+          "ZLW",
+          "Enexis",
+          "Extra capaciteit op Zwolle Weteringkade"
+        ],
+        "now": 2031,
+        "was": 2030
+      },
+      {
+        "key": [
+          "CM12",
+          "Stedin",
+          "Nieuw Transformatorstation - Bilthoven 2"
+        ],
+        "now": 2032,
+        "was": 2034
+      },
+      {
+        "key": [
+          "CM12",
+          "Stedin",
+          "Nieuw transformatorstation - De Bilt"
+        ],
+        "now": 2032,
+        "was": 2034
+      },
+      {
+        "key": [
+          "CM14",
+          "Stedin",
+          "Nieuw Transformatorstation - Utrecht Noord"
+        ],
+        "now": 2033,
+        "was": 2035
+      },
+      {
+        "key": [
+          "CM14",
+          "Stedin",
+          "Nieuw Transformatorstation - Maarssenbroek 2"
+        ],
+        "now": 2033,
+        "was": 2035
+      },
+      {
+        "key": [
+          "CM15",
+          "Stedin",
+          "Nieuw Transformatorstation - Soest/Baarn"
+        ],
+        "now": 2031,
+        "was": 2033
+      },
+      {
+        "key": [
+          "CM22",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Gorinchem"
+        ],
+        "now": 2031,
+        "was": 2033
+      },
+      {
+        "key": [
+          "CM22",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Arkel"
+        ],
+        "now": 2035,
+        "was": 2031
+      },
+      {
+        "key": [
+          "CM22",
+          "Stedin",
+          "Verbindingen Verzwaren - Vianen"
+        ],
+        "now": 2034,
+        "was": 2032
+      },
+      {
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Oud Beijerland"
+        ],
+        "now": 2029,
+        "was": 2030
+      },
+      {
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Klaaswaal"
+        ],
+        "now": 2033,
+        "was": 2030
+      },
+      {
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Nieuw transformatorstation - Heinenoord"
+        ],
+        "now": 2033,
+        "was": 2031
+      },
+      {
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Verbindingen Aanleggen - Klaaswaal"
+        ],
+        "now": 2031,
+        "was": 2033
+      },
+      {
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Dordtse Kil"
+        ],
+        "now": 2035,
+        "was": 2037
+      },
+      {
+        "key": [
+          "CM48",
+          "Stedin",
+          "Nieuw transformatorstation - Ridderkerk 2"
+        ],
+        "now": 2035,
+        "was": 2033
+      }
+    ],
+    "unconfirmed": [
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -2,
+        "first": 2035,
+        "key": [
+          "CM14",
+          "Stedin",
+          "Nieuw Transformatorstation - Maarssenbroek 2"
+        ],
+        "kind": "pull",
+        "last": 2033,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -2,
+        "first": 2033,
+        "key": [
+          "CM15",
+          "Stedin",
+          "Nieuw Transformatorstation - Soest/Baarn"
+        ],
+        "kind": "pull",
+        "last": 2031,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -2,
+        "first": 2033,
+        "key": [
+          "CM22",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Gorinchem"
+        ],
+        "kind": "pull",
+        "last": 2031,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 2,
+        "first": 2033,
+        "key": [
+          "CM22",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Arkel"
+        ],
+        "kind": "slip",
+        "last": 2035,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 4,
+        "first": 2029,
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Klaaswaal"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 2,
+        "first": 2031,
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Nieuw transformatorstation - Heinenoord"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": -2,
+        "first": 2037,
+        "key": [
+          "CM29/64",
+          "Stedin",
+          "Transformatorstation Uitbreiden - Dordtse Kil"
+        ],
+        "kind": "pull",
+        "last": 2035,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-09-07",
+        "confirmed": false,
+        "delta": 2,
+        "first": 2033,
+        "key": [
+          "CM48",
+          "Stedin",
+          "Nieuw transformatorstation - Ridderkerk 2"
+        ],
+        "kind": "slip",
+        "last": 2035,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
+    "withdrawn": [
+      {
+        "first": 2030,
+        "key": [
+          "EHVO",
+          "Enexis",
+          "Extra capaciteit op Eindhoven Oost"
+        ],
+        "n": 5,
+        "since": "2026-09-07",
+        "status": "withdrawn"
+      },
+      {
+        "first": 2029,
+        "key": [
+          "NEDW",
+          "Enexis",
+          "Extra capaciteit op Nederweert"
+        ],
+        "n": 5,
+        "since": "2026-09-07",
+        "status": "withdrawn"
+      }
+    ]
+  },
+  "publications": [
+    {
+      "captured": "2026-07-29",
+      "ingest": "2026-07-17",
+      "live_areas": 301,
+      "sha": "a849ea7"
+    },
+    {
+      "captured": "2026-07-30",
+      "ingest": "2026-07-29",
+      "live_areas": 301,
+      "sha": "ae66959"
+    },
+    {
+      "captured": "2026-08-11",
+      "ingest": "2026-08-10",
+      "live_areas": 301,
+      "sha": "a913957"
+    },
+    {
+      "captured": "2026-08-21",
+      "ingest": "2026-08-17",
+      "live_areas": 304,
+      "sha": "1f1d49e"
+    },
+    {
+      "captured": "2026-09-08",
+      "ingest": "2026-09-07",
+      "live_areas": 304,
+      "sha": "21418cb"
+    }
+  ],
+  "queue_trend": [
+    {
+      "areas_with_withdrawal_queue": 274,
+      "ingest": "2026-07-17",
+      "live_areas": 301,
+      "queue_injection_mw": 16915,
+      "queue_withdrawal_mw": 20931,
+      "requests_injection": 7251,
+      "requests_withdrawal": 10507
+    },
+    {
+      "areas_with_withdrawal_queue": 274,
+      "ingest": "2026-07-29",
+      "live_areas": 301,
+      "queue_injection_mw": 16915,
+      "queue_withdrawal_mw": 20931,
+      "requests_injection": 7251,
+      "requests_withdrawal": 10507
+    },
+    {
+      "areas_with_withdrawal_queue": 274,
+      "ingest": "2026-08-10",
+      "live_areas": 301,
+      "queue_injection_mw": 17058,
+      "queue_withdrawal_mw": 21120,
+      "requests_injection": 7296,
+      "requests_withdrawal": 11292
+    },
+    {
+      "areas_with_withdrawal_queue": 278,
+      "ingest": "2026-08-17",
+      "live_areas": 305,
+      "queue_injection_mw": 17471,
+      "queue_withdrawal_mw": 21191,
+      "requests_injection": 7405,
+      "requests_withdrawal": 11743
+    },
+    {
+      "areas_with_withdrawal_queue": 279,
+      "ingest": "2026-09-07",
+      "live_areas": 305,
+      "queue_injection_mw": 14907,
+      "queue_withdrawal_mw": 21254,
+      "requests_injection": 7395,
+      "requests_withdrawal": 11823
+    }
+  ],
+  "reliability_by_operator": [
+    {
+      "confirmed": 9,
+      "moved": 30,
+      "moved_pct": 28.8,
+      "operator": "Stedin",
+      "reverted": 13,
+      "reverted_pct_of_moved": 43.3,
+      "tracked": 104
+    },
+    {
+      "confirmed": 5,
+      "moved": 10,
+      "moved_pct": 13.9,
+      "operator": "Enexis",
+      "reverted": 4,
+      "reverted_pct_of_moved": 40.0,
+      "tracked": 72
+    },
+    {
+      "confirmed": 0,
+      "moved": 0,
+      "moved_pct": 0.0,
+      "operator": "Liander",
+      "reverted": 0,
+      "reverted_pct_of_moved": null,
+      "tracked": 98
+    },
+    {
+      "confirmed": 0,
+      "moved": 0,
+      "moved_pct": 0.0,
+      "operator": "TenneT",
+      "reverted": 0,
+      "reverted_pct_of_moved": null,
+      "tracked": 4751
+    },
+    {
+      "confirmed": 0,
+      "moved": 0,
+      "moved_pct": 0.0,
+      "operator": "Rendo",
+      "reverted": 0,
+      "reverted_pct_of_moved": null,
+      "tracked": 1
+    }
+  ]
+}

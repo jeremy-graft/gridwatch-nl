@@ -1,0 +1,49 @@
+name: monthly report
+
+# Regenerates REPORT.md (the Netcongestie Monitor) + parse/report_data.json from the archive's
+# git history. Reads data/ only — never the network. Runs on the 1st, after that day's snapshot.
+on:
+  schedule:
+    - cron: "0 7 1 * *"
+  workflow_dispatch:
+
+# Same group as the daily snapshot so the two never race on a push.
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # the report is computed FROM git history
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Generate report
+        run: python parse/report.py
+
+      - name: Commit report
+        run: |
+          git config user.name  "gridwatch-nl bot"
+          git config user.email "actions@github.com"
+          git add REPORT.md parse/report_data.json
+          if git diff --cached --quiet; then
+            echo "Report unchanged."
+          else
+            git commit -m "report $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Flag failure in the run log
+        if: failure()
+        run: echo "::error::gridwatch-nl monthly report failed — see the steps above."
