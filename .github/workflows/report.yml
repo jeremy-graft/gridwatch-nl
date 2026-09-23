@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name  "gridwatch-nl bot"
           git config user.email "actions@github.com"
-          git add REPORT.md parse/report_data.json
+          git add REPORT.md SAMENVATTING.md parse/report_data.json
           if git diff --cached --quiet; then
             echo "Report unchanged."
           else

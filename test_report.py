@@ -203,5 +203,109 @@ def test_track_series_excludes_retired_areas_and_keys_by_stable_identity():
     assert area[("A", "invoeding")] == [("2026-09-07", None)]
 
 
+# ---------------------------------------------------------------- promise ledger (receipt-keeping)
+FIRST, LATEST = "2026-01-01", "2026-03-01"
+
+
+def _ledger(tracks, year=2026, ref=2026, latest=LATEST):
+    co = R.promise_cohort(tracks, year, FIRST, ref, latest)
+    return co, {tuple(r["key"]): r["status"] for r in co["rows"]}
+
+
+def test_ledger_statuses():
+    tracks = {
+        ("kept", "afname"): _seq(2026, 2026, 2026),
+        ("wobble", "afname"): _seq(2026, 2029, 2026),      # moved and came back -> kept
+        ("slip", "afname"): _seq(2026, 2029, 2029),        # confirmed
+        ("slip_new", "afname"): _seq(2026, 2026, 2030),    # latest publication only
+        ("gone", "afname"): _seq(2026, 2099, 2099),        # withdrawn
+        ("early", "afname"): _seq(2026, 2025, 2025),       # pulled forward
+        ("other_year", "afname"): _seq(2027, 2027, 2027),  # not in the 2026 cohort
+    }
+    co, st = _ledger(tracks)
+    assert st == {("kept", "afname"): "kept", ("wobble", "afname"): "kept",
+                  ("slip", "afname"): "slipped", ("slip_new", "afname"): "slipped_unconfirmed",
+                  ("gone", "afname"): "withdrawn", ("early", "afname"): "earlier"}
+    assert co["total"] == 6 and co["year"] == 2026 and co["since"] == FIRST
+
+
+def test_ledger_only_counts_promises_made_at_the_first_publication():
+    """An area that first appears later (e.g. added in a reorg) made no promise on day one."""
+    tracks = {("late_arrival", "afname"): [("2026-02-01", 2026), ("2026-03-01", 2026)]}
+    co, _ = _ledger(tracks)
+    assert co["total"] == 0
+
+
+def test_ledger_retired_area_is_never_counted_as_kept():
+    """Regression (2026-09-23): an area removed from the map in a reorg was reported as a kept
+    2026 promise, and one that moved just before removal as 'moved in the latest publication'."""
+    tracks = {
+        ("retired_stable", "afname"): [("2026-01-01", 2026), ("2026-02-01", 2026)],
+        ("retired_after_move", "afname"): [("2026-01-01", 2026), ("2026-02-01", 2030)],
+        ("still_here", "afname"): _seq(2026, 2026, 2026),
+    }
+    co, st = _ledger(tracks)
+    assert st[("retired_stable", "afname")] == "retired"
+    assert st[("retired_after_move", "afname")] == "retired"
+    assert st[("still_here", "afname")] == "kept"
+    assert co["counts"] == {"retired": 2, "kept": 1}
+
+
+def test_ledger_becomes_overdue_once_the_year_has_passed():
+    tracks = {("late", "afname"): [("2026-01-01", 2026), ("2027-01-15", 2026)],
+              ("moved", "afname"): [("2026-01-01", 2026), ("2027-01-15", 2028)]}
+    co = R.promise_cohort(tracks, 2026, "2026-01-01", 2027, "2027-01-15")
+    st = {tuple(r["key"]): r["status"] for r in co["rows"]}
+    assert st[("late", "afname")] == "overdue"
+    assert st[("moved", "afname")] == "slipped_unconfirmed"
+
+
+def test_ledger_rows_sorted_worst_first():
+    tracks = {("a", "afname"): _seq(2026, 2026, 2026),
+              ("b", "afname"): _seq(2026, 2029, 2029),
+              ("c", "afname"): _seq(2026, 2026, 2031)}
+    co, _ = _ledger(tracks)
+    assert [r["status"] for r in co["rows"]] == ["slipped", "slipped_unconfirmed", "kept"]
+
+
+def test_summarize_does_not_call_a_pre_retirement_move_unconfirmed():
+    tracks = {("gone", "x"): [("2026-01-01", 2026), ("2026-02-01", 2030)],   # left the map
+              ("here", "x"): [("2026-01-01", 2026), ("2026-03-01", 2030)]}   # moved in latest
+    s = R.summarize_moves(tracks, 2026, LATEST)
+    assert [k for k, _ in s["unconfirmed"]] == [("here", "x")]
+    assert s["counts"]["dropped_after_move"] == 1
+
+
+# ---------------------------------------------------------------- Dutch one-pager
+def test_render_nl_smoke_and_dutch_formatting():
+    snaps = [
+        {"ingest": "2026-07-17", "meta": {}, "areas": {}, "live_ids": set()},
+        {"ingest": "2026-09-07", "meta": {"DVTB": {"operator": "Enexis", "province": "Overijssel"}},
+         "areas": {}, "live_ids": set()},
+    ]
+    qt = [{"requests_withdrawal": 10507, "queue_withdrawal_mw": 20931, "areas_with_withdrawal_queue": 270,
+           "live_areas": 301},
+          {"requests_withdrawal": 11823, "queue_withdrawal_mw": 21254, "areas_with_withdrawal_queue": 279,
+           "live_areas": 305}]
+    cohorts = [{"year": 2026, "since": "2026-07-17", "total": 3,
+                "counts": {"kept": 1, "slipped": 1, "retired": 1},
+                "rows": [{"key": ["DVTB", "afname"], "promised": 2026, "now": 2029, "status": "slipped"},
+                         {"key": ["X", "invoeding"], "promised": 2026, "now": 2026, "status": "retired"},
+                         {"key": ["Y", "afname"], "promised": 2026, "now": 2026, "status": "kept"}]}]
+    rel = [{"operator": "Stedin", "tracked": 104, "moved": 30, "moved_pct": 28.8,
+            "reverted_pct_of_moved": 43.3},
+           {"operator": "Liander", "tracked": 98, "moved": 0, "moved_pct": 0.0,
+            "reverted_pct_of_moved": None},
+           {"operator": "Rendo", "tracked": 1, "moved": 0, "moved_pct": 0.0, "reverted_pct_of_moved": None}]
+    md = R.render_nl(snaps, qt, cohorts, rel, "2026-09-23")
+    assert "De 2026-beloftes" in md
+    assert "`DVTB` (Enexis, Overijssel) | afname | 2026 | 2029 | bevestigd" in md
+    assert "staan niet meer op de kaart" in md
+    assert "11.823" in md and "+12,5%" in md, "Dutch thousands/decimal separators"
+    assert "28,8%" in md and "43,3%" in md
+    assert "Rendo" not in md, "operators with <10 tracked projects are too thin to show"
+    assert "| X |" not in md and "`X`" not in md, "retired areas are counted, not listed"
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-q"]))

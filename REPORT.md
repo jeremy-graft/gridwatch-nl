@@ -1,13 +1,32 @@
 # Netcongestie Monitor
 
-*Auto-generated 2026-09-14 from the [gridwatch-nl](https://github.com/jeremy-graft/gridwatch-nl) archive. Covers **5 source publications** from **2026-07-17** to **2026-09-07** (305 live areas). Indicative only — see Methodology.*
+*Auto-generated 2026-09-23 from the [gridwatch-nl](https://github.com/jeremy-graft/gridwatch-nl) archive. Covers **5 source publications** from **2026-07-17** to **2026-09-07** (305 live areas). Indicative only — see Methodology.*
 
 ## Headline
 
 - **Companies waiting for withdrawal capacity: 10,507 → 11,823 (+12.5%)** since 2026-07-17.
 - Withdrawal queue: 20,931 → 21,254 MW (+1.5%); injection queue: 16,915 → 14,907 MW (-11.9%).
 - **279 of 305 areas** currently have a withdrawal queue.
-- Area relief dates: **3 confirmed slips**, **0 confirmed pull-forwards**, 11 unconfirmed (latest publication only), **0 moved-then-reverted**, **0 withdrawn**.
+- Area relief dates: **3 confirmed slips**, **0 confirmed pull-forwards**, 10 unconfirmed (latest publication only), **0 moved-then-reverted**, **0 withdrawn**, 1 moved and then left the map.
+- **2026 promise ledger:** of **83** area relief dates promised for 2026 on 2026-07-17, 64 still say 2026, **4 have been pushed later** (2 confirmed), 0 withdrawn, 15 no longer on the map.
+
+## The 2026 promise ledger
+
+On **2026-07-17**, the first publication in this archive, operators promised that congestion would be resolved in **2026** for **83 area/direction pairs**. The source map only ever shows the *current* promise; this ledger keeps the original. When 2026 ends, every entry still showing 2026 becomes *overdue*.
+
+| status | count |
+|---|---:|
+| pushed later (confirmed) | 2 |
+| pushed later (latest publication only) | 2 |
+| area no longer on the map (retired or renamed) | 15 |
+| still 2026 | 64 |
+
+| area | direction | promised | now | status |
+|---|---|---:|---:|---|
+| `DVTB` (Enexis, Overijssel) | afname | 2026 | 2029 | pushed later (confirmed) |
+| `MSBT` (Enexis, Limburg) | afname | 2026 | 2028 | pushed later (confirmed) |
+| `OS ZALTBOMMEL 10-1i` (Liander, Gelderland) | afname | 2026 | 2035 | pushed later (latest publication only) |
+| `OS DRUTEN 10-1i` (Liander, Gelderland) | invoeding | 2026 | 2027 | pushed later (latest publication only) |
 
 ## National queue trend
 
@@ -52,7 +71,6 @@ _none_
 | `OS OVERVEEN 10-2i` | afname | 2030 | 2028 |
 | `OS TEXEL 10-1i` | afname | 2032 | 2028 |
 | `OS ZALTBOMMEL 10-1i` | afname | 2026 | 2035 |
-| `ESDH` | afname | 2026 | 2030 |
 | `OS HOORN HOLENWEG 10-1i` | afname | 2031 | 2030 |
 
 #### Moved, then reverted (0)
@@ -142,5 +160,5 @@ How often an operator's published project dates changed across the archive (proj
 - **Identity:** projects are matched across publications on (area, operator, name); the source's numeric ids rotate on every ingest and are never used.
 - **Sentinel:** a year ≥ 2090 means the source withdrew the date. It is reported as *withdrawn*, never as a multi-decade slip.
 - **Past-dated** years occur in the source and are excluded from slip/pull arithmetic.
-- **Inventory churn:** areas are periodically retired or renamed; queue totals are summed over *live* areas only. Retired areas keep their last known values in the archive but are excluded here.
+- **Inventory churn:** areas are periodically retired or renamed; queue totals are summed over *live* areas only. Retired areas keep their last known values in the archive but are excluded here. A renamed area can't be linked to its new id, so in the promise ledger it is reported as *no longer on the map*, never as a kept promise.
 - **Short baseline:** 5 publications over 52 days. Operator-level reliability figures in particular are early signal, not verdict.

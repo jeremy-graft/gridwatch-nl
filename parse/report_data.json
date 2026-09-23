@@ -49,10 +49,11 @@
     ],
     "counts": {
       "confirmed_slip": 3,
+      "dropped_after_move": 1,
       "insufficient": 360,
       "stable": 350,
       "unconfirmed_pull": 6,
-      "unconfirmed_slip": 5
+      "unconfirmed_slip": 4
     },
     "reverted": [],
     "this_cycle": [
@@ -274,21 +275,6 @@
         "status": "persisted"
       },
       {
-        "changed_at": "2026-08-10",
-        "confirmed": false,
-        "delta": 4,
-        "first": 2026,
-        "key": [
-          "ESDH",
-          "afname"
-        ],
-        "kind": "slip",
-        "last": 2030,
-        "n": 3,
-        "past_dated": false,
-        "status": "persisted"
-      },
-      {
         "changed_at": "2026-09-07",
         "confirmed": false,
         "delta": -1,
@@ -306,7 +292,7 @@
     ],
     "withdrawn": []
   },
-  "generated": "2026-09-14",
+  "generated": "2026-09-23",
   "inventory_changes": [
     {
       "added": 61,
@@ -1111,6 +1097,768 @@
       }
     ]
   },
+  "promise_ledgers": [
+    {
+      "counts": {
+        "kept": 64,
+        "retired": 15,
+        "slipped": 2,
+        "slipped_unconfirmed": 2
+      },
+      "rows": [
+        {
+          "key": [
+            "DVTB",
+            "afname"
+          ],
+          "now": 2029,
+          "promised": 2026,
+          "status": "slipped"
+        },
+        {
+          "key": [
+            "MSBT",
+            "afname"
+          ],
+          "now": 2028,
+          "promised": 2026,
+          "status": "slipped"
+        },
+        {
+          "key": [
+            "OS ZALTBOMMEL 10-1i",
+            "afname"
+          ],
+          "now": 2035,
+          "promised": 2026,
+          "status": "slipped_unconfirmed"
+        },
+        {
+          "key": [
+            "OS DRUTEN 10-1i",
+            "invoeding"
+          ],
+          "now": 2027,
+          "promised": 2026,
+          "status": "slipped_unconfirmed"
+        },
+        {
+          "key": [
+            "ESDH",
+            "afname"
+          ],
+          "now": 2030,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "BEEK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "CM08",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "CU",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "ESDH",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "ESDV",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "ESDV",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "GNHK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "HUSK",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "HUSK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "OS ZALTBOMMEL 10-1i",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "TBW",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "TBW",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "WRTH",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "WVV",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "AMLM",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BD",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BELF",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BL",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BL",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BLER",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BOZ",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BOZ",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BUGG",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "CVD",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "DDV",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "DVTB",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "DVTP",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHAVM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHAVM",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHAVO",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHAVO",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHVO",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "EHVZ",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ETN",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GENN",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GENN",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GLTK",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GNHU",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GNHU",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GO",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "HELD",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "HGV",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "HMO",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "HMO",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "HPT",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ISM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "KWD",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "KZVZ",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "LIMM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "LIMM",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "MDK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "MEE",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "MLBK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "MSKZ",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "NEDW",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "NEDW",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "NVD",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "NVD",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ODZ",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ODZ",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "OL",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "OS DOETINCHEM 10-5i",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "RSD",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "RSD",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "SBRN",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "SW",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "TBG",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "VDM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "VENR",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "VLH",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "VVL10",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "VVL10",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "WDT",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "WEW",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "WEW",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "WSMR",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "WSMR",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ZS",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        }
+      ],
+      "since": "2026-07-17",
+      "total": 83,
+      "year": 2026
+    }
+  ],
   "publications": [
     {
       "captured": "2026-07-29",

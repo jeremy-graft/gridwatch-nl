@@ -33,6 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_MD = ROOT / "REPORT.md"
 REPORT_JSON = ROOT / "parse" / "report_data.json"
+SUMMARY_NL = ROOT / "SAMENVATTING.md"
 BUCKETS = ("liander", "enexis", "stedin", "tennet", "other")
 SENTINEL_YEAR = 2090           # >= this means "no date"
 MIN_TRACK_FOR_RELIABILITY = 3  # a project must be seen in >= this many ingests to be scored
@@ -108,10 +109,13 @@ def load_snapshots() -> list[dict]:
             if t.strip():
                 areas.update(json.loads(t))
         ids_txt = _show(sha, "data/area_ids.json")
-        live = {a["id"].strip() for a in json.loads(ids_txt)["areas"]} if ids_txt.strip() else set(areas)
+        id_list = json.loads(ids_txt)["areas"] if ids_txt.strip() else []
+        live = {a["id"].strip() for a in id_list} if id_list else set(areas)
+        meta = {a["id"].strip(): {"operator": a.get("operator"), "province": a.get("province")}
+                for a in id_list}
         if areas:
             out.append({"ingest": ingest, "captured": captured[:10], "sha": sha[:7],
-                        "areas": areas, "live_ids": live})
+                        "areas": areas, "live_ids": live, "meta": meta})
     return out
 
 
@@ -185,8 +189,17 @@ def summarize_moves(tracks: dict, ref_year: int, latest_ingest: str) -> dict:
             label = ("confirmed_" if c["confirmed"] else "unconfirmed_") + c["kind"]
         else:
             label = c["status"]
+        vals = [(i, y) for i, y in seq if y is not None]
+        dropped = bool(vals) and vals[-1][0] != latest_ingest
+        if c["status"] == "persisted" and not c["confirmed"] and dropped:
+            # It moved in its final observation and then left the map (area retired/renamed or
+            # project removed). It can never be confirmed, and it did NOT move "in the latest
+            # publication" - count it separately instead of listing it as unconfirmed.
+            label = "dropped_after_move"
         counts[label] += 1
-        if c["status"] == "persisted" and not c.get("past_dated"):
+        if label == "dropped_after_move":
+            pass
+        elif c["status"] == "persisted" and not c.get("past_dated"):
             (confirmed if c["confirmed"] else unconfirmed).append((key, c))
         elif c["status"] == "reverted":
             reverted.append((key, c))
@@ -200,6 +213,49 @@ def summarize_moves(tracks: dict, ref_year: int, latest_ingest: str) -> dict:
             this_cycle.append((key, vals[-2][1], vals[-1][1]))
     return {"counts": dict(counts), "confirmed": confirmed, "unconfirmed": unconfirmed,
             "reverted": reverted, "withdrawn": withdrawn, "this_cycle": this_cycle}
+
+
+COHORT_ORDER = ("slipped", "slipped_unconfirmed", "withdrawn", "overdue", "earlier", "retired", "kept")
+
+
+def promise_cohort(tracks: dict, year: int, first_ingest: str, ref_year: int,
+                   latest_ingest: str | None = None) -> dict:
+    """The promise ledger: everything that promised `year` at the FIRST publication in the
+    archive, and what it says now. This is the receipt-keeping view: the source only ever shows
+    the current promise, so the original one exists only here.
+
+    status per entry:
+      kept                - still promises `year` (including ones that wobbled and came back)
+      slipped             - pushed later, confirmed (held for >= 2 publications)
+      slipped_unconfirmed - pushed later in the latest publication only
+      earlier             - pulled forward
+      withdrawn           - date replaced by the 'no date' sentinel
+      overdue             - `year` has passed and the source still shows it unresolved
+      retired             - the area is no longer on the map (retired or renamed by the source);
+                            its promise can no longer be checked. Renames can't be linked to the
+                            new id, so these are reported separately, never as 'kept'.
+    """
+    rows = []
+    for key, seq in tracks.items():
+        vals = [(i, y) for i, y in seq if y is not None]
+        if not vals or vals[0][0] != first_ingest or vals[0][1] != year:
+            continue
+        c = classify_move(seq, ref_year)
+        last = vals[-1][1]
+        if latest_ingest and vals[-1][0] != latest_ingest:
+            status = "retired"
+        elif c["status"] in ("stable", "reverted", "insufficient"):
+            status = "overdue" if ref_year > year else "kept"
+        elif c["status"] == "withdrawn":
+            status = "withdrawn"
+        elif c["kind"] == "slip":
+            status = "slipped" if c["confirmed"] else "slipped_unconfirmed"
+        else:
+            status = "earlier"
+        rows.append({"key": list(key), "promised": year, "now": last, "status": status})
+    rows.sort(key=lambda r: (COHORT_ORDER.index(r["status"]), -(r["now"] or 0), r["key"]))
+    return {"year": year, "since": first_ingest, "total": len(rows),
+            "counts": dict(Counter(r["status"] for r in rows)), "rows": rows}
 
 
 def reliability_by_operator(proj_tracks: dict, ref_year: int) -> list[dict]:
@@ -257,7 +313,19 @@ def _proj_table(rows):
     return out + [""]
 
 
-def render(snaps, qt, area_mv, proj_mv, rel, inv, generated) -> str:
+def _area_label(aid: str, meta: dict) -> str:
+    m = meta.get(aid) or {}
+    bits = [b for b in (m.get("operator"), m.get("province")) if b]
+    return f"`{aid}`" + (f" ({', '.join(bits)})" if bits else "")
+
+
+COHORT_LABELS_EN = {"slipped": "pushed later (confirmed)",
+                    "slipped_unconfirmed": "pushed later (latest publication only)",
+                    "earlier": "pulled forward", "withdrawn": "date withdrawn",
+                    "retired": "area no longer on the map (retired or renamed)"}
+
+
+def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=()) -> str:
     first, last = snaps[0], snaps[-1]
     q0, q1 = qt[0], qt[-1]
     days = (datetime.fromisoformat(last["ingest"]) - datetime.fromisoformat(first["ingest"])).days
@@ -271,6 +339,7 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated) -> str:
     cs, cp = c.get("confirmed_slip", 0), c.get("confirmed_pull", 0)
     rv, wd = c.get("reverted", 0), c.get("withdrawn", 0)
     uc = c.get("unconfirmed_slip", 0) + c.get("unconfirmed_pull", 0)
+    dr = c.get("dropped_after_move", 0)
     L += ["## Headline", "",
           f"- **Companies waiting for withdrawal capacity: {q0['requests_withdrawal']:,} → "
           f"{q1['requests_withdrawal']:,} ({_pct(q0['requests_withdrawal'], q1['requests_withdrawal'])})** "
@@ -281,7 +350,40 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated) -> str:
           f"({_pct(q0['queue_injection_mw'], q1['queue_injection_mw'])}).",
           f"- **{q1['areas_with_withdrawal_queue']} of {q1['live_areas']} areas** currently have a withdrawal queue.",
           f"- Area relief dates: **{cs} confirmed slips**, **{cp} confirmed pull-forwards**, "
-          f"{uc} unconfirmed (latest publication only), **{rv} moved-then-reverted**, **{wd} withdrawn**.", ""]
+          f"{uc} unconfirmed (latest publication only), **{rv} moved-then-reverted**, **{wd} withdrawn**"
+          + (f", {dr} moved and then left the map" if dr else "") + "."]
+    meta = snaps[-1].get("meta", {})
+    for co in cohorts:
+        cc = co["counts"]
+        moved = cc.get("slipped", 0) + cc.get("slipped_unconfirmed", 0)
+        L.append(f"- **{co['year']} promise ledger:** of **{co['total']}** area relief dates promised for "
+                 f"{co['year']} on {co['since']}, {cc.get('kept', 0)} still say {co['year']}, **{moved} have been "
+                 f"pushed later** ({cc.get('slipped', 0)} confirmed), {cc.get('withdrawn', 0)} withdrawn"
+                 + (f", **{cc.get('overdue', 0)} overdue**" if cc.get("overdue") else "")
+                 + (f", {cc.get('retired', 0)} no longer on the map" if cc.get("retired") else "") + ".")
+    L.append("")
+
+    for co in cohorts:
+        cc = co["counts"]
+        labels = dict(COHORT_LABELS_EN, kept=f"still {co['year']}",
+                      overdue=f"{co['year']} passed, still unresolved")
+        L += [f"## The {co['year']} promise ledger", "",
+              f"On **{co['since']}**, the first publication in this archive, operators promised that "
+              f"congestion would be resolved in **{co['year']}** for **{co['total']} area/direction pairs**. "
+              "The source map only ever shows the *current* promise; this ledger keeps the original. "
+              f"When {co['year']} ends, every entry still showing {co['year']} becomes *overdue*.", "",
+              "| status | count |", "|---|---:|"]
+        for st in COHORT_ORDER:
+            if cc.get(st):
+                L.append(f"| {labels[st]} | {cc[st]} |")
+        changed = [r for r in co["rows"] if r["status"] not in ("kept", "retired")]
+        if changed:
+            L += ["", "| area | direction | promised | now | status |", "|---|---|---:|---:|---|"]
+            for r in changed:
+                aid, d = r["key"]
+                now = "no date" if (r["now"] or 0) >= SENTINEL_YEAR else r["now"]
+                L.append(f"| {_area_label(aid, meta)} | {d} | {r['promised']} | {now} | {labels[r['status']]} |")
+        L.append("")
 
     L += ["## National queue trend", "",
           "| source publication | live areas | withdrawal queue (MW) | injection queue (MW) | "
@@ -387,9 +489,104 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated) -> str:
           "as *withdrawn*, never as a multi-decade slip.",
           "- **Past-dated** years occur in the source and are excluded from slip/pull arithmetic.",
           "- **Inventory churn:** areas are periodically retired or renamed; queue totals are summed over "
-          "*live* areas only. Retired areas keep their last known values in the archive but are excluded here.",
+          "*live* areas only. Retired areas keep their last known values in the archive but are excluded here. "
+          "A renamed area can't be linked to its new id, so in the promise ledger it is reported as *no longer "
+          "on the map*, never as a kept promise.",
           f"- **Short baseline:** {len(snaps)} publications over {days} days. Operator-level reliability "
           "figures in particular are early signal, not verdict.", ""]
+    return "\n".join(L)
+
+
+# ----------------------------------------------------------------------------- Dutch one-pager
+REPO_URL = "https://github.com/jeremy-graft/gridwatch-nl"
+
+
+def _nl_int(n) -> str:
+    return f"{n:,}".replace(",", ".")
+
+
+def _nl_pct(x) -> str:
+    return f"{x:.1f}".replace(".", ",") if x is not None else "0"
+
+
+def _nl_delta(a, b) -> str:
+    return f"{100 * (b - a) / a:+.1f}%".replace(".", ",") if a else "n.v.t."
+
+
+def render_nl(snaps, qt, cohorts, rel, generated) -> str:
+    """One-page Dutch summary for forwarding. Same numbers as REPORT.md and regenerated with it,
+    so it can never drift from the data."""
+    first, last = snaps[0], snaps[-1]
+    q0, q1 = qt[0], qt[-1]
+    weeks = round((datetime.fromisoformat(last["ingest"]) - datetime.fromisoformat(first["ingest"])).days / 7)
+    meta = last.get("meta", {})
+    dir_nl = {"afname": "afname", "invoeding": "teruglevering"}
+    L = ["# Netcongestie Monitor: samenvatting", "",
+         f"*Stand: publicatie van {last['ingest']} · {len(snaps)} publicaties sinds {first['ingest']} · "
+         f"automatisch gegenereerd op {generated} · indicatief*", "",
+         "## Waarom dit bestaat", "",
+         "Netbeheerders publiceren op de landelijke capaciteitskaart per gebied **in welk jaar de "
+         "netcongestie naar verwachting is opgelost**. Maar de kaart toont alleen de huidige stand: "
+         "verschuift een jaartal, dan verdwijnt de oude belofte. **gridwatch-nl bewaart elke publicatie "
+         f"sinds {first['ingest']}**, zodat verschuivingen zichtbaar en controleerbaar worden.", ""]
+
+    for co in cohorts:
+        cc = co["counts"]
+        moved = cc.get("slipped", 0) + cc.get("slipped_unconfirmed", 0)
+        L += [f"## De {co['year']}-beloftes", "",
+              f"Op {co['since']} beloofden netbeheerders voor **{co['total']} gebieden** (per richting) "
+              f"dat de congestie in **{co['year']}** zou zijn opgelost. De stand nu:", "",
+              f"- **{cc.get('kept', 0)}** zeggen nog steeds {co['year']}",
+              f"- **{moved}** zijn al naar later verschoven"
+              + (f": {cc.get('slipped', 0)} bevestigd, {cc.get('slipped_unconfirmed', 0)} alleen in de "
+                 "laatste publicatie (kan nog terugdraaien)" if moved else "")]
+        if cc.get("withdrawn"):
+            L.append(f"- **{cc['withdrawn']}** hebben geen jaartal meer (ingetrokken)")
+        if cc.get("overdue"):
+            L.append(f"- **{cc['overdue']}** zijn over hun beloofde jaar heen en nog niet opgelost")
+        if cc.get("retired"):
+            L.append(f"- **{cc['retired']}** staan niet meer op de kaart (gebied opgeheven of hernoemd); "
+                     "die belofte is niet meer te controleren")
+        changed = [r for r in co["rows"] if r["status"] in ("slipped", "slipped_unconfirmed", "withdrawn")]
+        if changed:
+            L += ["", "| gebied | richting | beloofd | nu | |", "|---|---|---:|---:|---|"]
+            for r in changed:
+                aid, d = r["key"]
+                now = "geen jaartal" if (r["now"] or 0) >= SENTINEL_YEAR else r["now"]
+                tag = {"slipped": "bevestigd", "slipped_unconfirmed": "onbevestigd",
+                       "withdrawn": "ingetrokken"}[r["status"]]
+                L.append(f"| {_area_label(aid, meta)} | {dir_nl.get(d, d)} | {r['promised']} | {now} | {tag} |")
+        L += ["", f"**Na afloop van {co['year']} rapporteert de Monitor welke van deze gebieden nog steeds "
+              "als niet opgelost op de kaart staan.**", ""]
+
+    shown = [r for r in rel if r["tracked"] >= 10]
+    if shown:
+        L += ["## Hoe betrouwbaar zijn de gepubliceerde jaartallen?", "",
+              f"Aandeel projectjaren dat in {weeks} weken minstens een keer veranderde, per netbeheerder:", "",
+              "| netbeheerder | projecten gevolgd | veranderd | waarvan weer teruggedraaid |",
+              "|---|---:|---:|---:|"]
+        for r in shown:
+            rev = f"{_nl_pct(r['reverted_pct_of_moved'])}%" if r["moved"] else "–"
+            L.append(f"| {r['operator']} | {_nl_int(r['tracked'])} | {_nl_pct(r['moved_pct'])}% | {rev} |")
+        L += ["", "Veel veranderingen die ook vaak weer worden teruggedraaid wijzen op onrustige planning, "
+              "niet per se op echte vertraging.", ""]
+
+    L += ["## De wachtrij", "",
+          f"- Bedrijven in de wachtrij voor **afname**: {_nl_int(q0['requests_withdrawal'])} → "
+          f"**{_nl_int(q1['requests_withdrawal'])}** "
+          f"({_nl_delta(q0['requests_withdrawal'], q1['requests_withdrawal'])}) sinds {first['ingest']}",
+          f"- **{q1['areas_with_withdrawal_queue']} van de {q1['live_areas']} gebieden** hebben een wachtrij voor afname",
+          f"- Gevraagd vermogen in de afname-wachtrij: **{_nl_int(q1['queue_withdrawal_mw'])} MW**", "",
+          "## Methode, kort", "",
+          "- Een verschuiving telt pas als **bevestigd** als ze twee opeenvolgende publicaties standhoudt. "
+          "Dat is bewust: een groot deel van de verschuivingen wordt later weer teruggedraaid.",
+          "- Bron: de openbare capaciteitskaart van Netbeheer Nederland. Die cijfers zijn indicatief en er "
+          "kunnen geen rechten aan worden ontleend. Dat geldt ook voor deze samenvatting.",
+          "- Netbeheerders heffen gebieden soms op of geven ze een nieuwe naam. Zo'n gebied telt niet mee als "
+          "'nog steeds beloofd', omdat de oude belofte niet meer te volgen is.",
+          f"- Korte reeks: {len(snaps)} publicaties in {weeks} weken. Lees de cijfers als vroeg signaal, "
+          "niet als oordeel.",
+          f"- Volledig rapport (Engels), methode en alle ruwe data: [{REPO_URL.replace('https://', '')}]({REPO_URL})", ""]
     return "\n".join(L)
 
 
@@ -417,9 +614,13 @@ def main() -> int:
     rel = reliability_by_operator(proj_tracks, ref_year)
     inv = inventory_changes(snaps)
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    first_year = int(snaps[0]["ingest"][:4])
+    cohorts = [promise_cohort(area_tracks, y, snaps[0]["ingest"], ref_year, latest)
+               for y in sorted({first_year, ref_year})]
 
-    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated),
+    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts),
                          encoding="utf-8", newline="\n")
+    SUMMARY_NL.write_text(render_nl(snaps, qt, cohorts, rel, generated), encoding="utf-8", newline="\n")
     REPORT_JSON.write_text(json.dumps({
         "generated": generated,
         "publications": [{"ingest": s["ingest"], "captured": s["captured"], "sha": s["sha"],
@@ -429,8 +630,9 @@ def main() -> int:
         "project_relief": _ser(proj_mv),
         "reliability_by_operator": rel,
         "inventory_changes": inv,
+        "promise_ledgers": cohorts,
     }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
-    print(f"wrote {REPORT_MD.name} and {REPORT_JSON.relative_to(ROOT)} "
+    print(f"wrote {REPORT_MD.name}, {SUMMARY_NL.name} and {REPORT_JSON.relative_to(ROOT)} "
           f"({len(snaps)} publications, latest {latest})")
     return 0
 

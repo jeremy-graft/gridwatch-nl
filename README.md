@@ -45,6 +45,7 @@ gridwatch-nl/
     report.py                  # Phase 2: persistence-aware analysis over git history (reads data/ only)
     report_data.json           # machine-readable output of the report
   REPORT.md                    # the Netcongestie Monitor — auto-generated monthly
+  SAMENVATTING.md              # one-page Dutch summary, generated from the same numbers
   backfill/                    # one-off 2023-24 colour history from the Internet Archive (see its README)
   .github/workflows/
     daily.yml                  # cron 05:00 UTC + manual; commits changes; alerts on failure
@@ -98,7 +99,13 @@ each operator's published dates have been. Its one design rule matters more than
 > publications. Roughly 40% of observed moves revert, so a single-publication move is reported
 > as *unconfirmed*, never as a slip.
 
-The same numbers ship as `parse/report_data.json` for anything built on top later. Regenerate
+It also keeps a **promise ledger**: every area that the source promised would be relieved in 2026,
+as of the archive's first publication, and what it says now. The source map only ever shows the
+current promise, so the original exists only here. After 2026 ends, every entry still showing 2026
+becomes *overdue*.
+
+A one-page Dutch summary for forwarding, **[SAMENVATTING.md](SAMENVATTING.md)**, is generated from
+the same numbers. The same numbers also ship as `parse/report_data.json` for anything built on top later. Regenerate
 locally with `python parse/report.py` (needs full git history).
 
 ## Status
