@@ -1,6 +1,6 @@
 # Netcongestie Monitor
 
-*Auto-generated 2026-09-23 from the [gridwatch-nl](https://github.com/jeremy-graft/gridwatch-nl) archive. Covers **5 source publications** from **2026-07-17** to **2026-09-07** (305 live areas). Indicative only — see Methodology.*
+*Auto-generated 2026-10-01 from the [gridwatch-nl](https://github.com/jeremy-graft/gridwatch-nl) archive. Covers **5 source publications** from **2026-07-17** to **2026-09-07** (305 live areas). Indicative only — see Methodology.*
 
 ## Headline
 

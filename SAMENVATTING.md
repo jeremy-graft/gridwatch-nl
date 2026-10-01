@@ -1,6 +1,6 @@
 # Netcongestie Monitor: samenvatting
 
-*Stand: publicatie van 2026-09-07 · 5 publicaties sinds 2026-07-17 · automatisch gegenereerd op 2026-09-23 · indicatief*
+*Stand: publicatie van 2026-09-07 · 5 publicaties sinds 2026-07-17 · automatisch gegenereerd op 2026-10-01 · indicatief*
 
 ## Waarom dit bestaat
 
