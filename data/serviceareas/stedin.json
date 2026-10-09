@@ -7,63 +7,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "55 MW",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 55.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 17.094,
-        "queueWithdrawal": 14.677,
-        "requiredTransportCapacityInjection": 94.426,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 10.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 55.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 17.094,
-        "queueWithdrawal": 14.677,
-        "requiredTransportCapacityInjection": 99.96,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 10.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 55.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 17.094,
-        "queueWithdrawal": 14.677,
-        "requiredTransportCapacityInjection": 105.494,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 10.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": 55.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 17.094,
-        "queueWithdrawal": 14.677,
-        "requiredTransportCapacityInjection": 111.028,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 10.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": 55.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 17.094,
-        "queueWithdrawal": 14.677,
-        "requiredTransportCapacityInjection": 116.562,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 10.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2030
-      }
-    ],
+    "history": null,
     "id": "CM00",
     "information": "",
     "name": "Noordring (Schouwen-Duiveland en Tholen)",
@@ -93,10 +37,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2033"
       }
     ],
     "queueInjection": "17.1 MW",
@@ -777,118 +721,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "40 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 43.1,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.4,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 48.3,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 51.7,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 55.6,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 59.6,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 63.0,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 66.0,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 70.1,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2034
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 55.0,
-        "queueInjection": 0.957,
-        "queueWithdrawal": 6.759,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 73.2,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 21.0,
-        "year": 2035
-      }
-    ],
+    "history": null,
     "id": "CM12",
     "information": "",
     "name": "Bilthoven",
@@ -918,10 +751,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2032"
+        "year": "2034"
       },
       {
         "dateString": "2026",
@@ -1366,96 +1199,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "28 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 23.61,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 24.803,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 27.004,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 29.293,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 32.11,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 35.28,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 38.625,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.566,
-        "queueWithdrawal": 5.92,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 42.059,
-        "uniqueRequestsInjection": 15.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2033
-      }
-    ],
+    "history": null,
     "id": "CM13",
     "information": "",
     "name": "Mijdrecht",
@@ -1903,63 +1647,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "40 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 1.589,
-        "queueWithdrawal": 7.861,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 32.808,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 1.589,
-        "queueWithdrawal": 7.861,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 35.748,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 1.589,
-        "queueWithdrawal": 7.861,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 38.581,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 1.589,
-        "queueWithdrawal": 7.861,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 41.414,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 40.0,
-        "queueInjection": 1.589,
-        "queueWithdrawal": 7.861,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 44.247,
-        "uniqueRequestsInjection": 9.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2030
-      }
-    ],
+    "history": null,
     "id": "CM14",
     "information": "",
     "name": "Maarssenbroek",
@@ -2422,52 +2110,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "28 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.631,
-        "queueWithdrawal": 1.772,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 29.173,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 15.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.631,
-        "queueWithdrawal": 1.772,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 30.628,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 15.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.631,
-        "queueWithdrawal": 1.772,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 28.216,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 15.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 28.0,
-        "queueInjection": 1.631,
-        "queueWithdrawal": 1.772,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 31.315,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 15.0,
-        "year": 2029
-      }
-    ],
+    "history": null,
     "id": "CM15",
     "information": "",
     "name": "Baarn",
@@ -2482,7 +2125,7 @@
         "projectPhase": "inProgress",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2027"
@@ -2512,10 +2155,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2036"
+        "year": "2034"
       },
       {
         "dateString": "2038 - 2041",
@@ -3153,74 +2796,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "175 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 153.1,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 185.9,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 196.8,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 207.3,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 221.2,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 175.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 57.205,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 247.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2031
-      }
-    ],
+    "history": null,
     "id": "CM22",
     "information": "",
     "name": "Alblasserwaard-Oost, Vijfheerenlanden en West Betuwe-Noordwest ('Arkel')",
@@ -3250,10 +2826,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2034"
+        "year": "2032"
       },
       {
         "dateString": "Tussen 2032 en 2034",
@@ -3280,10 +2856,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2036"
+        "year": "2034"
       },
       {
         "dateString": "Tussen 2035 en 2037",
@@ -3325,10 +2901,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2031"
       },
       {
         "dateString": "Tussen 2031 en 2033",
@@ -3340,10 +2916,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2033"
       },
       {
         "dateString": "2026",
@@ -3355,7 +2931,7 @@
         "projectPhase": "inProgress",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2026"
@@ -3370,10 +2946,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2030"
+        "year": "2031"
       },
       {
         "dateString": "2028",
@@ -3400,10 +2976,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2033"
       },
       {
         "dateString": "Tussen 2032 en 2034",
@@ -3488,85 +3064,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "45.4 MW",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": 45.4,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": null,
-        "requiredTransportCapacityInjection": 46.2,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 2.0,
-        "uniqueRequestsWithdrawal": 2.0,
-        "year": 2032
-      }
-    ],
+    "history": null,
     "id": "CM23",
     "information": "",
     "name": "Berkel en Rodenrijs - Noordeinde ",
@@ -3952,96 +3450,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "36.7 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 36.7,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 57.7,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 36.7,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 60.6,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 36.7,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 63.7,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 48.8,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 67.7,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 48.8,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 72.4,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 48.8,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 77.2,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 48.8,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 81.4,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 48.8,
-        "queueInjection": 0.586,
-        "queueWithdrawal": 1.637,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 85.5,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2033
-      }
-    ],
+    "history": null,
     "id": "CM29/45",
     "information": "",
     "name": "Dordrecht Centrum en Oost",
@@ -4056,10 +3465,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2035"
       },
       {
         "dateString": "Tussen 2029 en 2030",
@@ -4144,74 +3553,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "150 MW",
     "existingTransportCapacityWithdrawal": "153.9 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 150.0,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": 186.693,
-        "requiredTransportCapacityWithdrawal": 153.4,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 150.0,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": 207.363,
-        "requiredTransportCapacityWithdrawal": 168.5,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 150.0,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": 224.097,
-        "requiredTransportCapacityWithdrawal": 171.6,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 175.2,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 178.4,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 153.9,
-        "queueInjection": 14.521,
-        "queueWithdrawal": 41.433,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 184.8,
-        "uniqueRequestsInjection": 37.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2031
-      }
-    ],
+    "history": null,
     "id": "CM29/64",
     "information": "",
     "name": "Hoeksche Waard & Zuidelijk Dordrecht",
@@ -4226,7 +3568,7 @@
         "projectPhase": "inProgress",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
         "year": "2026"
@@ -4271,10 +3613,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2037"
       },
       {
         "dateString": "Tussen 2029 en 2033",
@@ -4286,10 +3628,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2033"
+        "year": "2031"
       },
       {
         "dateString": "Tussen 2029 en 2030",
@@ -4316,10 +3658,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2034"
+        "year": "2032"
       },
       {
         "dateString": "Tussen 2031 en 2033",
@@ -4331,10 +3673,10 @@
         "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2031"
+        "year": "2033"
       },
       {
         "dateString": "2031 - 2033",
@@ -4627,41 +3969,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "18 MW",
     "existingTransportCapacityWithdrawal": "18 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 18.0,
-        "existingTransportCapacityWithdrawal": 18.0,
-        "queueInjection": 0.84,
-        "queueWithdrawal": 6.76,
-        "requiredTransportCapacityInjection": 20.086,
-        "requiredTransportCapacityWithdrawal": 20.449,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 18.0,
-        "existingTransportCapacityWithdrawal": 18.0,
-        "queueInjection": 0.84,
-        "queueWithdrawal": 6.76,
-        "requiredTransportCapacityInjection": 21.304,
-        "requiredTransportCapacityWithdrawal": 21.419,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 18.0,
-        "existingTransportCapacityWithdrawal": 18.0,
-        "queueInjection": 0.84,
-        "queueWithdrawal": 6.76,
-        "requiredTransportCapacityInjection": 22.523,
-        "requiredTransportCapacityWithdrawal": 22.504,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2028
-      }
-    ],
+    "history": null,
     "id": "CM34/46",
     "information": "",
     "name": "Walcheren Noord ",
@@ -4809,85 +4117,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "18 MW",
     "existingTransportCapacityWithdrawal": "18.8 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 18.0,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": 25.022,
-        "requiredTransportCapacityWithdrawal": 15.8,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 18.0,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": 26.016,
-        "requiredTransportCapacityWithdrawal": 17.1,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 17.3,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 17.4,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 17.5,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 17.8,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 18.8,
-        "queueInjection": 1.093,
-        "queueWithdrawal": 1.713,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 18.0,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2032
-      }
-    ],
+    "history": null,
     "id": "CM35/72",
     "information": "",
     "name": "Nootdorp en Ypenburg-Oost",
@@ -5095,85 +4325,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "20.4 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 18.702,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 18.702,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 19.41,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 20.826,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 22.524,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 27.504,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 20.4,
-        "queueInjection": 0.158,
-        "queueWithdrawal": 2.365,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 30.492,
-        "uniqueRequestsInjection": 3.0,
-        "uniqueRequestsWithdrawal": 7.0,
-        "year": 2032
-      }
-    ],
+    "history": null,
     "id": "CM36",
     "information": "",
     "name": "Doorn",
@@ -5636,85 +4788,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "42.1 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 40.252,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 41.53,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 42.5,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.5,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 48.5,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 51.5,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 42.1,
-        "queueInjection": 2.817,
-        "queueWithdrawal": 8.161,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 55.5,
-        "uniqueRequestsInjection": 14.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2032
-      }
-    ],
+    "history": null,
     "id": "CM37",
     "information": "",
     "name": "Driebergen",
@@ -6177,74 +5251,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "59.3 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 50.532,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 51.916,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 53.3,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 55.376,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 58.836,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 59.3,
-        "queueInjection": 3.411,
-        "queueWithdrawal": 8.981,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 62.988,
-        "uniqueRequestsInjection": 18.0,
-        "uniqueRequestsWithdrawal": 30.0,
-        "year": 2031
-      }
-    ],
+    "history": null,
     "id": "CM38",
     "information": "",
     "name": "Veenendaal",
@@ -6692,118 +5699,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "200 MW",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 195.417,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 197.261,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 197.193,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 197.74,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 197.946,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 197.197,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 195.833,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 196.38,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 196.653,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2034
-      },
-      {
-        "existingTransportCapacityInjection": 200.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 13.433,
-        "queueWithdrawal": 48.756,
-        "requiredTransportCapacityInjection": 196.927,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 46.0,
-        "uniqueRequestsWithdrawal": 91.0,
-        "year": 2035
-      }
-    ],
+    "history": null,
     "id": "CM39",
     "information": "",
     "name": "Nieuwegein",
@@ -7266,63 +6162,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "140 MW",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": 140.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.499,
-        "queueWithdrawal": 2.547,
-        "requiredTransportCapacityInjection": 270.167,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": 140.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.499,
-        "queueWithdrawal": 2.547,
-        "requiredTransportCapacityInjection": 286.167,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": 140.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.499,
-        "queueWithdrawal": 2.547,
-        "requiredTransportCapacityInjection": 287.167,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": 140.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.499,
-        "queueWithdrawal": 2.547,
-        "requiredTransportCapacityInjection": 288.167,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": 140.0,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.499,
-        "queueWithdrawal": 2.547,
-        "requiredTransportCapacityInjection": 289.167,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 4.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2030
-      }
-    ],
+    "history": null,
     "id": "CM44",
     "information": "",
     "name": "Rilland ",
@@ -7693,52 +6533,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "117 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 117.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.665,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 124.7,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 117.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.665,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 133.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 117.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.665,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 150.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 117.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.665,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 165.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2029
-      }
-    ],
+    "history": null,
     "id": "CM48",
     "information": "",
     "name": "Langeland",
@@ -7798,10 +6593,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Tweede schatting (Tot).",
+        "scheduleDescription": "Eerste schatting (Van).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2033"
       },
       {
         "dateString": "2026",
@@ -8036,129 +6831,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "12.4 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 8.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 8.4,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 9.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 9.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 9.9,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 10.9,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 11.7,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 12.4,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 13.1,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2034
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 13.3,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2035
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 12.4,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 0.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 14.1,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2036
-      }
-    ],
+    "history": null,
     "id": "CM51",
     "information": "",
     "name": "Hengelolaan",
@@ -8351,107 +7024,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "34.2 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 34.7,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 35.1,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 36.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 36.9,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 37.8,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 38.6,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 39.3,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 40.4,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 34.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.168,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 41.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 12.0,
-        "year": 2034
-      }
-    ],
+    "history": null,
     "id": "CM56",
     "information": "",
     "name": "Noordsingel",
@@ -9285,52 +7858,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "27 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 27.0,
-        "queueInjection": 5.475,
-        "queueWithdrawal": 2.526,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 37.8,
-        "uniqueRequestsInjection": 6.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 27.0,
-        "queueInjection": 5.475,
-        "queueWithdrawal": 2.526,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 39.8,
-        "uniqueRequestsInjection": 6.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 27.0,
-        "queueInjection": 5.475,
-        "queueWithdrawal": 2.526,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 43.4,
-        "uniqueRequestsInjection": 6.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 27.0,
-        "queueInjection": 5.475,
-        "queueWithdrawal": 2.526,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 46.4,
-        "uniqueRequestsInjection": 6.0,
-        "uniqueRequestsWithdrawal": 6.0,
-        "year": 2029
-      }
-    ],
+    "history": null,
     "id": "CM58",
     "information": "",
     "name": "Lopik",
@@ -9778,107 +8306,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "360 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 360.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 310.8,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 360.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 330.4,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 360.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 353.6,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 360.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 377.1,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 450.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 403.4,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 450.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 429.7,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 450.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 455.1,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 450.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 479.9,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 450.0,
-        "queueInjection": 0.591,
-        "queueWithdrawal": 3.226,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 503.4,
-        "uniqueRequestsInjection": 5.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2034
-      }
-    ],
+    "history": null,
     "id": "CM59",
     "information": "",
     "name": "Utrecht Merwede Kanaal",
@@ -10849,118 +9277,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "232.2 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 236.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 247.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 263.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 274.7,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 246.3,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 249.8,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 253.2,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 256.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 258.3,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2034
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 232.2,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 28.927,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 259.1,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 43.0,
-        "year": 2035
-      }
-    ],
+    "history": null,
     "id": "CM63",
     "information": "",
     "name": "Gedeelte Drechtsteden en centraal Molenlanden",
@@ -11123,30 +9440,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "26.1 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 26.1,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 1.745,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 29.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 26.1,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 1.745,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 30.8,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 4.0,
-        "year": 2027
-      }
-    ],
+    "history": null,
     "id": "CM66",
     "information": "",
     "name": "Albasserdam Molenlanden West (Zwarte Paard)",
@@ -11264,41 +9558,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 37.217,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 37.217,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 37.217,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2028
-      }
-    ],
+    "history": null,
     "id": "CM71",
     "information": "",
     "name": "Terneuzen Braakman- en Buitenhaven",
@@ -11461,96 +9721,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 3.214,
-        "queueWithdrawal": 10.073,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 7.0,
-        "uniqueRequestsWithdrawal": 18.0,
-        "year": 2033
-      }
-    ],
+    "history": null,
     "id": "CM73",
     "information": "",
     "name": "Schouwen en Zierikzee",
@@ -11743,63 +9914,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 132.173,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 132.173,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 132.173,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 132.173,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 132.173,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 23.0,
-        "year": 2030
-      }
-    ],
+    "history": null,
     "id": "CM74",
     "information": "",
     "name": "Europoort Havengebied Rotterdam en omliggende gemeenten",
@@ -11977,74 +10092,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "39 MW",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.4,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.6,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 45.7,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 46.0,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": 39.0,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 4.178,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": 46.5,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 20.0,
-        "year": 2031
-      }
-    ],
+    "history": null,
     "id": "CM76",
     "information": "",
     "name": "Spijkenisse en buitengebied",
@@ -12222,74 +10270,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": null,
-        "queueWithdrawal": 155.601,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 1.0,
-        "uniqueRequestsWithdrawal": 5.0,
-        "year": 2031
-      }
-    ],
+    "history": null,
     "id": "CM79",
     "information": "",
     "name": "Staart van Zuid-Beveland, oostelijk Tholen en St. Philipsland",
@@ -12437,107 +10418,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2029
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2030
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2031
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2032
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2033
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 11.41,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2034
-      }
-    ],
+    "history": null,
     "id": "CM80",
     "information": "",
     "name": "Reimerswaal West",
@@ -12715,52 +10596,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 15.644,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 15.644,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 15.644,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 15.644,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 17.0,
-        "year": 2029
-      }
-    ],
+    "history": null,
     "id": "CM84",
     "information": "",
     "name": "Hellevoetsluis, Westvoorne Zuid en buitengebieden",
@@ -12923,52 +10759,7 @@
     "congestionUrl": "",
     "existingTransportCapacityInjection": "-",
     "existingTransportCapacityWithdrawal": "-",
-    "history": [
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 5.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2026
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 5.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2027
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 5.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2028
-      },
-      {
-        "existingTransportCapacityInjection": null,
-        "existingTransportCapacityWithdrawal": null,
-        "queueInjection": 0.0,
-        "queueWithdrawal": 5.291,
-        "requiredTransportCapacityInjection": null,
-        "requiredTransportCapacityWithdrawal": null,
-        "uniqueRequestsInjection": 0.0,
-        "uniqueRequestsWithdrawal": 9.0,
-        "year": 2029
-      }
-    ],
+    "history": null,
     "id": "CM85",
     "information": "",
     "name": "Rotterdamse Haven, Voorne aan Zee en omliggende gemeenten",
@@ -13131,10 +10922,10 @@
         "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
-        "scheduleDescription": "Eerste schatting (Van).",
+        "scheduleDescription": "Tweede schatting (Tot).",
         "source": "Investeringsplan",
         "startDate": null,
-        "year": "2035"
+        "year": "2037"
       },
       {
         "dateString": "2028",
