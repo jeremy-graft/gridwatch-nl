@@ -1899,7 +1899,7 @@
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2026"
+        "year": "2031"
       },
       {
         "dateString": "2035 - 2038",
@@ -5461,13 +5461,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Eindhoven West",
-        "projectPhase": "scheduled",
+        "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2030"
+        "year": "2027"
       },
       {
         "dateString": "2026",
@@ -18513,13 +18513,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Stadskanaal",
-        "projectPhase": "inProgress",
+        "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2027"
+        "year": "2020"
       },
       {
         "dateString": "2034 - 2037",
@@ -21590,7 +21590,7 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Vierverlaten",
-        "projectPhase": "approved",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,

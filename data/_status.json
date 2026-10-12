@@ -2,14 +2,22 @@
   "api_up": true,
   "areas_expected": 305,
   "areas_failed": 0,
-  "areas_missing": 0,
-  "areas_ok": 0,
+  "areas_missing": 1,
+  "areas_ok": 304,
   "failures": [],
-  "manifest_changed": false,
-  "missing": [],
+  "manifest_changed": true,
+  "missing": [
+    "OS DOETINCHEM 10-5i"
+  ],
   "ok": true,
-  "per_bucket": {},
-  "run_at": "2026-10-11T11:06:09Z",
-  "sweep_reason": null,
-  "swept": false
+  "per_bucket": {
+    "enexis": 109,
+    "liander": 157,
+    "other": 2,
+    "stedin": 73,
+    "tennet": 22
+  },
+  "run_at": "2026-10-12T12:35:14Z",
+  "sweep_reason": "manifest changed",
+  "swept": true
 }
