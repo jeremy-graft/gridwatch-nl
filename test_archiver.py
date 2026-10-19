@@ -307,5 +307,21 @@ def test_guard_json_retries_on_5xx_and_passes_valid_json():
     assert fetch._guard_json(_Resp(200, "application/json", '{"status":"OK"}')) == {"status": "OK"}
 
 
+def test_area_list_age_days():
+    from datetime import datetime, timezone
+    now = datetime(2026, 10, 19, 12, 0, tzinfo=timezone.utc)
+    assert fetch.area_list_age_days("2026-08-20T22:31:00Z", now) == 59
+    assert fetch.area_list_age_days("2026-10-19T11:00:00Z", now) == 0
+    assert fetch.area_list_age_days(None, now) is None
+    assert fetch.area_list_age_days("garbage", now) is None
+    assert fetch.AREA_LIST_MAX_AGE_DAYS == 35
+
+
+def test_committed_area_list_has_a_parseable_generated_at():
+    """The monitor's staleness alert depends on this field being present and well-formed."""
+    doc = json.loads((ROOT / "data/area_ids.json").read_text(encoding="utf-8"))
+    assert fetch.area_list_age_days(doc.get("generated_at")) is not None
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-q"]))

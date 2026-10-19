@@ -151,9 +151,15 @@ def _show(sha: str, path: str) -> str:
 
 def load_snapshots() -> list[dict]:
     """One entry per DISTINCT source ingest (deduped on dataUpdate.executedOn), oldest first:
-    {ingest, captured, sha, areas: {id: serviceArea}, live_ids: set}"""
-    out, seen = [], set()
-    for line in _git("log", "--reverse", "--format=%H %cI", "--", "data/manifests.json").splitlines():
+    {ingest, captured, sha, areas: {id: serviceArea}, live_ids: set, meta}
+
+    For each ingest the LAST commit carrying it is used, not the first: a later commit with the
+    same ingest is either a no-op daily run (identical data) or a repair sweep (e.g. after an
+    area-list refresh picked up areas the first sweep missed), so the last one is the most
+    complete record of that publication."""
+    last_for: dict[str, tuple[str, str]] = {}
+    order: list[str] = []
+    for line in _git("log", "--reverse", "--format=%H %cI", "--", "data/").splitlines():
         if not line.strip():
             continue
         sha, captured = line.split()
@@ -161,9 +167,14 @@ def load_snapshots() -> list[dict]:
         if not m.strip():
             continue
         ingest = (json.loads(m).get("dataUpdate") or {}).get("executedOn", "")[:10]
-        if not ingest or ingest in seen:
+        if not ingest:
             continue
-        seen.add(ingest)
+        if ingest not in last_for:
+            order.append(ingest)
+        last_for[ingest] = (sha, captured)
+    out = []
+    for ingest in order:
+        sha, captured = last_for[ingest]
         areas = {}
         for b in BUCKETS:
             t = _show(sha, f"data/serviceareas/{b}.json")
@@ -181,11 +192,35 @@ def load_snapshots() -> list[dict]:
 
 
 # ----------------------------------------------------------------------------- analysis
+def is_tennet(aid: str, sa: dict, meta: dict) -> bool:
+    """TenneT's high-voltage regions overlap the distribution operators' areas geographically and
+    measure a different queue, so the two must never be summed into one 'national' figure."""
+    op = (meta.get(aid.strip()) or {}).get("operator") or sa.get("rnb") or ""
+    return "tennet" in op.lower()
+
+
+def _queue_sums(areas: list[dict]) -> dict:
+    return {
+        "queue_withdrawal_mw": round(sum(parse_mw(a.get("queueWithdrawal")) or 0 for a in areas)),
+        "queue_injection_mw": round(sum(parse_mw(a.get("queueInjection")) or 0 for a in areas)),
+        "requests_withdrawal": sum(parse_count(a.get("uniqueRequestsWithdrawal")) or 0 for a in areas),
+        "requests_injection": sum(parse_count(a.get("uniqueRequestsInjection")) or 0 for a in areas),
+    }
+
+
 def queue_trend(snaps: list[dict]) -> list[dict]:
+    """Per publication: totals over live areas, split into the regional (distribution) grids and
+    TenneT. The un-split fields are kept for backward compatibility but should not be headlined."""
     rows = []
     for s in snaps:
-        live = [sa for aid, sa in s["areas"].items() if aid.strip() in s["live_ids"]]
+        meta = s.get("meta", {})
+        live_pairs = [(aid, sa) for aid, sa in s["areas"].items() if aid.strip() in s["live_ids"]]
+        live = [sa for _, sa in live_pairs]
+        regional = [sa for aid, sa in live_pairs if not is_tennet(aid, sa, meta)]
+        tennet = [sa for aid, sa in live_pairs if is_tennet(aid, sa, meta)]
         rows.append({
+            "regional": {**_queue_sums(regional), "areas": len(regional)},
+            "tennet": {**_queue_sums(tennet), "areas": len(tennet)},
             "ingest": s["ingest"],
             "live_areas": len(live),
             "queue_withdrawal_mw": round(sum(parse_mw(a.get("queueWithdrawal")) or 0 for a in live)),
@@ -195,6 +230,23 @@ def queue_trend(snaps: list[dict]) -> list[dict]:
             "areas_with_withdrawal_queue": sum(1 for a in live if (parse_mw(a.get("queueWithdrawal")) or 0) > 0),
         })
     return rows
+
+
+def latest_like_for_like(snaps: list[dict]) -> dict | None:
+    """Change between the last two publications over the areas live in BOTH, so inventory churn
+    (areas retired/added) can't masquerade as a change in the queue."""
+    if len(snaps) < 2:
+        return None
+    a, b = snaps[-2], snaps[-1]
+    both = sorted(a["live_ids"] & b["live_ids"])
+    out = {"from": a["ingest"], "to": b["ingest"], "areas": len(both)}
+    for grid, pick in (("regional", False), ("tennet", True)):
+        ids = [i for i in both if i in a["areas"] and i in b["areas"]
+               and is_tennet(i, b["areas"][i], b.get("meta", {})) == pick]
+        out[grid] = {"areas": len(ids),
+                     "before": _queue_sums([a["areas"][i] for i in ids]),
+                     "after": _queue_sums([b["areas"][i] for i in ids])}
+    return out
 
 
 def track_series(snaps: list[dict]):
@@ -419,7 +471,7 @@ COHORT_LABELS_EN = {"slipped": "pushed later (confirmed)",
                     "retired": "area no longer on the map (retired or renamed)"}
 
 
-def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=()) -> str:
+def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=None) -> str:
     first, last = snaps[0], snaps[-1]
     q0, q1 = qt[0], qt[-1]
     days = (datetime.fromisoformat(last["ingest"]) - datetime.fromisoformat(first["ingest"])).days
@@ -434,15 +486,29 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=()) -> str:
     rv, wd = c.get("reverted", 0), c.get("withdrawn", 0)
     uc = c.get("unconfirmed_slip", 0) + c.get("unconfirmed_pull", 0)
     dr = c.get("dropped_after_move", 0)
+    r0, r1, t0, t1 = q0["regional"], q1["regional"], q0["tennet"], q1["tennet"]
     L += ["## Headline", "",
-          f"- **Companies waiting for withdrawal capacity: {q0['requests_withdrawal']:,} → "
-          f"{q1['requests_withdrawal']:,} ({_pct(q0['requests_withdrawal'], q1['requests_withdrawal'])})** "
-          f"since {first['ingest']}.",
-          f"- Withdrawal queue: {q0['queue_withdrawal_mw']:,} → {q1['queue_withdrawal_mw']:,} MW "
-          f"({_pct(q0['queue_withdrawal_mw'], q1['queue_withdrawal_mw'])}); injection queue: "
-          f"{q0['queue_injection_mw']:,} → {q1['queue_injection_mw']:,} MW "
-          f"({_pct(q0['queue_injection_mw'], q1['queue_injection_mw'])}).",
-          f"- **{q1['areas_with_withdrawal_queue']} of {q1['live_areas']} areas** currently have a withdrawal queue.",
+          f"- **Regional grids — requests waiting for withdrawal capacity: {r0['requests_withdrawal']:,} → "
+          f"{r1['requests_withdrawal']:,} ({_pct(r0['requests_withdrawal'], r1['requests_withdrawal'])})** "
+          f"since {first['ingest']}; withdrawal queue {r0['queue_withdrawal_mw']:,} → "
+          f"{r1['queue_withdrawal_mw']:,} MW.",
+          f"- **TenneT (high voltage) — withdrawal queue: {t0['queue_withdrawal_mw']:,} → "
+          f"{t1['queue_withdrawal_mw']:,} MW ({_pct(t0['queue_withdrawal_mw'], t1['queue_withdrawal_mw'])})**; "
+          f"injection {t0['queue_injection_mw']:,} → {t1['queue_injection_mw']:,} MW. Reported separately: "
+          "TenneT's regions overlap the regional areas and measure a different queue.",
+          f"- **{q1['areas_with_withdrawal_queue']} of {q1['live_areas']} areas** currently have a withdrawal queue."]
+    if lfl:
+        for grid, label in (("regional", "regional grids"), ("tennet", "TenneT")):
+            g = lfl[grid]
+            b0, b1 = g["before"], g["after"]
+            if b0 != b1:
+                L.append(f"- **Latest publication ({lfl['from']} → {lfl['to']}), like-for-like over the "
+                         f"{g['areas']} {label} areas present in both:** withdrawal queue "
+                         f"{b0['queue_withdrawal_mw']:,} → {b1['queue_withdrawal_mw']:,} MW "
+                         f"({_pct(b0['queue_withdrawal_mw'], b1['queue_withdrawal_mw'])}), requests waiting "
+                         f"{b0['requests_withdrawal']:,} → {b1['requests_withdrawal']:,}. "
+                         "Single publication, so unconfirmed.")
+    L += [
           f"- Area relief dates: **{cs} confirmed slips**, **{cp} confirmed pull-forwards**, "
           f"{uc} unconfirmed (latest publication only), **{rv} moved-then-reverted**, **{wd} withdrawn**"
           + (f", {dr} moved and then left the map" if dr else "") + "."]
@@ -479,13 +545,23 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=()) -> str:
                 L.append(f"| {_area_label(aid, meta)} | {d} | {r['promised']} | {now} | {labels[r['status']]} |")
         L.append("")
 
-    L += ["## National queue trend", "",
-          "| source publication | live areas | withdrawal queue (MW) | injection queue (MW) | "
-          "waiting (withdrawal) | waiting (injection) |",
-          "|---|---:|---:|---:|---:|---:|"]
+    L += ["## Queue trend", "",
+          "Regional (distribution) grids and TenneT are shown separately and never added together.", "",
+          "| source publication | regional areas | regional withdrawal queue (MW) | regional requests waiting | "
+          "TenneT regions | TenneT withdrawal queue (MW) | TenneT injection queue (MW) |",
+          "|---|---:|---:|---:|---:|---:|---:|"]
     for r in qt:
-        L.append(f"| {r['ingest']} | {r['live_areas']} | {r['queue_withdrawal_mw']:,} | "
-                 f"{r['queue_injection_mw']:,} | {r['requests_withdrawal']:,} | {r['requests_injection']:,} |")
+        g, t = r["regional"], r["tennet"]
+        L.append(f"| {r['ingest']} | {g['areas']} | {g['queue_withdrawal_mw']:,} | {g['requests_withdrawal']:,} | "
+                 f"{t['areas']} | {t['queue_withdrawal_mw']:,} | {t['queue_injection_mw']:,} |")
+    tv = [r["tennet"]["queue_withdrawal_mw"] for r in qt]
+    run = 1
+    while run < len(tv) - 1 and tv[-2 - run] == tv[-2]:
+        run += 1
+    if len(tv) >= 3 and tv[-1] != tv[-2] and run >= 3:
+        L += ["", f"> **TenneT's queue figures were identical in {run} consecutive publications "
+              f"({qt[-1 - run]['ingest']} – {qt[-2]['ingest']}) before changing in {qt[-1]['ingest']}.** "
+              "Treat TenneT queue values as possibly stale between its own updates."]
     L += ["", "> Sums over *live* areas at each publication. Inventory reorganisations (see below) can "
           "move these numbers without any change in real demand — read a step change that coincides "
           "with an inventory change with care.", ""]
@@ -596,7 +672,9 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=()) -> str:
           "- **Inventory churn:** areas are periodically retired or renamed; queue totals are summed over "
           "*live* areas only. Retired areas keep their last known values in the archive but are excluded here. "
           "A renamed area can't be linked to its new id, so in the promise ledger it is reported as *no longer "
-          "on the map*, never as a kept promise.",
+          "on the map*, never as a kept promise. Inventory changes are dated by the publication in which the "
+          "archive *detected* them: the area list is refreshed from the map about monthly, so a change may "
+          "have happened up to a few publications earlier.",
           f"- **Short baseline:** {len(snaps)} publications over {days} days. Operator-level reliability "
           "figures in particular are early signal, not verdict.", ""]
     return "\n".join(L)
@@ -618,7 +696,7 @@ def _nl_delta(a, b) -> str:
     return f"{100 * (b - a) / a:+.1f}%".replace(".", ",") if a else "n.v.t."
 
 
-def render_nl(snaps, qt, cohorts, rel, generated) -> str:
+def render_nl(snaps, qt, cohorts, rel, generated, lfl=None) -> str:
     """One-page Dutch summary for forwarding. Same numbers as REPORT.md and regenerated with it,
     so it can never drift from the data."""
     first, last = snaps[0], snaps[-1]
@@ -679,12 +757,25 @@ def render_nl(snaps, qt, cohorts, rel, generated) -> str:
               "losse jaartal in de bron wisselt bij zulke projecten tussen begin- en eindjaar zonder dat de "
               "planning verandert, en is daarom niet bruikbaar om verschuivingen te meten.", ""]
 
+    r0, r1, t0, t1 = q0["regional"], q1["regional"], q0["tennet"], q1["tennet"]
     L += ["## De wachtrij", "",
-          f"- Bedrijven in de wachtrij voor **afname**: {_nl_int(q0['requests_withdrawal'])} → "
-          f"**{_nl_int(q1['requests_withdrawal'])}** "
-          f"({_nl_delta(q0['requests_withdrawal'], q1['requests_withdrawal'])}) sinds {first['ingest']}",
-          f"- **{q1['areas_with_withdrawal_queue']} van de {q1['live_areas']} gebieden** hebben een wachtrij voor afname",
-          f"- Gevraagd vermogen in de afname-wachtrij: **{_nl_int(q1['queue_withdrawal_mw'])} MW**", "",
+          f"- **Regionale netten:** aanvragen in de wachtrij voor afname {_nl_int(r0['requests_withdrawal'])} → "
+          f"**{_nl_int(r1['requests_withdrawal'])}** "
+          f"({_nl_delta(r0['requests_withdrawal'], r1['requests_withdrawal'])}) sinds {first['ingest']}; "
+          f"gevraagd vermogen {_nl_int(r1['queue_withdrawal_mw'])} MW",
+          f"- **TenneT (hoogspanning):** afname-wachtrij {_nl_int(t0['queue_withdrawal_mw'])} → "
+          f"**{_nl_int(t1['queue_withdrawal_mw'])} MW** ({_nl_delta(t0['queue_withdrawal_mw'], t1['queue_withdrawal_mw'])}). "
+          "Apart vermeld: de TenneT-regio's overlappen met de regionale gebieden en meten een andere wachtrij.",
+          f"- **{q1['areas_with_withdrawal_queue']} van de {q1['live_areas']} gebieden** hebben een wachtrij voor afname", ""]
+    if lfl and lfl["tennet"]["before"] != lfl["tennet"]["after"]:
+        g = lfl["tennet"]
+        L += [f"**Laatste publicatie ({lfl['from']} → {lfl['to']}):** de afname-wachtrij van TenneT ging in de "
+              f"{g['areas']} regio's die in beide publicaties voorkomen van {_nl_int(g['before']['queue_withdrawal_mw'])} "
+              f"naar **{_nl_int(g['after']['queue_withdrawal_mw'])} MW** "
+              f"({_nl_delta(g['before']['queue_withdrawal_mw'], g['after']['queue_withdrawal_mw'])}). "
+              "Eén publicatie, dus nog onbevestigd. De oorzaak (aansluitingen, intrekkingen of een "
+              "administratieve opschoning) blijkt niet uit de data.", ""]
+    L += [
           "## Methode, kort", "",
           "- Een verschuiving telt pas als **bevestigd** als ze twee opeenvolgende publicaties standhoudt, "
           "zodat correcties en eenmalige fouten in een publicatie niet als vertraging worden gemeld.",
@@ -728,9 +819,10 @@ def main() -> int:
     cohorts = [promise_cohort(area_tracks, y, snaps[0]["ingest"], ref_year, latest)
                for y in sorted({first_year, ref_year})]
 
-    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts),
+    lfl = latest_like_for_like(snaps)
+    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts, lfl),
                          encoding="utf-8", newline="\n")
-    SUMMARY_NL.write_text(render_nl(snaps, qt, cohorts, rel, generated), encoding="utf-8", newline="\n")
+    SUMMARY_NL.write_text(render_nl(snaps, qt, cohorts, rel, generated, lfl), encoding="utf-8", newline="\n")
     REPORT_JSON.write_text(json.dumps({
         "generated": generated,
         "publications": [{"ingest": s["ingest"], "captured": s["captured"], "sha": s["sha"],
@@ -741,6 +833,7 @@ def main() -> int:
         "reliability_by_operator": rel,
         "inventory_changes": inv,
         "promise_ledgers": cohorts,
+        "latest_like_for_like": lfl,
     }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {REPORT_MD.name}, {SUMMARY_NL.name} and {REPORT_JSON.relative_to(ROOT)} "
           f"({len(snaps)} publications, latest {latest})")

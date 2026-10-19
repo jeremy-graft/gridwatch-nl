@@ -88,6 +88,20 @@ class EmptyAreaError(RuntimeError):
     """
 
 
+AREA_LIST_MAX_AGE_DAYS = 35
+
+
+def area_list_age_days(generated_at: str | None, now: datetime | None = None) -> int | None:
+    """Whole days since data/area_ids.json was rebuilt; None if unknown/unparseable."""
+    if not generated_at:
+        return None
+    try:
+        t = datetime.strptime(generated_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    return ((now or datetime.now(timezone.utc)) - t).days
+
+
 def now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -232,9 +246,16 @@ def run(full: bool) -> int:
         )
         return 2
 
-    areas = json.loads(AREA_IDS.read_text(encoding="utf-8"))["areas"]
+    id_doc = json.loads(AREA_IDS.read_text(encoding="utf-8"))
+    areas = id_doc["areas"]
     status: dict = {
         "run_at": now_utc(),
+        # How stale the area list is. The API keeps answering for ids the map has dropped and
+        # never lists new ones, so a stale list silently loses coverage without any failure
+        # (2026-10-19: 44 new areas unarchived, 53 retired ones still swept, all runs green).
+        # The monitor alerts when this exceeds AREA_LIST_MAX_AGE_DAYS.
+        "area_list_generated_at": id_doc.get("generated_at"),
+        "area_list_age_days": area_list_age_days(id_doc.get("generated_at")),
         "api_up": False,
         "manifest_changed": None,
         "swept": False,

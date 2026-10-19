@@ -27,7 +27,7 @@
         ],
         "kind": "slip",
         "last": 2036,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -42,7 +42,7 @@
         ],
         "kind": "slip",
         "last": 2027,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -57,7 +57,7 @@
         ],
         "kind": "pull",
         "last": 2027,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -72,7 +72,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -87,7 +87,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -102,7 +102,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -117,7 +117,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -132,7 +132,7 @@
         ],
         "kind": "slip",
         "last": 2035,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -147,7 +147,7 @@
         ],
         "kind": "slip",
         "last": 2029,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -162,7 +162,7 @@
         ],
         "kind": "slip",
         "last": 2033,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -177,7 +177,7 @@
         ],
         "kind": "slip",
         "last": 2028,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -201,15 +201,41 @@
       "confirmed_pull": 6,
       "confirmed_slip": 7,
       "dropped_after_move": 1,
-      "insufficient": 330,
-      "stable": 380
+      "insufficient": 383,
+      "stable": 380,
+      "unconfirmed_pull": 1
     },
     "reverted": [],
-    "this_cycle": [],
-    "unconfirmed": [],
+    "this_cycle": [
+      {
+        "key": [
+          "OS EDAM 10-2i",
+          "afname"
+        ],
+        "now": 2026,
+        "was": 2027
+      }
+    ],
+    "unconfirmed": [
+      {
+        "changed_at": "2026-10-19",
+        "confirmed": false,
+        "delta": -1,
+        "first": 2027,
+        "key": [
+          "OS EDAM 10-2i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2026,
+        "n": 4,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
     "withdrawn": []
   },
-  "generated": "2026-10-12",
+  "generated": "2026-10-19",
   "inventory_changes": [
     {
       "added": 61,
@@ -243,10 +269,104 @@
         "CM57",
         "CM60"
       ]
+    },
+    {
+      "added": 44,
+      "added_ids": [
+        "AMLU",
+        "Amstelveen Bolwerk 10-1i + 10-2i",
+        "CM10",
+        "CM11",
+        "CM20",
+        "CM31",
+        "CM40",
+        "CM47",
+        "CM49",
+        "CM57",
+        "CM60",
+        "DTO"
+      ],
+      "ingest": "2026-10-19",
+      "retired": 53,
+      "retired_ids": [
+        "BLER",
+        "CM23",
+        "CM35/72",
+        "CM56",
+        "CM59",
+        "CM66",
+        "CM84",
+        "EHVN",
+        "ESDW",
+        "GNBH",
+        "HGLB",
+        "HTW"
+      ]
     }
   ],
+  "latest_like_for_like": {
+    "areas": 251,
+    "from": "2026-10-12",
+    "regional": {
+      "after": {
+        "queue_injection_mw": 4835,
+        "queue_withdrawal_mw": 5286,
+        "requests_injection": 6870,
+        "requests_withdrawal": 10422
+      },
+      "areas": 231,
+      "before": {
+        "queue_injection_mw": 4835,
+        "queue_withdrawal_mw": 5286,
+        "requests_injection": 6870,
+        "requests_withdrawal": 10422
+      }
+    },
+    "tennet": {
+      "after": {
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8360,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
+      },
+      "areas": 20,
+      "before": {
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 14209,
+        "requests_injection": 49,
+        "requests_withdrawal": 110
+      }
+    },
+    "to": "2026-10-19"
+  },
   "project_relief": {
     "confirmed": [
+      {
+        "changed_at": "2026-10-12",
+        "confirmed": true,
+        "delta": 1,
+        "first": [
+          2029,
+          2029,
+          2
+        ],
+        "first_s": "2029 Q2",
+        "key": [
+          "OS MARNEZIJL 20-3i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS MARNEZIJL SUB 10-1i"
+        ],
+        "kind": "slip",
+        "last": [
+          2029,
+          2029,
+          4
+        ],
+        "last_s": "2029 Q4",
+        "n": 8,
+        "past_dated": false,
+        "status": "persisted"
+      },
       {
         "changed_at": "2026-08-10",
         "confirmed": true,
@@ -269,7 +389,7 @@
           0
         ],
         "last_s": "2030",
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -295,7 +415,7 @@
           0
         ],
         "last_s": "2029",
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -321,72 +441,26 @@
           0
         ],
         "last_s": "2032–open",
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "counts": {
-      "confirmed_slip": 3,
-      "insufficient": 1,
-      "stable": 6148,
-      "unconfirmed_slip": 1
+      "confirmed_slip": 4,
+      "insufficient": 484,
+      "stable": 6156
     },
     "reverted": [],
-    "this_cycle": [
-      {
-        "key": [
-          "OS MARNEZIJL 20-3i",
-          "Liander",
-          "Extra capaciteit op knooppunt OS MARNEZIJL SUB 10-1i"
-        ],
-        "now": [
-          2029,
-          2029,
-          4
-        ],
-        "was": [
-          2029,
-          2029,
-          2
-        ]
-      }
-    ],
-    "unconfirmed": [
-      {
-        "changed_at": "2026-10-12",
-        "confirmed": false,
-        "delta": 1,
-        "first": [
-          2029,
-          2029,
-          2
-        ],
-        "first_s": "2029 Q2",
-        "key": [
-          "OS MARNEZIJL 20-3i",
-          "Liander",
-          "Extra capaciteit op knooppunt OS MARNEZIJL SUB 10-1i"
-        ],
-        "kind": "slip",
-        "last": [
-          2029,
-          2029,
-          4
-        ],
-        "last_s": "2029 Q4",
-        "n": 7,
-        "past_dated": false,
-        "status": "persisted"
-      }
-    ],
+    "this_cycle": [],
+    "unconfirmed": [],
     "withdrawn": []
   },
   "promise_ledgers": [
     {
       "counts": {
-        "kept": 64,
-        "retired": 15,
+        "kept": 66,
+        "retired": 13,
         "slipped": 4
       },
       "rows": [
@@ -446,6 +520,15 @@
         },
         {
           "key": [
+            "BLER",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
             "CM08",
             "invoeding"
           ],
@@ -473,33 +556,6 @@
         },
         {
           "key": [
-            "ESDV",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "ESDV",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "GNHK",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
             "HUSK",
             "afname"
           ],
@@ -511,6 +567,15 @@
           "key": [
             "HUSK",
             "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "OS DOETINCHEM 10-5i",
+            "afname"
           ],
           "now": 2026,
           "promised": 2026,
@@ -538,15 +603,6 @@
           "key": [
             "TBW",
             "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "WRTH",
-            "afname"
           ],
           "now": 2026,
           "promised": 2026,
@@ -600,15 +656,6 @@
         {
           "key": [
             "BL",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
-            "BLER",
             "invoeding"
           ],
           "now": 2026,
@@ -734,6 +781,24 @@
         },
         {
           "key": [
+            "ESDV",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ESDV",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "ETN",
             "afname"
           ],
@@ -763,6 +828,15 @@
           "key": [
             "GLTK",
             "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GNHK",
+            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -986,15 +1060,6 @@
         },
         {
           "key": [
-            "OS DOETINCHEM 10-5i",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
             "RSD",
             "afname"
           ],
@@ -1112,6 +1177,15 @@
         },
         {
           "key": [
+            "WRTH",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "WSMR",
             "afname"
           ],
@@ -1151,40 +1225,46 @@
       "sha": "a849ea7"
     },
     {
-      "captured": "2026-07-30",
+      "captured": "2026-08-10",
       "ingest": "2026-07-29",
       "live_areas": 301,
-      "sha": "ae66959"
+      "sha": "f2a03b0"
     },
     {
-      "captured": "2026-08-11",
+      "captured": "2026-08-17",
       "ingest": "2026-08-10",
       "live_areas": 301,
-      "sha": "a913957"
+      "sha": "0044395"
     },
     {
-      "captured": "2026-08-21",
+      "captured": "2026-09-07",
       "ingest": "2026-08-17",
       "live_areas": 304,
-      "sha": "1f1d49e"
+      "sha": "38c1d59"
     },
     {
-      "captured": "2026-09-08",
+      "captured": "2026-10-08",
       "ingest": "2026-09-07",
       "live_areas": 304,
-      "sha": "21418cb"
+      "sha": "babf6ed"
     },
     {
-      "captured": "2026-10-09",
+      "captured": "2026-10-11",
       "ingest": "2026-10-08",
       "live_areas": 304,
-      "sha": "baecdbb"
+      "sha": "54446d2"
     },
     {
-      "captured": "2026-10-12",
+      "captured": "2026-10-19",
       "ingest": "2026-10-12",
       "live_areas": 304,
-      "sha": "dfdf3f8"
+      "sha": "c1d7e98"
+    },
+    {
+      "captured": "2026-10-19",
+      "ingest": "2026-10-19",
+      "live_areas": 295,
+      "sha": "8189b19"
     }
   ],
   "queue_trend": [
@@ -1194,8 +1274,22 @@
       "live_areas": 301,
       "queue_injection_mw": 16915,
       "queue_withdrawal_mw": 20931,
+      "regional": {
+        "areas": 280,
+        "queue_injection_mw": 7073,
+        "queue_withdrawal_mw": 5558,
+        "requests_injection": 7202,
+        "requests_withdrawal": 10388
+      },
       "requests_injection": 7251,
-      "requests_withdrawal": 10507
+      "requests_withdrawal": 10507,
+      "tennet": {
+        "areas": 21,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 274,
@@ -1203,8 +1297,22 @@
       "live_areas": 301,
       "queue_injection_mw": 16915,
       "queue_withdrawal_mw": 20931,
+      "regional": {
+        "areas": 280,
+        "queue_injection_mw": 7073,
+        "queue_withdrawal_mw": 5558,
+        "requests_injection": 7202,
+        "requests_withdrawal": 10388
+      },
       "requests_injection": 7251,
-      "requests_withdrawal": 10507
+      "requests_withdrawal": 10507,
+      "tennet": {
+        "areas": 21,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 274,
@@ -1212,8 +1320,22 @@
       "live_areas": 301,
       "queue_injection_mw": 17058,
       "queue_withdrawal_mw": 21120,
+      "regional": {
+        "areas": 280,
+        "queue_injection_mw": 7216,
+        "queue_withdrawal_mw": 5747,
+        "requests_injection": 7247,
+        "requests_withdrawal": 11173
+      },
       "requests_injection": 7296,
-      "requests_withdrawal": 11292
+      "requests_withdrawal": 11292,
+      "tennet": {
+        "areas": 21,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 278,
@@ -1221,8 +1343,22 @@
       "live_areas": 305,
       "queue_injection_mw": 17471,
       "queue_withdrawal_mw": 21191,
+      "regional": {
+        "areas": 283,
+        "queue_injection_mw": 7629,
+        "queue_withdrawal_mw": 5818,
+        "requests_injection": 7356,
+        "requests_withdrawal": 11624
+      },
       "requests_injection": 7405,
-      "requests_withdrawal": 11743
+      "requests_withdrawal": 11743,
+      "tennet": {
+        "areas": 22,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 279,
@@ -1230,8 +1366,22 @@
       "live_areas": 305,
       "queue_injection_mw": 14907,
       "queue_withdrawal_mw": 21254,
+      "regional": {
+        "areas": 283,
+        "queue_injection_mw": 5065,
+        "queue_withdrawal_mw": 5880,
+        "requests_injection": 7346,
+        "requests_withdrawal": 11704
+      },
       "requests_injection": 7395,
-      "requests_withdrawal": 11823
+      "requests_withdrawal": 11823,
+      "tennet": {
+        "areas": 22,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 279,
@@ -1239,8 +1389,22 @@
       "live_areas": 305,
       "queue_injection_mw": 14907,
       "queue_withdrawal_mw": 21254,
+      "regional": {
+        "areas": 283,
+        "queue_injection_mw": 5065,
+        "queue_withdrawal_mw": 5880,
+        "requests_injection": 7346,
+        "requests_withdrawal": 11704
+      },
       "requests_injection": 7395,
-      "requests_withdrawal": 11823
+      "requests_withdrawal": 11823,
+      "tennet": {
+        "areas": 22,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
     },
     {
       "areas_with_withdrawal_queue": 278,
@@ -1248,8 +1412,45 @@
       "live_areas": 305,
       "queue_injection_mw": 14889,
       "queue_withdrawal_mw": 21254,
+      "regional": {
+        "areas": 283,
+        "queue_injection_mw": 5047,
+        "queue_withdrawal_mw": 5881,
+        "requests_injection": 7315,
+        "requests_withdrawal": 11738
+      },
       "requests_injection": 7364,
-      "requests_withdrawal": 11857
+      "requests_withdrawal": 11857,
+      "tennet": {
+        "areas": 22,
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 15373,
+        "requests_injection": 49,
+        "requests_withdrawal": 119
+      }
+    },
+    {
+      "areas_with_withdrawal_queue": 270,
+      "ingest": "2026-10-19",
+      "live_areas": 296,
+      "queue_injection_mw": 11284,
+      "queue_withdrawal_mw": 14353,
+      "regional": {
+        "areas": 273,
+        "queue_injection_mw": 5246,
+        "queue_withdrawal_mw": 5793,
+        "requests_injection": 7294,
+        "requests_withdrawal": 11367
+      },
+      "requests_injection": 7326,
+      "requests_withdrawal": 11442,
+      "tennet": {
+        "areas": 23,
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8560,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
+      }
     }
   ],
   "reliability_by_operator": [
@@ -1263,7 +1464,7 @@
       "tracked": 83
     },
     {
-      "confirmed": 0,
+      "confirmed": 1,
       "moved": 1,
       "moved_pct": 0.8,
       "operator": "Liander",

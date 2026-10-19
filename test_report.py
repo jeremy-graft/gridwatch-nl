@@ -283,10 +283,13 @@ def test_render_nl_smoke_and_dutch_formatting():
         {"ingest": "2026-09-07", "meta": {"DVTB": {"operator": "Enexis", "province": "Overijssel"}},
          "areas": {}, "live_ids": set()},
     ]
-    qt = [{"requests_withdrawal": 10507, "queue_withdrawal_mw": 20931, "areas_with_withdrawal_queue": 270,
-           "live_areas": 301},
-          {"requests_withdrawal": 11823, "queue_withdrawal_mw": 21254, "areas_with_withdrawal_queue": 279,
-           "live_areas": 305}]
+    def grid(rw, qw, qi=0):
+        return {"requests_withdrawal": rw, "queue_withdrawal_mw": qw, "queue_injection_mw": qi,
+                "requests_injection": 0, "areas": 1}
+    qt = [{"regional": grid(10507, 5558), "tennet": grid(110, 15373),
+           "areas_with_withdrawal_queue": 270, "live_areas": 301},
+          {"regional": grid(11823, 5793), "tennet": grid(75, 8560),
+           "areas_with_withdrawal_queue": 279, "live_areas": 305}]
     cohorts = [{"year": 2026, "since": "2026-07-17", "total": 3,
                 "counts": {"kept": 1, "slipped": 1, "retired": 1},
                 "rows": [{"key": ["DVTB", "afname"], "promised": 2026, "now": 2029, "status": "slipped"},
@@ -400,6 +403,34 @@ def test_track_series_uses_published_window_not_year_field():
     proj, _ = R.track_series([snap("2026-09-07", "2031"), snap("2026-10-08", "2033")])
     (_, a), (_, b) = proj[("CM00", "Stedin", "P")]
     assert a == b == (2031, 2033, 0)
+
+
+def test_queue_trend_never_mixes_tennet_into_regional_totals():
+    """TenneT regions overlap the regional areas and measure a different queue; on 2026-10-19
+    a TenneT-only refresh (-41%) would otherwise have read as 'national queue -31%'."""
+    areas = {"OS A": {"queueWithdrawal": "10 MW", "uniqueRequestsWithdrawal": "4", "rnb": "Liander"},
+             "Zeeland": {"queueWithdrawal": "1177 MW", "uniqueRequestsWithdrawal": "11"}}
+    snap = _snap("2026-10-12", areas)
+    snap["meta"] = {"OS A": {"operator": "Liander"}, "Zeeland": {"operator": "TenneT"}}
+    r = R.queue_trend([snap])[0]
+    assert r["regional"]["queue_withdrawal_mw"] == 10 and r["regional"]["requests_withdrawal"] == 4
+    assert r["tennet"]["queue_withdrawal_mw"] == 1177 and r["tennet"]["areas"] == 1
+
+
+def test_latest_like_for_like_ignores_retired_and_added_areas():
+    def snap(ingest, areas, live):
+        s = _snap(ingest, areas, live=live)
+        s["meta"] = {k: {"operator": "TenneT" if k.startswith("T") else "Liander"} for k in areas}
+        return s
+    a = snap("2026-10-12", {"T1": {"queueWithdrawal": "100 MW"}, "R1": {"queueWithdrawal": "5 MW"},
+                            "GONE": {"queueWithdrawal": "999 MW"}}, {"T1", "R1", "GONE"})
+    b = snap("2026-10-19", {"T1": {"queueWithdrawal": "40 MW"}, "R1": {"queueWithdrawal": "5 MW"},
+                            "NEW": {"queueWithdrawal": "7 MW"}}, {"T1", "R1", "NEW"})
+    lfl = R.latest_like_for_like([a, b])
+    assert lfl["areas"] == 2
+    assert lfl["tennet"]["before"]["queue_withdrawal_mw"] == 100
+    assert lfl["tennet"]["after"]["queue_withdrawal_mw"] == 40
+    assert lfl["regional"]["before"] == lfl["regional"]["after"]
 
 
 if __name__ == "__main__":

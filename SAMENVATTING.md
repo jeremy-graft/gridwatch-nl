@@ -1,6 +1,6 @@
 # Netcongestie Monitor: samenvatting
 
-*Stand: publicatie van 2026-10-12 · 7 publicaties sinds 2026-07-17 · automatisch gegenereerd · indicatief*
+*Stand: publicatie van 2026-10-19 · 8 publicaties sinds 2026-07-17 · automatisch gegenereerd · indicatief*
 
 ## Waarom dit bestaat
 
@@ -10,9 +10,9 @@ Netbeheerders publiceren op de landelijke capaciteitskaart per gebied **in welk 
 
 Op 2026-07-17 beloofden netbeheerders voor **83 gebieden** (per richting) dat de congestie in **2026** zou zijn opgelost. De stand nu:
 
-- **64** zeggen nog steeds 2026
+- **66** zeggen nog steeds 2026
 - **4** zijn al naar later verschoven, allemaal bevestigd
-- **15** staan niet meer op de kaart (gebied opgeheven of hernoemd); die belofte is niet meer te controleren
+- **13** staan niet meer op de kaart (gebied opgeheven of hernoemd); die belofte is niet meer te controleren
 
 | gebied | richting | beloofd | nu | |
 |---|---|---:|---:|---|
@@ -25,7 +25,7 @@ Op 2026-07-17 beloofden netbeheerders voor **83 gebieden** (per richting) dat de
 
 ## Hoe vaak veranderen de geplande opleverdata?
 
-Aandeel uitbreidingsprojecten waarvan de gepubliceerde opleverperiode in 12 weken minstens een keer veranderde, per netbeheerder:
+Aandeel uitbreidingsprojecten waarvan de gepubliceerde opleverperiode in 13 weken minstens een keer veranderde, per netbeheerder:
 
 | netbeheerder | projecten gevolgd | veranderd | waarvan later teruggedraaid |
 |---|---:|---:|---:|
@@ -38,14 +38,16 @@ Wij vergelijken de gepubliceerde periode zelf (bijvoorbeeld *Tussen 2031 en 2033
 
 ## De wachtrij
 
-- Bedrijven in de wachtrij voor **afname**: 10.507 → **11.857** (+12,8%) sinds 2026-07-17
-- **278 van de 305 gebieden** hebben een wachtrij voor afname
-- Gevraagd vermogen in de afname-wachtrij: **21.254 MW**
+- **Regionale netten:** aanvragen in de wachtrij voor afname 10.388 → **11.367** (+9,4%) sinds 2026-07-17; gevraagd vermogen 5.793 MW
+- **TenneT (hoogspanning):** afname-wachtrij 15.373 → **8.560 MW** (-44,3%). Apart vermeld: de TenneT-regio's overlappen met de regionale gebieden en meten een andere wachtrij.
+- **270 van de 296 gebieden** hebben een wachtrij voor afname
+
+**Laatste publicatie (2026-10-12 → 2026-10-19):** de afname-wachtrij van TenneT ging in de 20 regio's die in beide publicaties voorkomen van 14.209 naar **8.360 MW** (-41,2%). Eén publicatie, dus nog onbevestigd. De oorzaak (aansluitingen, intrekkingen of een administratieve opschoning) blijkt niet uit de data.
 
 ## Methode, kort
 
 - Een verschuiving telt pas als **bevestigd** als ze twee opeenvolgende publicaties standhoudt, zodat correcties en eenmalige fouten in een publicatie niet als vertraging worden gemeld.
 - Bron: de openbare capaciteitskaart van Netbeheer Nederland. Die cijfers zijn indicatief en er kunnen geen rechten aan worden ontleend. Dat geldt ook voor deze samenvatting.
 - Netbeheerders heffen gebieden soms op of geven ze een nieuwe naam. Zo'n gebied telt niet mee als 'nog steeds beloofd', omdat de oude belofte niet meer te volgen is.
-- Korte reeks: 7 publicaties in 12 weken. Lees de cijfers als vroeg signaal, niet als oordeel.
+- Korte reeks: 8 publicaties in 13 weken. Lees de cijfers als vroeg signaal, niet als oordeel.
 - Volledig rapport (Engels), methode en alle ruwe data: [github.com/jeremy-graft/gridwatch-nl](https://github.com/jeremy-graft/gridwatch-nl)
