@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-enumerate_area_ids.py  —  MANUAL / ~monthly bootstrap tool. NOT part of the daily cron.
+enumerate_area_ids.py  —  monthly area-list refresh. Runs automatically on the 1st of each
+month inside the daily workflow (just before the monthly backstop sweep), and by hand anytime.
 
 Rebuilds data/area_ids.json: the list of every service-area id on the capaciteitskaart,
 enriched with grid operator, province, and which flow directions (afname/invoeding) it
@@ -9,17 +10,25 @@ appears in.
 WHY THIS IS SEPARATE FROM fetch.py:
   The area geometry+ids live only in MapTiler-hosted vector tiles, fetched with a key that
   belongs to Netbeheer's MapTiler account. MapTiler's ToS forbids using another party's key
-  as your own, so we touch it as rarely as possible: once to bootstrap, and ~monthly to catch
-  new stations. The daily archiver (fetch.py) never touches MapTiler — it reads this file.
+  as your own, so we touch it as rarely as possible: ONE tile request a month (plus one request
+  to Netbeheer's own app config to find the current tileset). fetch.py never touches MapTiler.
 
-The id set is near-static; run this when the daily sweep reports an id it doesn't recognise,
-or roughly monthly. See DATA_SOURCES.md §5.2/§5.3.
+WHY IT MUST RUN: the API keeps answering for ids the map has dropped and never lists new ones,
+so a stale list loses coverage silently — on 2026-10-19 44 live areas had gone unarchived for
+weeks while every run was green. See DATA_SOURCES.md §5.3/§5.7.
 
-Usage:  python tools/enumerate_area_ids.py
+UNATTENDED SAFETY: it refuses to write (exit 1, old list kept) if the tile looks wrong or the
+new list is much smaller than the current one, so a source-side change can never shrink the
+archive's coverage without a human looking.
+
+Usage:  python tools/enumerate_area_ids.py            # refresh data/area_ids.json
+        python tools/enumerate_area_ids.py --dry-run  # fetch + validate, write nothing
 """
 from __future__ import annotations
 
+import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -27,12 +36,37 @@ from pathlib import Path
 import httpx
 
 # The z0 tile contains every feature of every layer (minzoom 0), so one request enumerates
-# everything. Tileset id + key are read from the live app config at
-# GET /capaciteitskaart/totaal/afname.data (field CAPACITEITSKAART_TILES_URL).
+# everything. The tileset id + key are read from the live app config
+# (GET /capaciteitskaart/totaal/afname.data, field CAPACITEITSKAART_TILES_URL) so that if
+# Netbeheer republishes to a new tileset we follow it instead of reading a stale one. The
+# constants below are only a fallback for when the config can't be read.
 TILESET_ID = "105ba28a-afb8-4232-ac3d-0b40bf3fc76c"
-MAPTILER_KEY = "LsAKfag3t3bTv3H1zlTP"  # Netbeheer's public client key — manual bootstrap use only
-TILE_URL = f"https://api.maptiler.com/tiles/{TILESET_ID}/0/0/0.pbf?key={MAPTILER_KEY}"
-CONFIG_URL = "https://data.partnersinenergie.nl/capaciteitskaart/totaal/afname.data"
+MAPTILER_KEY = "LsAKfag3t3bTv3H1zlTP"  # Netbeheer's public client key — 1 request/month only
+# The page HTML embeds the client config; the React-Router `.data` route was the original source
+# but started answering 202 with a 149-byte body (2026-10-19), so it is only a second try.
+CONFIG_URLS = ("https://data.partnersinenergie.nl/capaciteitskaart/totaal/afname",
+               "https://data.partnersinenergie.nl/capaciteitskaart/totaal/afname.data")
+_TILES_URL_RE = re.compile(r"https://api\.maptiler\.com/tiles/([0-9a-fA-F-]{20,})/tiles\.json\?key=([A-Za-z0-9]+)")
+
+# Unattended guards.
+MIN_AREAS = 150          # the map has had ~300; far fewer means the tile/layers changed shape
+MAX_SHRINK = 0.20        # refuse a refresh that drops more than 20% of the current list
+
+
+def tiles_from_config(text: str) -> tuple[str, str] | None:
+    """Extract (tileset_id, key) from the app's .data config text, or None."""
+    m = _TILES_URL_RE.search(text or "")
+    return (m.group(1), m.group(2)) if m else None
+
+
+def check_refresh(old_total: int | None, new_total: int) -> str | None:
+    """Return an error message if the new list must not replace the current one, else None."""
+    if new_total < MIN_AREAS:
+        return f"only {new_total} areas (< {MIN_AREAS}); tile or layer names probably changed"
+    if old_total and new_total < old_total * (1 - MAX_SHRINK):
+        return (f"list would shrink {old_total} -> {new_total} "
+                f"(> {int(MAX_SHRINK * 100)}%); refusing without human review")
+    return None
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OUT = DATA_DIR / "area_ids.json"
@@ -165,17 +199,37 @@ def decode_layers(tile: bytes) -> dict[str, list[dict]]:
     return layers
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description="refresh data/area_ids.json from the map tiles")
+    ap.add_argument("--dry-run", action="store_true", help="fetch and validate, write nothing")
+    args = ap.parse_args(argv)
+
     # NOTE: Netbeheer's MapTiler key is domain-restricted (Referer-locked to their site);
-    # off-site requests get 403 "Key usage restricted". We send the Referer so this bootstrap
-    # works, and precisely because the key is not meant for off-site use we keep this a rare,
-    # manual, ~monthly step — never in the daily cron. See DATA_SOURCES.md §4/§5.2.
+    # off-site requests get 403 "Key usage restricted". We send the Referer so this works, and
+    # precisely because the key is not meant for off-site use we make ONE tile request a month.
+    # See DATA_SOURCES.md §4/§5.2.
     ua = {
-        "User-Agent": "gridwatch-nl enumerate (contact: jeremy-graft@users.noreply.github.com)",
+        "User-Agent": "gridwatch-nl enumerate (contact: jeremy-graft@users.noreply.github.com; "
+                      "+https://github.com/jeremy-graft/gridwatch-nl)",
         "Referer": "https://data.partnersinenergie.nl/",
     }
     with httpx.Client(timeout=30, headers=ua, follow_redirects=True) as c:
-        tile = c.get(TILE_URL).content
+        tileset_id, key, tiles_source = TILESET_ID, MAPTILER_KEY, "fallback constants"
+        for url in CONFIG_URLS:
+            try:
+                found = tiles_from_config(c.get(url).text)
+            except httpx.HTTPError as e:
+                print(f"warning: could not read {url} ({e})", file=sys.stderr)
+                continue
+            if found:
+                tileset_id, key = found
+                tiles_source = f"live app config ({url.rsplit('/', 1)[-1]})"
+                break
+        else:
+            print("warning: no tileset URL in the app config; using fallback constants", file=sys.stderr)
+        if tileset_id != TILESET_ID:
+            print(f"note: tileset changed {TILESET_ID} -> {tileset_id} (following the live config)")
+        tile = c.get(f"https://api.maptiler.com/tiles/{tileset_id}/0/0/0.pbf?key={key}").content
     if len(tile) < 1000:
         print(f"ERROR: tile suspiciously small ({len(tile)} bytes)", file=sys.stderr)
         return 1
@@ -210,11 +264,34 @@ def main() -> int:
         "tools/enumerate_area_ids.py from the MapTiler z0 vector tile. "
         "The daily archiver (fetch.py) reads this and never touches MapTiler.",
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source_tile": f"https://api.maptiler.com/tiles/{TILESET_ID}/0/0/0.pbf",
+        "source_tile": f"https://api.maptiler.com/tiles/{tileset_id}/0/0/0.pbf",
+        "tileset_source": tiles_source,
         "total": len(area_list),
         "by_operator": dict(sorted(by_op.items())),
         "areas": area_list,
     }
+    old_total = None
+    if OUT.exists():
+        try:
+            old_total = json.loads(OUT.read_text(encoding="utf-8")).get("total")
+        except (ValueError, OSError):
+            old_total = None
+    err = check_refresh(old_total, len(area_list))
+    if err:
+        print(f"ERROR: {err}. Kept the existing {OUT.name}.", file=sys.stderr)
+        return 1
+    old_ids = set()
+    if OUT.exists():
+        try:
+            old_ids = {a["id"] for a in json.loads(OUT.read_text(encoding="utf-8"))["areas"]}
+        except (ValueError, OSError, KeyError):
+            pass
+    new_ids = {a["id"] for a in area_list}
+    print(f"{len(area_list)} areas from tileset {tileset_id} ({tiles_source}); "
+          f"vs current list: +{len(new_ids - old_ids)} added, -{len(old_ids - new_ids)} removed")
+    if args.dry_run:
+        print("dry run: nothing written")
+        return 0
     DATA_DIR.mkdir(exist_ok=True)
     OUT.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False) + "\n",

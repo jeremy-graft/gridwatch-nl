@@ -30,7 +30,7 @@ the source's Cloudflare challenging the runner — near zero.
 gridwatch-nl/
   fetch.py                     # the ONLY script that touches the network for the daily job
   tools/
-    enumerate_area_ids.py      # manual/monthly: rebuild data/area_ids.json from the map tiles
+    enumerate_area_ids.py      # rebuild data/area_ids.json from the map tiles (auto on the 1st; or by hand)
   data/
     area_ids.json              # the 301 area ids + operator/province (input to fetch.py)
     manifests.json             # archived /api/manifests (per-operator update timestamps)
@@ -48,7 +48,7 @@ gridwatch-nl/
   SAMENVATTING.md              # one-page Dutch summary, generated from the same numbers
   backfill/                    # one-off 2023-24 colour history from the Internet Archive (see its README)
   .github/workflows/
-    daily.yml                  # cron 05:00 UTC + manual; commits changes; alerts on failure
+    daily.yml                  # cron 05:00 UTC + manual; refreshes the area list on the 1st; commits; alerts on failure
     heartbeat.yml              # Mon/Thu: alert if no snapshot in 48h (catches a silently-stopped cron)
     report.yml                 # weekly: regenerate REPORT.md + SAMENVATTING.md from git history
     test.yml                   # offline regression tests on every push
@@ -59,7 +59,8 @@ gridwatch-nl/
 ```bash
 pip install -r requirements.txt
 
-# one-time (and ~monthly) bootstrap of the area-id list from the map tiles:
+# refresh the area-id list from the map tiles (runs automatically on the 1st of each month;
+# --dry-run validates without writing):
 python tools/enumerate_area_ids.py
 
 # a snapshot (sweeps only if the manifest changed since last run):

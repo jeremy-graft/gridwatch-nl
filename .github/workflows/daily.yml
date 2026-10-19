@@ -11,6 +11,10 @@ on:
         description: "Force a full per-area sweep regardless of manifest change"
         type: boolean
         default: false
+      refresh_areas:
+        description: "Refresh the area list from the map first, then sweep it (normally automatic on the 1st)"
+        type: boolean
+        default: false
 
 concurrency:
   group: snapshot
@@ -31,11 +35,31 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      # Monthly area-list refresh: on the 1st (or on demand), BEFORE the snapshot, so the monthly
+      # backstop sweep in fetch.py covers the fresh list in the same run. Needed because the API
+      # keeps answering for ids the map dropped and never lists new ones (44 areas went
+      # unarchived for weeks before this existed). One MapTiler tile request a month.
+      # A failed refresh never blocks the snapshot: the old list is kept, and the daily monitor
+      # pushes a reminder once the list is more than 35 days old.
+      - name: Refresh area list (monthly)
+        id: areas
+        if: ${{ github.event_name == 'schedule' || inputs.refresh_areas }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(date -u +%d)" = "01" ]; then
+            if python tools/enumerate_area_ids.py; then
+              echo "refreshed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "::warning::Area-list refresh failed; kept the existing list. The snapshot still runs."
+            fi
+          else
+            echo "Not the 1st of the month; no area-list refresh today."
+          fi
+
       - name: Fetch snapshot
         env:
           GRIDWATCH_CONTACT: ${{ secrets.GRIDWATCH_CONTACT }}
         run: |
-          python fetch.py ${{ (github.event_name == 'workflow_dispatch' && inputs.full) && '--full' || '' }}
+          python fetch.py ${{ ((github.event_name == 'workflow_dispatch' && inputs.full) || steps.areas.outputs.refreshed == 'true') && '--full' || '' }}
 
       - name: Commit changes
         run: |

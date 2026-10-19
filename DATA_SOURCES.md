@@ -105,7 +105,7 @@ Tile URL:  `https://api.maptiler.com/tiles/105ba28a-afb8-4232-ac3d-0b40bf3fc76c/
   feature of every layer** — including each area's `id` and `color_code`. That one
   tile is enough to enumerate all area ids and read all congestion statuses.
 - **The key `LsAKfag3t3bTv3H1zlTP` is Netbeheer's, embedded client-side. Under MapTiler
-  ToS it may not be used as our own.** Treat tile access as a rare bootstrap, not a
+  ToS it may not be used as our own.** Treat tile access as a rare (monthly) refresh, not a
   daily automated call. See §4 (Legal) and §5.2.
 
 ### 2.4 The current tileset URL is discoverable at runtime
@@ -311,13 +311,25 @@ Maintain a checked-in `data/area_ids.json` (the 301 ids + each id's operator/pro
 the sweep and the per-operator split need no tile access). Rebuild it:
 - **(A) One tile decode** — fetch `0/0/0.pbf` once, decode the `*_gebied_*` layers, union
   the `id` values (proven: 199 afname + 205 opwek RNB + 17/20 TenneT → 301 unique). Fast
-  and complete, but touches Netbeheer's MapTiler key → keep it a **manual/monthly** step,
-  never in the recurring cron.
+  and complete, but touches Netbeheer's MapTiler key → keep it to **one request a month**
+  (originally manual; automated monthly since 2026-10-19, see below).
 - **(B) Postcode sweep via `find`** — ~4000 one-off `find` calls on Netbeheer's own API,
   deduped. ToS-cleanest, heavy. Fallback only.
 Recommendation: bootstrap + monthly refresh via **(A)**; the id set is near-static, so new
 ids mostly appear alongside a manifest change anyway (re-enumerate when the sweep sees an
 id it doesn't recognise, or monthly, whichever first).
+
+**Update 2026-10-19 — now AUTOMATED (user decision).** The premise above was wrong: the id set is
+*not* near-static (Aug 17: −58/+61; by Oct 19: −53/+44), and a stale list fails **silently** — the
+API keeps answering for ids the map dropped and never lists new ones, so 44 live areas went
+unarchived for weeks with every run green. The refresh now runs **unattended on the 1st of each
+month inside `daily.yml`**, immediately before the monthly backstop sweep, so the new list is swept
+in the same run. MapTiler footprint: **one `0/0/0.pbf` request a month** with Netbeheer's
+Referer-locked key, from a GitHub runner (plus one request to Netbeheer's own page to read the
+current tileset id, so a republished tileset is followed rather than a stale one read).
+Unattended safety: the tool refuses to write if the tile is <1 KB, yields <150 areas, or would
+shrink the list by >20%; a failed refresh never blocks the snapshot, and `_status.json`'s
+`area_list_age_days` makes the daily monitor push a reminder past 35 days.
 
 ### 5.4 Congestion status (`color_code`)
 Lives in the tiles (dissolved into 52/46 same-status regions), **not keyed to area id** —

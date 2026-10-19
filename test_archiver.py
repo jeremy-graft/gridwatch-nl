@@ -323,5 +323,27 @@ def test_committed_area_list_has_a_parseable_generated_at():
     assert fetch.area_list_age_days(doc.get("generated_at")) is not None
 
 
+# ---------------------------------------------------------------------------
+# Area-list refresh guards — this now runs unattended once a month
+# ---------------------------------------------------------------------------
+def test_tiles_from_config_reads_html_and_turbostream_forms():
+    html = ('"BASE_URL":"https://data.partnersinenergie.nl","CAPACITEITSKAART_TILES_URL":'
+            '"https://api.maptiler.com/tiles/105ba28a-afb8-4232-ac3d-0b40bf3fc76c/tiles.json?key=LsAKfag3t3bTv3H1zlTP",')
+    assert enum_ids.tiles_from_config(html) == ("105ba28a-afb8-4232-ac3d-0b40bf3fc76c", "LsAKfag3t3bTv3H1zlTP")
+    ts = '"CAPACITEITSKAART_TILES_URL","https://api.maptiler.com/tiles/aaaabbbb-cccc-dddd-eeee-ffff00001111/tiles.json?key=K3y"]'
+    assert enum_ids.tiles_from_config(ts) == ("aaaabbbb-cccc-dddd-eeee-ffff00001111", "K3y")
+    assert enum_ids.tiles_from_config("") is None
+    assert enum_ids.tiles_from_config("<html>no config here</html>") is None
+
+
+def test_check_refresh_refuses_suspicious_lists():
+    assert enum_ids.check_refresh(305, 296) is None            # normal churn
+    assert enum_ids.check_refresh(305, 340) is None            # growth is fine
+    assert enum_ids.check_refresh(None, 296) is None           # first run
+    assert enum_ids.check_refresh(305, 200) is not None        # >20% shrink
+    assert enum_ids.check_refresh(None, 40) is not None        # layers renamed / empty tile
+    assert enum_ids.check_refresh(305, 0) is not None
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-q"]))
