@@ -1,10 +1,12 @@
-name: monthly report
+name: weekly report
 
 # Regenerates REPORT.md (the Netcongestie Monitor) + parse/report_data.json from the archive's
-# git history. Reads data/ only — never the network. Runs on the 1st, after that day's snapshot.
+# git history. Reads data/ only — never the network. Weekly: the source publishes irregularly
+# (4 days to 4 weeks apart), and a monthly run left the public report up to a month stale.
+# The report is stamped with the data date, so a week without a publication commits nothing.
 on:
   schedule:
-    - cron: "0 7 1 * *"
+    - cron: "0 8 * * 1"   # weekly (Mon); the report only changes when a new publication landed
   workflow_dispatch:
 
 # Same group as the daily snapshot so the two never race on a push.

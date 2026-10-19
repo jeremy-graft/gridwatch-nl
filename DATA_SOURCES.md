@@ -405,16 +405,17 @@ its publish moment even if our snapshot lands days later. Missing days blur *our
 window, not the source's own timestamp.
 
 
-### 5.8 Data-quality quirks — PHASE-2 PARSER REQUIREMENTS (observed 2026-08-20)
+### 5.8 Data-quality quirks — PHASE-2 PARSER REQUIREMENTS (observed 2026-08-20, corrected 2026-10-19)
 
 Per the brief we do **not** correct archived data; these are recorded so the parser handles
 them. Each would silently produce wrong numbers if treated naively.
 
 | quirk | observed | why it breaks things | required handling |
 |---|---|---|---|
-| **`2099` is a "no date" sentinel, not a year** | `EHVO` 2030→2099, `NEDW` 2032→2099 | any mean/median relief year or "years until relief" is wildly skewed | treat `year >= 2090` as **NULL / indefinite**; report it as its own category ("relief date withdrawn"), never as a 70-year slip |
+| **⚠️ `projects[].year` is NOT stable — use `dateString`** (added 2026-10-19, the most important row here) | for ranged projects (`"Tussen 2031 en 2033"`) the source alternates `year` between the window's **start and end** across publications while `dateString` never changes. Of 35 Stedin "year changes" in 3 months, **all 35** had an unchanged `dateString`; Enexis 12 → 3 real; e.g. Oldenzaal was *always* "Tussen 2026 en 2029" (its `year` went 2026→2029→2026→2029) | every project-level "slip", "revert" and per-operator volatility figure computed from `year` is an artifact. This invalidated the Aug–Sept findings "40% of moves revert", "Stedin moves 29% of its dates" and the Oldenzaal/Moerdijk/Eindhoven West/Blerick "slips" | track the **published window** `(start, end, quarter)` parsed from `dateString` (`parse_window` in parse/report.py); fall back to `year` only when `dateString` is empty. Pinned by tests incl. an end-to-end track_series guard |
+| **`2099` is a "no date" sentinel, not a year** | project windows like `"Tussen 2030 en 2099"` (EHVO) = open-ended; NOT a withdrawal unless the end *changes* to 2099. (The Aug claim "EHVO/NEDW withdrawn to 2099" was the `year` artifact: EHVO was open-ended from day one; NEDW's real change was its *start* 2029→2032) | means/medians and "years until relief" are wildly skewed if 2099 is used as a year | treat `>= 2090` as **no end date**; show as `2030–open`; report *withdrawn* only when a real end date is replaced by the sentinel |
 | **projects dated in the past** | 4 rows at 2020, 2022, 2024 | yields negative time-to-relief | clamp/flag as `overdue-or-stale`; never silently negative |
-| **relief dates oscillate** | `MDK` 2032→2028 (07-30) → 2032 (08-11) | a single diff reads as a slip that later reverses; naive alerting would cry wolf | slippage must be a **trend across ≥2 ingest cycles**, not a single diff. Record every move, but only call it slippage when it persists |
+| ~~relief dates oscillate~~ — **retracted 2026-10-19** | the cited `MDK` 2032→2028→2032 was the `year` artifact (MDK was always "Tussen 2028 en 2032"). On the real fields nothing has reverted yet: 0 of 14 area-level moves and 0 of 4 project-window changes | — | the persistence rule (confirmed = held ≥2 publications) is kept as a cheap guard against corrections and publication glitches, but there is no measured revert rate to cite |
 | **`queue*` / capacity are unit-suffixed strings** | `"9.2 MW"`, `"-"` for n/a | string compare / float() both fail | parse to numeric + unit; `-` → NULL. NB `serviceArea.history[]` carries the same measures as **clean floats** — prefer it where present |
 | **`history[]` is forward projections, not history** | years 2026–2036, 253 areas | the name invites treating it as past data | it is a **forecast** series; never merge into the observed time-series |
 | **ids carry stray whitespace** | `"Groningen Oost "` (trailing space) | breaks joins against the tile-derived id list | strip before joining, but keep the raw form as archived |

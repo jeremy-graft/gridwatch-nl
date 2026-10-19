@@ -198,7 +198,7 @@ def test_track_series_excludes_retired_areas_and_keys_by_stable_identity():
              "GONE": {"projects": [{"id": 2, "name": "Q", "gridOperator": "Op", "year": "2030"}]}}
     proj, area = R.track_series([_snap("2026-09-07", areas, live={"A"})])
     assert list(proj) == [("A", "Op", "P")]
-    assert proj[("A", "Op", "P")] == [("2026-09-07", 2029)]
+    assert proj[("A", "Op", "P")] == [("2026-09-07", (2029, 2029, 0))]  # window, from `year` fallback
     assert area[("A", "afname")] == [("2026-09-07", 2029)]
     assert area[("A", "invoeding")] == [("2026-09-07", None)]
 
@@ -305,6 +305,101 @@ def test_render_nl_smoke_and_dutch_formatting():
     assert "28,8%" in md and "43,3%" in md
     assert "Rendo" not in md, "operators with <10 tracked projects are too thin to show"
     assert "| X |" not in md and "`X`" not in md, "retired areas are counted, not listed"
+
+
+# ---------------------------------------------------------------- published delivery window
+@pytest.mark.parametrize("p,exp", [
+    ({"dateString": "Tussen 2031 en 2033", "year": "2033"}, (2031, 2033, 0)),
+    ({"dateString": "Tussen 2031 en 2033", "year": "2031"}, (2031, 2033, 0)),
+    ({"dateString": "2029 - 2030"}, (2029, 2030, 0)),
+    ({"dateString": "2029 - Q4"}, (2029, 2029, 4)),
+    ({"dateString": "2029 - Q2", "year": "2029"}, (2029, 2029, 2)),
+    ({"dateString": "2026"}, (2026, 2026, 0)),
+    ({"dateString": "Tussen 2030 en 2099", "year": "2099"}, (2030, 2099, 0)),
+    ({"dateString": None, "year": "2028"}, (2028, 2028, 0)),   # fallback only without dateString
+    ({"dateString": "", "year": "-"}, None),
+])
+def test_parse_window(p, exp):
+    assert R.parse_window(p) == exp
+
+
+@pytest.mark.parametrize("w,exp", [((2031, 2033, 0), "2031–2033"), ((2029, 2029, 4), "2029 Q4"),
+                                   ((2026, 2026, 0), "2026"), ((2030, 2099, 0), "2030–open"),
+                                   (None, "–"), (2029, "2029")])
+def test_fmt_window(w, exp):
+    assert R.fmt_window(w) == exp
+
+
+def _wseq(*dss):
+    return [(f"2026-0{i+1}-01", R.parse_window({"dateString": d})) for i, d in enumerate(dss)]
+
+
+def test_year_field_toggling_inside_a_fixed_range_is_NOT_a_move():
+    """Regression (2026-10-19): Stedin's `year` alternated 2031/2033/2031 while the published
+    'Tussen 2031 en 2033' never changed. Reading `year`, 35 of 35 Stedin 'moves' were this."""
+    seq = [(f"2026-0{i+1}-01", R.parse_window({"dateString": "Tussen 2031 en 2033", "year": y}))
+           for i, y in enumerate(["2033", "2031", "2033", "2031"])]
+    assert R.classify_window(seq, REF)["status"] == "stable"
+
+
+def test_open_ended_window_is_not_withdrawn():
+    """Eindhoven Oost was 'Tussen 2030 en 2099' from the first publication: open-ended, never
+    withdrawn. The old year-based logic reported it as a withdrawal."""
+    c = R.classify_window(_wseq("Tussen 2030 en 2099", "Tussen 2030 en 2099"), REF)
+    assert c["status"] == "stable" and c["year_s"] == "2030–open"
+
+
+def test_window_start_slip_with_open_end_is_a_slip():
+    """Nederweert: 'Tussen 2029 en 2099' -> 'Tussen 2032 en 2099' (held)."""
+    c = R.classify_window(_wseq("Tussen 2029 en 2099", "Tussen 2032 en 2099", "Tussen 2032 en 2099"), REF)
+    assert c["status"] == "persisted" and c["kind"] == "slip" and c["confirmed"]
+    assert c["delta"] == 3 and c["first_s"] == "2029–open" and c["last_s"] == "2032–open"
+
+
+def test_quarter_shift_within_a_year_is_a_move():
+    """Marnezijl '2029 - Q2' -> '2029 - Q4': invisible to `year`, real to a developer."""
+    c = R.classify_window(_wseq("2029 - Q2", "2029 - Q4"), REF)
+    assert c["status"] == "persisted" and c["kind"] == "slip" and not c["confirmed"]
+    assert c["delta"] == 1  # sub-year shifts round to at least one in the shift's direction
+
+
+def test_window_end_date_removed_is_withdrawn():
+    c = R.classify_window(_wseq("Tussen 2029 en 2031", "Tussen 2029 en 2099"), REF)
+    assert c["status"] == "withdrawn" and c["first_s"] == "2029–2031"
+
+
+def test_window_pull_forward_and_revert():
+    assert R.classify_window(_wseq("2030", "2028", "2028"), REF)["kind"] == "pull"
+    c = R.classify_window(_wseq("Tussen 2031 en 2033", "Tussen 2032 en 2034", "Tussen 2031 en 2033"), REF)
+    assert c["status"] == "reverted" and c["excursion"] == ["2032–2034"]
+
+
+def test_window_delta_uses_end_then_start():
+    assert R.window_delta((2026, 2026, 0), (2030, 2030, 0)) == 4
+    assert R.window_delta((2029, 2099, 0), (2032, 2099, 0)) == 3   # end held, start moved
+    assert R.window_delta((2031, 2033, 0), (2031, 2035, 0)) == 2
+    assert R.window_delta((2030, 2030, 0), (2028, 2028, 0)) == -2
+
+
+def test_summarize_with_window_classifier_reports_this_cycle_windows():
+    tracks = {("A", "Op", "P"): _wseq("2029 - Q2", "2029 - Q2", "2029 - Q4"),
+              ("B", "Op", "Q"): [(f"2026-0{i+1}-01", R.parse_window({"dateString": "Tussen 2031 en 2033",
+                                                                    "year": y}))
+                                 for i, y in enumerate(["2031", "2033", "2031"])]}
+    s = R.summarize_moves(tracks, REF, "2026-03-01", classify=R.classify_window)
+    assert s["counts"] == {"unconfirmed_slip": 1, "stable": 1}
+    assert s["this_cycle"] == [(("A", "Op", "P"), (2029, 2029, 2), (2029, 2029, 4))]
+
+
+def test_track_series_uses_published_window_not_year_field():
+    """End-to-end guard: two publications where only the unstable `year` field differs must
+    produce identical project values (so no move is ever detected)."""
+    def snap(ingest, y):
+        return _snap(ingest, {"CM00": {"projects": [{"name": "P", "gridOperator": "Stedin",
+                                                     "dateString": "Tussen 2031 en 2033", "year": y}]}})
+    proj, _ = R.track_series([snap("2026-09-07", "2031"), snap("2026-10-08", "2033")])
+    (_, a), (_, b) = proj[("CM00", "Stedin", "P")]
+    assert a == b == (2031, 2033, 0)
 
 
 if __name__ == "__main__":

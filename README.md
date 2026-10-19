@@ -50,7 +50,7 @@ gridwatch-nl/
   .github/workflows/
     daily.yml                  # cron 05:00 UTC + manual; commits changes; alerts on failure
     heartbeat.yml              # Mon/Thu: alert if no snapshot in 48h (catches a silently-stopped cron)
-    report.yml                 # 1st of month: regenerate REPORT.md from git history
+    report.yml                 # weekly: regenerate REPORT.md + SAMENVATTING.md from git history
     test.yml                   # offline regression tests on every push
 ```
 
@@ -91,13 +91,14 @@ last-commit date and pings you only if it's stale or failed. (Set up separately 
 
 ## The report — `REPORT.md`
 
-Once a month `parse/report.py` reads the archive's git history and writes the
+Every week `parse/report.py` reads the archive's git history and writes the
 **[Netcongestie Monitor](REPORT.md)**: national queue trend, relief-date moves, and how reliable
 each operator's published dates have been. Its one design rule matters more than anything else:
 
 > A relief-date move is only called **slippage** once it has held for two consecutive source
-> publications. Roughly 40% of observed moves revert, so a single-publication move is reported
-> as *unconfirmed*, never as a slip.
+> publications; a single-publication move is reported as *unconfirmed*. Project dates are compared
+> on the **published delivery window** (`dateString`), never on the source's `year` field, which
+> alternates between a window's start and end without anything changing.
 
 It also keeps a **promise ledger**: every area that the source promised would be relieved in 2026,
 as of the archive's first publication, and what it says now. The source map only ever shows the
@@ -113,8 +114,7 @@ locally with `python parse/report.py` (needs full git history).
 - **Phase 0 — discovery & legality:** ✅ done. GO decision in [DATA_SOURCES.md](DATA_SOURCES.md).
 - **Phase 1 — the archiver:** ✅ live since 2026-07-29.
 - **Phase 2 — analysis layer:** ✅ `parse/report.py` + monthly `REPORT.md`. (Reframed from the
-  original "Postgres + change list": a DB is deferred until there is a live consumer, and a plain
-  change list would be ~40% false alarms — see the persistence rule above.)
+  original "Postgres + change list": a DB is deferred until there is a live consumer.)
 - **Phase 3 — anything public-facing:** not started; gated on ≥3 months of history and a
   conversation with a potential user.
 ## Notes
