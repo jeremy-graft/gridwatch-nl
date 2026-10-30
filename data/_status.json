@@ -1,6 +1,6 @@
 {
   "api_up": true,
-  "area_list_age_days": 9,
+  "area_list_age_days": 10,
   "area_list_generated_at": "2026-10-19T11:58:19Z",
   "areas_expected": 296,
   "areas_failed": 0,
@@ -11,7 +11,7 @@
   "missing": [],
   "ok": true,
   "per_bucket": {},
-  "run_at": "2026-10-29T11:11:19Z",
+  "run_at": "2026-10-30T11:06:06Z",
   "sweep_reason": null,
   "swept": false
 }
