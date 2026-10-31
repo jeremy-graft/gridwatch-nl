@@ -5099,13 +5099,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Eindhoven West",
-        "projectPhase": "scheduled",
+        "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2030"
+        "year": "2027"
       },
       {
         "dateString": "2026",
@@ -9015,13 +9015,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Hoogeveen",
-        "projectPhase": "inProgress",
+        "projectPhase": "approved",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2027"
+        "year": "2022"
       },
       {
         "dateString": "2028-afname 2030-opwek",
@@ -14496,13 +14496,13 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Oldenzaal",
-        "projectPhase": "inProgress",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,
         "source": "Laatste inzichten",
         "startDate": null,
-        "year": "2026"
+        "year": "2029"
       },
       {
         "dateString": "2034 - 2037",
@@ -18313,7 +18313,7 @@
         "gridOperator": "Enexis",
         "gridOperatorType": "RNB",
         "name": "Extra capaciteit op Uden",
-        "projectPhase": "approved",
+        "projectPhase": "scheduled",
         "projectUrl": null,
         "quarter": "",
         "scheduleDescription": null,

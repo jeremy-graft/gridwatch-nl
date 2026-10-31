@@ -1,17 +1,23 @@
 {
   "api_up": true,
-  "area_list_age_days": 10,
+  "area_list_age_days": 11,
   "area_list_generated_at": "2026-10-19T11:58:19Z",
   "areas_expected": 296,
   "areas_failed": 0,
   "areas_missing": 0,
-  "areas_ok": 0,
+  "areas_ok": 296,
   "failures": [],
-  "manifest_changed": false,
+  "manifest_changed": true,
   "missing": [],
   "ok": true,
-  "per_bucket": {},
-  "run_at": "2026-10-30T11:06:06Z",
-  "sweep_reason": null,
-  "swept": false
+  "per_bucket": {
+    "enexis": 112,
+    "liander": 172,
+    "other": 2,
+    "stedin": 80,
+    "tennet": 24
+  },
+  "run_at": "2026-10-31T10:40:00Z",
+  "sweep_reason": "manifest changed",
+  "swept": true
 }
