@@ -27,7 +27,7 @@
         ],
         "kind": "slip",
         "last": 2036,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -42,7 +42,22 @@
         ],
         "kind": "slip",
         "last": 2027,
-        "n": 8,
+        "n": 9,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-10-19",
+        "confirmed": true,
+        "delta": -1,
+        "first": 2027,
+        "key": [
+          "OS EDAM 10-2i",
+          "afname"
+        ],
+        "kind": "pull",
+        "last": 2026,
+        "n": 5,
         "past_dated": false,
         "status": "persisted"
       },
@@ -57,7 +72,7 @@
         ],
         "kind": "pull",
         "last": 2027,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -72,7 +87,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -87,7 +102,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -102,7 +117,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -117,7 +132,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -132,7 +147,7 @@
         ],
         "kind": "slip",
         "last": 2035,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -147,7 +162,7 @@
         ],
         "kind": "slip",
         "last": 2029,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -162,7 +177,7 @@
         ],
         "kind": "slip",
         "last": 2033,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -177,7 +192,7 @@
         ],
         "kind": "slip",
         "last": 2028,
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -198,44 +213,67 @@
       }
     ],
     "counts": {
-      "confirmed_pull": 6,
+      "confirmed_pull": 7,
       "confirmed_slip": 7,
       "dropped_after_move": 1,
-      "insufficient": 383,
-      "stable": 380,
-      "unconfirmed_pull": 1
+      "insufficient": 398,
+      "stable": 393,
+      "unconfirmed_slip": 2
     },
     "reverted": [],
     "this_cycle": [
       {
         "key": [
-          "OS EDAM 10-2i",
+          "OS HOOFDDORP 10-2i",
           "afname"
         ],
-        "now": 2026,
-        "was": 2027
+        "now": 2038,
+        "was": 2032
+      },
+      {
+        "key": [
+          "CM79",
+          "afname"
+        ],
+        "now": 2033,
+        "was": 2031
       }
     ],
     "unconfirmed": [
       {
-        "changed_at": "2026-10-19",
+        "changed_at": "2026-10-30",
         "confirmed": false,
-        "delta": -1,
-        "first": 2027,
+        "delta": 6,
+        "first": 2032,
         "key": [
-          "OS EDAM 10-2i",
+          "OS HOOFDDORP 10-2i",
           "afname"
         ],
-        "kind": "pull",
-        "last": 2026,
+        "kind": "slip",
+        "last": 2038,
         "n": 4,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-10-30",
+        "confirmed": false,
+        "delta": 2,
+        "first": 2031,
+        "key": [
+          "CM79",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "withdrawn": []
   },
-  "generated": "2026-10-19",
+  "generated": "2026-10-30",
   "inventory_changes": [
     {
       "added": 61,
@@ -302,42 +340,75 @@
         "HGLB",
         "HTW"
       ]
+    },
+    {
+      "added": 45,
+      "added_ids": [
+        "BEEK",
+        "BLER",
+        "CM09",
+        "CM32",
+        "CM35/72",
+        "CM52",
+        "CM66",
+        "ESDW",
+        "GNBH",
+        "HGLB",
+        "HTW",
+        "OS 'S-GRAVELAND 10-1i"
+      ],
+      "ingest": "2026-10-30",
+      "retired": 44,
+      "retired_ids": [
+        "BXT",
+        "CM10",
+        "CM11",
+        "CM13",
+        "CM14",
+        "CM20",
+        "CM29/45",
+        "CM31",
+        "CM40",
+        "CM47",
+        "CM51",
+        "CM58"
+      ]
     }
   ],
   "latest_like_for_like": {
     "areas": 251,
-    "from": "2026-10-12",
+    "from": "2026-10-19",
     "regional": {
       "after": {
-        "queue_injection_mw": 4835,
-        "queue_withdrawal_mw": 5286,
-        "requests_injection": 6870,
-        "requests_withdrawal": 10422
+        "queue_injection_mw": 4920,
+        "queue_withdrawal_mw": 5184,
+        "requests_injection": 6891,
+        "requests_withdrawal": 13191
       },
-      "areas": 231,
+      "areas": 229,
       "before": {
-        "queue_injection_mw": 4835,
-        "queue_withdrawal_mw": 5286,
-        "requests_injection": 6870,
-        "requests_withdrawal": 10422
+        "queue_injection_mw": 4907,
+        "queue_withdrawal_mw": 5297,
+        "requests_injection": 6776,
+        "requests_withdrawal": 10277
       }
     },
     "tennet": {
       "after": {
         "queue_injection_mw": 6038,
-        "queue_withdrawal_mw": 8360,
+        "queue_withdrawal_mw": 8560,
         "requests_injection": 32,
         "requests_withdrawal": 75
       },
-      "areas": 20,
+      "areas": 22,
       "before": {
-        "queue_injection_mw": 9842,
-        "queue_withdrawal_mw": 14209,
-        "requests_injection": 49,
-        "requests_withdrawal": 110
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8560,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
       }
     },
-    "to": "2026-10-19"
+    "to": "2026-10-30"
   },
   "project_relief": {
     "confirmed": [
@@ -363,7 +434,7 @@
           4
         ],
         "last_s": "2029 Q4",
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -389,7 +460,7 @@
           0
         ],
         "last_s": "2030",
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -415,7 +486,7 @@
           0
         ],
         "last_s": "2029",
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       },
@@ -441,15 +512,15 @@
           0
         ],
         "last_s": "2032–open",
-        "n": 8,
+        "n": 9,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "counts": {
       "confirmed_slip": 4,
-      "insufficient": 484,
-      "stable": 6156
+      "insufficient": 612,
+      "stable": 6341
     },
     "reverted": [],
     "this_cycle": [],
@@ -459,8 +530,8 @@
   "promise_ledgers": [
     {
       "counts": {
-        "kept": 66,
-        "retired": 13,
+        "kept": 64,
+        "retired": 15,
         "slipped": 4
       },
       "rows": [
@@ -511,24 +582,6 @@
         },
         {
           "key": [
-            "BEEK",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "BLER",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
             "CM08",
             "invoeding"
           ],
@@ -547,7 +600,25 @@
         },
         {
           "key": [
+            "DDV",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
             "ESDH",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "GNHK",
             "invoeding"
           ],
           "now": 2026,
@@ -566,6 +637,33 @@
         {
           "key": [
             "HUSK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "ISM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "LIMM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "retired"
+        },
+        {
+          "key": [
+            "LIMM",
             "invoeding"
           ],
           "now": 2026,
@@ -610,15 +708,6 @@
         },
         {
           "key": [
-            "WVV",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
             "AMLM",
             "invoeding"
           ],
@@ -629,6 +718,15 @@
         {
           "key": [
             "BD",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BEEK",
             "invoeding"
           ],
           "now": 2026,
@@ -656,6 +754,15 @@
         {
           "key": [
             "BL",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "BLER",
             "invoeding"
           ],
           "now": 2026,
@@ -692,15 +799,6 @@
         {
           "key": [
             "CVD",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
-            "DDV",
             "afname"
           ],
           "now": 2026,
@@ -835,15 +933,6 @@
         },
         {
           "key": [
-            "GNHK",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
             "GNHU",
             "afname"
           ],
@@ -916,15 +1005,6 @@
         },
         {
           "key": [
-            "ISM",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
             "KWD",
             "invoeding"
           ],
@@ -936,24 +1016,6 @@
           "key": [
             "KZVZ",
             "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
-            "LIMM",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "kept"
-        },
-        {
-          "key": [
-            "LIMM",
-            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -1204,6 +1266,15 @@
         },
         {
           "key": [
+            "WVV",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "ZS",
             "afname"
           ],
@@ -1261,10 +1332,16 @@
       "sha": "c1d7e98"
     },
     {
-      "captured": "2026-10-26",
+      "captured": "2026-10-30",
       "ingest": "2026-10-19",
       "live_areas": 295,
-      "sha": "b2d8298"
+      "sha": "55d965a"
+    },
+    {
+      "captured": "2026-11-02",
+      "ingest": "2026-10-30",
+      "live_areas": 296,
+      "sha": "6941f7e"
     }
   ],
   "queue_trend": [
@@ -1451,6 +1528,29 @@
         "requests_injection": 32,
         "requests_withdrawal": 75
       }
+    },
+    {
+      "areas_with_withdrawal_queue": 270,
+      "ingest": "2026-10-30",
+      "live_areas": 297,
+      "queue_injection_mw": 11230,
+      "queue_withdrawal_mw": 14252,
+      "regional": {
+        "areas": 274,
+        "queue_injection_mw": 5192,
+        "queue_withdrawal_mw": 5692,
+        "requests_injection": 7414,
+        "requests_withdrawal": 15046
+      },
+      "requests_injection": 7446,
+      "requests_withdrawal": 15121,
+      "tennet": {
+        "areas": 23,
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8560,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
+      }
     }
   ],
   "reliability_by_operator": [
@@ -1470,7 +1570,7 @@
       "operator": "Liander",
       "reverted": 0,
       "reverted_pct_of_moved": 0.0,
-      "tracked": 125
+      "tracked": 126
     },
     {
       "confirmed": 0,
@@ -1479,7 +1579,7 @@
       "operator": "TenneT",
       "reverted": 0,
       "reverted_pct_of_moved": null,
-      "tracked": 5817
+      "tracked": 5824
     },
     {
       "confirmed": 0,
