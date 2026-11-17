@@ -171,9 +171,9 @@ def test_fingerprint_changes_when_pipeline_id_changes():
 
 
 def test_fingerprint_triggers_on_pipeline_rerun_even_if_updatedAt_frozen():
-    """Measured 2026-07-30: the ingest pipeline re-ran and 62 real changes landed (relief
-    years moved) while every per-operator updatedAt stayed frozen. Triggering on updatedAt
-    alone would have missed them, so a new dataUpdate id MUST still force a sweep."""
+    """A new pipeline run (dataUpdate id) forces a sweep even if no per-operator stamp moved —
+    the conservative choice. (The July 'stamps frozen during real changes' rationale for this
+    was the projects[].year artifact; the stamps proved reliable on re-test. Behaviour kept.)"""
     old = fetch.manifest_fingerprint(_manifest("run-A", BASE_UPDATES))
     new = fetch.manifest_fingerprint(_manifest("run-B", BASE_UPDATES))  # same updatedAt values
     assert new != old, "a pipeline re-run must trigger a sweep even with frozen updatedAt"
@@ -337,12 +337,20 @@ def test_tiles_from_config_reads_html_and_turbostream_forms():
 
 
 def test_check_refresh_refuses_suspicious_lists():
-    assert enum_ids.check_refresh(305, 296) is None            # normal churn
-    assert enum_ids.check_refresh(305, 340) is None            # growth is fine
-    assert enum_ids.check_refresh(None, 296) is None           # first run
-    assert enum_ids.check_refresh(305, 200) is not None        # >20% shrink
-    assert enum_ids.check_refresh(None, 40) is not None        # layers renamed / empty tile
-    assert enum_ids.check_refresh(305, 0) is not None
+    assert enum_ids.check_refresh(590, 588) is None            # a real retirement or two
+    assert enum_ids.check_refresh(297, 590) is None            # growth is fine (the z0 -> z7 switch)
+    assert enum_ids.check_refresh(None, 590) is None           # first run
+    assert enum_ids.check_refresh(590, 450) is not None        # >20% shrink
+    assert enum_ids.check_refresh(None, 303) is not None       # a z0-sized list: tiles/zoom regressed
+    assert enum_ids.check_refresh(590, 0) is not None
+
+
+def test_tile_range_covers_nl_with_4_zoom7_tiles():
+    """z7 over the NL bbox is 4 tiles and matched z8 exactly (590 ids) on 2026-11-17."""
+    tiles = enum_ids.tile_range(7)
+    assert len(tiles) == 4 and enum_ids.ZOOM == 7
+    assert enum_ids.tile_range(0) == [(0, 0)]
+    assert len(enum_ids.tile_range(8)) == 16
 
 
 if __name__ == "__main__":

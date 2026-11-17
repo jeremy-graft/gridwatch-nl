@@ -21,7 +21,8 @@ manifest-driven:
 
 - **Every day (~2 requests):** check `/api/status`, archive `/api/manifests`. Cheap.
 - **Only when the manifest changes** (or `--full`, or the monthly backstop): sweep all
-  ~301 service areas via `POST /api/serviceArea/get` and archive the raw detail per operator.
+  ~590 service areas via `POST /api/serviceArea/get` and archive the raw detail per operator.
+  (Until 2026-11-17 the area list held only ~300 of them — see DATA_SOURCES.md, corrections.)
 
 This captures every change with its official date while keeping daily load — and the risk of
 the source's Cloudflare challenging the runner — near zero.
@@ -32,7 +33,7 @@ gridwatch-nl/
   tools/
     enumerate_area_ids.py      # rebuild data/area_ids.json from the map tiles (auto on the 1st; or by hand)
   data/
-    area_ids.json              # the 301 area ids + operator/province (input to fetch.py)
+    area_ids.json              # the ~590 area ids + operator/province (input to fetch.py)
     manifests.json             # archived /api/manifests (per-operator update timestamps)
     serviceareas/
       liander.json             # raw serviceArea detail, keyed by id, per operator

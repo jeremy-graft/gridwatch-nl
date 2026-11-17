@@ -10,7 +10,7 @@ appears in.
 WHY THIS IS SEPARATE FROM fetch.py:
   The area geometry+ids live only in MapTiler-hosted vector tiles, fetched with a key that
   belongs to Netbeheer's MapTiler account. MapTiler's ToS forbids using another party's key
-  as your own, so we touch it as rarely as possible: ONE tile request a month (plus one request
+  as your own, so we touch it as rarely as possible: the 4 zoom-7 tiles covering NL, once a month (plus one request
   to Netbeheer's own app config to find the current tileset). fetch.py never touches MapTiler.
 
 WHY IT MUST RUN: the API keeps answering for ids the map has dropped and never lists new ones,
@@ -35,8 +35,15 @@ from pathlib import Path
 
 import httpx
 
-# The z0 tile contains every feature of every layer (minzoom 0), so one request enumerates
-# everything. The tileset id + key are read from the live app config
+# Areas are read from the tiles at ZOOM covering the Netherlands, NOT from the single z0 tile.
+# MEASURED 2026-11-17: z0 (whole world in one 4096-unit tile, ~10 km per unit) silently drops
+# about half the areas — small urban ones become sub-pixel and the generalizer discards them,
+# and WHICH ones get dropped changes with each tileset rebuild. z0 gave 303 ids; z6 587;
+# z7 590; z8 590 (16 tiles). So z7 (4 tiles) is complete. Every "inventory reorganisation" the
+# project reported while reading z0 (Aug: -58/+61, Oct: -53/+44, Nov: -44/+45) was this artifact,
+# and the archive covered only ~half the map until 2026-11-17.
+#
+# The tileset id + key are read from the live app config
 # (GET /capaciteitskaart/totaal/afname.data, field CAPACITEITSKAART_TILES_URL) so that if
 # Netbeheer republishes to a new tileset we follow it instead of reading a stale one. The
 # constants below are only a fallback for when the config can't be read.
@@ -49,8 +56,24 @@ CONFIG_URLS = ("https://data.partnersinenergie.nl/capaciteitskaart/totaal/afname
 _TILES_URL_RE = re.compile(r"https://api\.maptiler\.com/tiles/([0-9a-fA-F-]{20,})/tiles\.json\?key=([A-Za-z0-9]+)")
 
 # Unattended guards.
-MIN_AREAS = 150          # the map has had ~300; far fewer means the tile/layers changed shape
+ZOOM = 7                 # complete (equals z8); 4 tiles over the NL bounding box
+NL_BBOX = (3.358, 50.750, 7.227, 53.517)   # W, S, E, N — from the tileset's TileJSON bounds
+MIN_AREAS = 400          # the map has ~590 areas; far fewer means tiles/layers changed shape
 MAX_SHRINK = 0.20        # refuse a refresh that drops more than 20% of the current list
+
+
+def tile_range(z: int, bbox=NL_BBOX) -> list[tuple[int, int]]:
+    """All (x, y) slippy-map tiles at zoom z covering bbox (W, S, E, N)."""
+    import math
+    w, s_, e, n = bbox
+
+    def xy(lon, lat):
+        k = 2 ** z
+        return (int((lon + 180) / 360 * k),
+                int((1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2 * k))
+    x0, y0 = xy(w, n)
+    x1, y1 = xy(e, s_)
+    return [(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)]
 
 
 def tiles_from_config(text: str) -> tuple[str, str] | None:
@@ -206,7 +229,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # NOTE: Netbeheer's MapTiler key is domain-restricted (Referer-locked to their site);
     # off-site requests get 403 "Key usage restricted". We send the Referer so this works, and
-    # precisely because the key is not meant for off-site use we make ONE tile request a month.
+    # precisely because the key is not meant for off-site use we fetch only the 4 zoom-7 tiles covering NL, once a month.
     # See DATA_SOURCES.md §4/§5.2.
     ua = {
         "User-Agent": "gridwatch-nl enumerate (contact: jeremy-graft@users.noreply.github.com; "
@@ -229,12 +252,17 @@ def main(argv: list[str] | None = None) -> int:
             print("warning: no tileset URL in the app config; using fallback constants", file=sys.stderr)
         if tileset_id != TILESET_ID:
             print(f"note: tileset changed {TILESET_ID} -> {tileset_id} (following the live config)")
-        tile = c.get(f"https://api.maptiler.com/tiles/{tileset_id}/0/0/0.pbf?key={key}").content
-    if len(tile) < 1000:
-        print(f"ERROR: tile suspiciously small ({len(tile)} bytes)", file=sys.stderr)
-        return 1
-
-    layers = decode_layers(tile)
+        # Every tile must arrive intact: a partial union would silently drop areas.
+        layers: dict[str, list] = {}
+        tiles = tile_range(ZOOM)
+        for x, y in tiles:
+            r = c.get(f"https://api.maptiler.com/tiles/{tileset_id}/{ZOOM}/{x}/{y}.pbf?key={key}")
+            if r.status_code != 200 or len(r.content) < 1000:
+                print(f"ERROR: tile {ZOOM}/{x}/{y} failed ({r.status_code}, {len(r.content)} bytes); "
+                      "refusing a partial area list", file=sys.stderr)
+                return 1
+            for name, feats in decode_layers(r.content).items():
+                layers.setdefault(name, []).extend(feats)
     areas: dict[str, dict] = {}
     for layer, (op_const, direction) in GEBIED_LAYERS.items():
         for p in layers.get(layer, []):
@@ -261,10 +289,12 @@ def main(argv: list[str] | None = None) -> int:
 
     payload = {
         "_comment": "Service-area id list for the capaciteitskaart. Generated by "
-        "tools/enumerate_area_ids.py from the MapTiler z0 vector tile. "
+        f"tools/enumerate_area_ids.py from the MapTiler z{ZOOM} vector tiles covering NL. "
         "The daily archiver (fetch.py) reads this and never touches MapTiler.",
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source_tile": f"https://api.maptiler.com/tiles/{tileset_id}/0/0/0.pbf",
+        "source_tiles": f"https://api.maptiler.com/tiles/{tileset_id}/{ZOOM}/{{x}}/{{y}}.pbf",
+        "zoom": ZOOM,
+        "tile_count": len(tiles),
         "tileset_source": tiles_source,
         "total": len(area_list),
         "by_operator": dict(sorted(by_op.items())),

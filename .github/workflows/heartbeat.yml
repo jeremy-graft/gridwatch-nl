@@ -5,7 +5,7 @@ name: heartbeat
 # broken cron). Runs a few times a week and alerts if the newest snapshot commit is stale.
 on:
   schedule:
-    - cron: "0 9 * * 1,4"   # Mon & Thu 09:00 UTC
+    - cron: "41 9 * * 1,4"   # Mon & Thu, off the hour
   workflow_dispatch:
 
 permissions:

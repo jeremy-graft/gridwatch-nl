@@ -12,7 +12,7 @@
         ],
         "kind": "slip",
         "last": 2035,
-        "n": 7,
+        "n": 8,
         "past_dated": false,
         "status": "persisted"
       },
@@ -27,7 +27,7 @@
         ],
         "kind": "slip",
         "last": 2036,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -42,7 +42,7 @@
         ],
         "kind": "slip",
         "last": 2027,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -57,6 +57,21 @@
         ],
         "kind": "pull",
         "last": 2026,
+        "n": 6,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-10-30",
+        "confirmed": true,
+        "delta": 6,
+        "first": 2032,
+        "key": [
+          "OS HOOFDDORP 10-2i",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2038,
         "n": 5,
         "past_dated": false,
         "status": "persisted"
@@ -72,7 +87,7 @@
         ],
         "kind": "pull",
         "last": 2027,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -87,7 +102,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -102,7 +117,7 @@
         ],
         "kind": "pull",
         "last": 2029,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -117,7 +132,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -132,7 +147,7 @@
         ],
         "kind": "pull",
         "last": 2028,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -147,7 +162,7 @@
         ],
         "kind": "slip",
         "last": 2035,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -162,7 +177,22 @@
         ],
         "kind": "slip",
         "last": 2029,
-        "n": 9,
+        "n": 10,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-08-10",
+        "confirmed": true,
+        "delta": 4,
+        "first": 2026,
+        "key": [
+          "ESDH",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2030,
+        "n": 4,
         "past_dated": false,
         "status": "persisted"
       },
@@ -177,7 +207,7 @@
         ],
         "kind": "slip",
         "last": 2033,
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -192,7 +222,22 @@
         ],
         "kind": "slip",
         "last": 2028,
-        "n": 9,
+        "n": 10,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-10-30",
+        "confirmed": true,
+        "delta": 2,
+        "first": 2031,
+        "key": [
+          "CM79",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2033,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -207,190 +252,112 @@
         ],
         "kind": "pull",
         "last": 2030,
-        "n": 4,
+        "n": 5,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "counts": {
       "confirmed_pull": 7,
-      "confirmed_slip": 7,
-      "dropped_after_move": 1,
-      "insufficient": 398,
-      "stable": 393,
-      "unconfirmed_slip": 2
+      "confirmed_slip": 10,
+      "insufficient": 761,
+      "stable": 413,
+      "unconfirmed_slip": 3
     },
     "reverted": [],
     "this_cycle": [
       {
         "key": [
-          "OS HOOFDDORP 10-2i",
+          "OS ENKHUIZEN 10-1i",
           "afname"
         ],
-        "now": 2038,
-        "was": 2032
+        "now": 2034,
+        "was": 2031
       },
       {
         "key": [
-          "CM79",
+          "OS VLIEGENBOS 10-1i",
           "afname"
         ],
-        "now": 2033,
-        "was": 2031
+        "now": 2032,
+        "was": 2027
+      },
+      {
+        "key": [
+          "OS NOORD PAPAVERWEG 10-1i",
+          "afname"
+        ],
+        "now": 2031,
+        "was": 2027
       }
     ],
     "unconfirmed": [
       {
-        "changed_at": "2026-10-30",
+        "changed_at": "2026-11-16",
         "confirmed": false,
-        "delta": 6,
-        "first": 2032,
+        "delta": 3,
+        "first": 2031,
         "key": [
-          "OS HOOFDDORP 10-2i",
+          "OS ENKHUIZEN 10-1i",
           "afname"
         ],
         "kind": "slip",
-        "last": 2038,
+        "last": 2034,
         "n": 4,
         "past_dated": false,
         "status": "persisted"
       },
       {
-        "changed_at": "2026-10-30",
+        "changed_at": "2026-11-16",
         "confirmed": false,
-        "delta": 2,
-        "first": 2031,
+        "delta": 5,
+        "first": 2027,
         "key": [
-          "CM79",
+          "OS VLIEGENBOS 10-1i",
           "afname"
         ],
         "kind": "slip",
-        "last": 2033,
-        "n": 9,
+        "last": 2032,
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-11-16",
+        "confirmed": false,
+        "delta": 4,
+        "first": 2027,
+        "key": [
+          "OS NOORD PAPAVERWEG 10-1i",
+          "afname"
+        ],
+        "kind": "slip",
+        "last": 2031,
+        "n": 7,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "withdrawn": []
   },
-  "generated": "2026-10-30",
-  "inventory_changes": [
-    {
-      "added": 61,
-      "added_ids": [
-        "BORN",
-        "CM23",
-        "CM29/45",
-        "CM35/72",
-        "CM51",
-        "CM56",
-        "CM59",
-        "CM71",
-        "CM76",
-        "EHVN",
-        "ESDW",
-        "GNBH"
-      ],
-      "ingest": "2026-08-17",
-      "retired": 58,
-      "retired_ids": [
-        "Amstelveen",
-        "BEEK",
-        "Bijlmer Noord 10kV totaal",
-        "CM08",
-        "CM10",
-        "CM20",
-        "CM26",
-        "CM31",
-        "CM47",
-        "CM56/78",
-        "CM57",
-        "CM60"
-      ]
-    },
-    {
-      "added": 44,
-      "added_ids": [
-        "AMLU",
-        "Amstelveen Bolwerk 10-1i + 10-2i",
-        "CM10",
-        "CM11",
-        "CM20",
-        "CM31",
-        "CM40",
-        "CM47",
-        "CM49",
-        "CM57",
-        "CM60",
-        "DTO"
-      ],
-      "ingest": "2026-10-19",
-      "retired": 53,
-      "retired_ids": [
-        "BLER",
-        "CM23",
-        "CM35/72",
-        "CM56",
-        "CM59",
-        "CM66",
-        "CM84",
-        "EHVN",
-        "ESDW",
-        "GNBH",
-        "HGLB",
-        "HTW"
-      ]
-    },
-    {
-      "added": 45,
-      "added_ids": [
-        "BEEK",
-        "BLER",
-        "CM09",
-        "CM32",
-        "CM35/72",
-        "CM52",
-        "CM66",
-        "ESDW",
-        "GNBH",
-        "HGLB",
-        "HTW",
-        "OS 'S-GRAVELAND 10-1i"
-      ],
-      "ingest": "2026-10-30",
-      "retired": 44,
-      "retired_ids": [
-        "BXT",
-        "CM10",
-        "CM11",
-        "CM13",
-        "CM14",
-        "CM20",
-        "CM29/45",
-        "CM31",
-        "CM40",
-        "CM47",
-        "CM51",
-        "CM58"
-      ]
-    }
-  ],
+  "generated": "2026-11-16",
+  "inventory_changes": [],
   "latest_like_for_like": {
-    "areas": 251,
-    "from": "2026-10-19",
+    "areas": 295,
+    "from": "2026-10-30",
     "regional": {
       "after": {
-        "queue_injection_mw": 4920,
-        "queue_withdrawal_mw": 5184,
-        "requests_injection": 6891,
-        "requests_withdrawal": 13191
+        "queue_injection_mw": 7610,
+        "queue_withdrawal_mw": 5743,
+        "requests_injection": 7323,
+        "requests_withdrawal": 15117
       },
-      "areas": 229,
+      "areas": 273,
       "before": {
-        "queue_injection_mw": 4907,
-        "queue_withdrawal_mw": 5297,
-        "requests_injection": 6776,
-        "requests_withdrawal": 10277
+        "queue_injection_mw": 5190,
+        "queue_withdrawal_mw": 5688,
+        "requests_injection": 7400,
+        "requests_withdrawal": 15022
       }
     },
     "tennet": {
@@ -408,8 +375,122 @@
         "requests_withdrawal": 75
       }
     },
-    "to": "2026-10-30"
+    "to": "2026-11-16"
   },
+  "operator_freshness": [
+    {
+      "categories": {
+        "ATC": "2026-08-01",
+        "BTC": "2026-08-01",
+        "JC": "2026-08-01",
+        "KI": "2026-08-01",
+        "NU": "2026-08-01",
+        "WR": "2026-08-01"
+      },
+      "days_old": 107,
+      "last_update": "2026-08-01",
+      "oldest_category": "ATC",
+      "oldest_date": "2026-08-01",
+      "operator": "Enexis",
+      "stale": true
+    },
+    {
+      "categories": {
+        "ATC": "2026-10-19",
+        "BTC": "2026-10-19",
+        "JC": "2026-10-19",
+        "KI": "2026-10-19",
+        "NU": "2026-10-19",
+        "WR": "2026-10-19"
+      },
+      "days_old": 28,
+      "last_update": "2026-10-19",
+      "oldest_category": "ATC",
+      "oldest_date": "2026-10-19",
+      "operator": "TenneT",
+      "stale": false
+    },
+    {
+      "categories": {
+        "ATC": "2026-10-30",
+        "BTC": "2026-10-30",
+        "JC": "2026-10-30",
+        "KI": "2026-10-30",
+        "NU": "2026-10-30",
+        "WR": "2026-10-30"
+      },
+      "days_old": 17,
+      "last_update": "2026-10-30",
+      "oldest_category": "ATC",
+      "oldest_date": "2026-10-30",
+      "operator": "Liander",
+      "stale": false
+    },
+    {
+      "categories": {
+        "ATC": "2026-10-30",
+        "BTC": "2026-10-30",
+        "JC": "2026-10-30",
+        "KI": "2026-10-30",
+        "NU": "2026-10-30",
+        "WR": "2026-10-30"
+      },
+      "days_old": 17,
+      "last_update": "2026-10-30",
+      "oldest_category": "ATC",
+      "oldest_date": "2026-10-30",
+      "operator": "Stedin",
+      "stale": false
+    }
+  ],
+  "operator_trends": [
+    {
+      "areas": 116,
+      "breaks": [],
+      "mw_first": 1691,
+      "mw_last": 1912,
+      "operator": "Liander",
+      "requests_first": 3324,
+      "requests_last": 3621
+    },
+    {
+      "areas": 101,
+      "breaks": [],
+      "mw_first": 2840,
+      "mw_last": 3028,
+      "operator": "Enexis",
+      "requests_first": 5985,
+      "requests_last": 6770
+    },
+    {
+      "areas": 55,
+      "breaks": [
+        {
+          "avg_mw_after": 0.22,
+          "avg_mw_before": 1.3,
+          "ingest": "2026-10-30",
+          "mw_after": 805,
+          "mw_before": 917,
+          "requests_after": 3620,
+          "requests_before": 706
+        }
+      ],
+      "mw_first": 994,
+      "mw_last": 883,
+      "operator": "Stedin",
+      "requests_first": 952,
+      "requests_last": 4714
+    },
+    {
+      "areas": 2,
+      "breaks": [],
+      "mw_first": 0,
+      "mw_last": 0,
+      "operator": "Westland",
+      "requests_first": 0,
+      "requests_last": 0
+    }
+  ],
   "project_relief": {
     "confirmed": [
       {
@@ -434,7 +515,7 @@
           4
         ],
         "last_s": "2029 Q4",
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -460,7 +541,7 @@
           0
         ],
         "last_s": "2030",
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -486,7 +567,7 @@
           0
         ],
         "last_s": "2029",
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       },
@@ -512,27 +593,160 @@
           0
         ],
         "last_s": "2032–open",
-        "n": 9,
+        "n": 10,
         "past_dated": false,
         "status": "persisted"
       }
     ],
     "counts": {
       "confirmed_slip": 4,
-      "insufficient": 612,
-      "stable": 6341
+      "insufficient": 3251,
+      "stable": 7018,
+      "unconfirmed_pull": 1,
+      "unconfirmed_slip": 2
     },
     "reverted": [],
-    "this_cycle": [],
-    "unconfirmed": [],
+    "this_cycle": [
+      {
+        "key": [
+          "OS SCHENKENSCHANS 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS SCHENKENSCHANS 10-1i"
+        ],
+        "now": [
+          2031,
+          2031,
+          4
+        ],
+        "was": [
+          2032,
+          2032,
+          1
+        ]
+      },
+      {
+        "key": [
+          "OS VLIEGENBOS 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS VLIEGENBOS 10-1i"
+        ],
+        "now": [
+          2032,
+          2032,
+          2
+        ],
+        "was": [
+          2027,
+          2027,
+          2
+        ]
+      },
+      {
+        "key": [
+          "OS NOORD PAPAVERWEG 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS NOORD PAPAVERWEG 10-1i"
+        ],
+        "now": [
+          2031,
+          2031,
+          1
+        ],
+        "was": [
+          2027,
+          2027,
+          2
+        ]
+      }
+    ],
+    "unconfirmed": [
+      {
+        "changed_at": "2026-11-16",
+        "confirmed": false,
+        "delta": -1,
+        "first": [
+          2032,
+          2032,
+          1
+        ],
+        "first_s": "2032 Q1",
+        "key": [
+          "OS SCHENKENSCHANS 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS SCHENKENSCHANS 10-1i"
+        ],
+        "kind": "pull",
+        "last": [
+          2031,
+          2031,
+          4
+        ],
+        "last_s": "2031 Q4",
+        "n": 9,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-11-16",
+        "confirmed": false,
+        "delta": 5,
+        "first": [
+          2027,
+          2027,
+          2
+        ],
+        "first_s": "2027 Q2",
+        "key": [
+          "OS VLIEGENBOS 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS VLIEGENBOS 10-1i"
+        ],
+        "kind": "slip",
+        "last": [
+          2032,
+          2032,
+          2
+        ],
+        "last_s": "2032 Q2",
+        "n": 5,
+        "past_dated": false,
+        "status": "persisted"
+      },
+      {
+        "changed_at": "2026-11-16",
+        "confirmed": false,
+        "delta": 4,
+        "first": [
+          2027,
+          2027,
+          2
+        ],
+        "first_s": "2027 Q2",
+        "key": [
+          "OS NOORD PAPAVERWEG 10-1i",
+          "Liander",
+          "Extra capaciteit op knooppunt OS NOORD PAPAVERWEG 10-1i"
+        ],
+        "kind": "slip",
+        "last": [
+          2031,
+          2031,
+          1
+        ],
+        "last_s": "2031 Q1",
+        "n": 7,
+        "past_dated": false,
+        "status": "persisted"
+      }
+    ],
     "withdrawn": []
   },
   "promise_ledgers": [
     {
       "counts": {
-        "kept": 64,
-        "retired": 15,
-        "slipped": 4
+        "kept": 75,
+        "retired": 3,
+        "slipped": 5
       },
       "rows": [
         {
@@ -541,6 +755,15 @@
             "afname"
           ],
           "now": 2035,
+          "promised": 2026,
+          "status": "slipped"
+        },
+        {
+          "key": [
+            "ESDH",
+            "afname"
+          ],
+          "now": 2030,
           "promised": 2026,
           "status": "slipped"
         },
@@ -573,98 +796,8 @@
         },
         {
           "key": [
-            "ESDH",
-            "afname"
-          ],
-          "now": 2030,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "CM08",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "CU",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "DDV",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "ESDH",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "GNHK",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
             "HUSK",
             "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "HUSK",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "ISM",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "LIMM",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "LIMM",
-            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -682,24 +815,6 @@
         {
           "key": [
             "OS ZALTBOMMEL 10-1i",
-            "invoeding"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "TBW",
-            "afname"
-          ],
-          "now": 2026,
-          "promised": 2026,
-          "status": "retired"
-        },
-        {
-          "key": [
-            "TBW",
             "invoeding"
           ],
           "now": 2026,
@@ -798,7 +913,34 @@
         },
         {
           "key": [
+            "CM08",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "CU",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "CVD",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "DDV",
             "afname"
           ],
           "now": 2026,
@@ -879,6 +1021,15 @@
         },
         {
           "key": [
+            "ESDH",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "ESDV",
             "afname"
           ],
@@ -926,6 +1077,15 @@
           "key": [
             "GLTK",
             "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "GNHK",
+            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -1005,6 +1165,24 @@
         },
         {
           "key": [
+            "HUSK",
+            "invoeding"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "ISM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
             "KWD",
             "invoeding"
           ],
@@ -1016,6 +1194,24 @@
           "key": [
             "KZVZ",
             "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "LIMM",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "LIMM",
+            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -1160,6 +1356,24 @@
           "key": [
             "TBG",
             "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "TBW",
+            "afname"
+          ],
+          "now": 2026,
+          "promised": 2026,
+          "status": "kept"
+        },
+        {
+          "key": [
+            "TBW",
+            "invoeding"
           ],
           "now": 2026,
           "promised": 2026,
@@ -1342,6 +1556,12 @@
       "ingest": "2026-10-30",
       "live_areas": 296,
       "sha": "a17fd33"
+    },
+    {
+      "captured": "2026-11-17",
+      "ingest": "2026-11-16",
+      "live_areas": 589,
+      "sha": "74d74fe"
     }
   ],
   "queue_trend": [
@@ -1551,26 +1771,49 @@
         "requests_injection": 32,
         "requests_withdrawal": 75
       }
+    },
+    {
+      "areas_with_withdrawal_queue": 441,
+      "ingest": "2026-11-16",
+      "live_areas": 590,
+      "queue_injection_mw": 16503,
+      "queue_withdrawal_mw": 16460,
+      "regional": {
+        "areas": 567,
+        "queue_injection_mw": 10465,
+        "queue_withdrawal_mw": 7900,
+        "requests_injection": 8666,
+        "requests_withdrawal": 21370
+      },
+      "requests_injection": 8698,
+      "requests_withdrawal": 21445,
+      "tennet": {
+        "areas": 23,
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8560,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
+      }
     }
   ],
   "reliability_by_operator": [
     {
       "confirmed": 3,
       "moved": 3,
-      "moved_pct": 3.6,
+      "moved_pct": 3.5,
       "operator": "Enexis",
       "reverted": 0,
       "reverted_pct_of_moved": 0.0,
-      "tracked": 83
+      "tracked": 85
     },
     {
       "confirmed": 1,
-      "moved": 1,
-      "moved_pct": 0.8,
+      "moved": 4,
+      "moved_pct": 2.9,
       "operator": "Liander",
       "reverted": 0,
       "reverted_pct_of_moved": 0.0,
-      "tracked": 126
+      "tracked": 136
     },
     {
       "confirmed": 0,
@@ -1579,7 +1822,7 @@
       "operator": "TenneT",
       "reverted": 0,
       "reverted_pct_of_moved": null,
-      "tracked": 5824
+      "tracked": 5997
     },
     {
       "confirmed": 0,
@@ -1599,5 +1842,40 @@
       "reverted_pct_of_moved": null,
       "tracked": 126
     }
-  ]
+  ],
+  "since_first_like_for_like": {
+    "areas": 294,
+    "from": "2026-07-17",
+    "regional": {
+      "after": {
+        "queue_injection_mw": 7410,
+        "queue_withdrawal_mw": 5824,
+        "requests_injection": 7191,
+        "requests_withdrawal": 15105
+      },
+      "areas": 274,
+      "before": {
+        "queue_injection_mw": 6946,
+        "queue_withdrawal_mw": 5524,
+        "requests_injection": 7096,
+        "requests_withdrawal": 10261
+      }
+    },
+    "tennet": {
+      "after": {
+        "queue_injection_mw": 6038,
+        "queue_withdrawal_mw": 8360,
+        "requests_injection": 32,
+        "requests_withdrawal": 75
+      },
+      "areas": 20,
+      "before": {
+        "queue_injection_mw": 9842,
+        "queue_withdrawal_mw": 14209,
+        "requests_injection": 49,
+        "requests_withdrawal": 110
+      }
+    },
+    "to": "2026-11-16"
+  }
 }

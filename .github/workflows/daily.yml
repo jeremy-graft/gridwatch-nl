@@ -1,10 +1,11 @@
 name: daily snapshot
 
-# ~06:00 Europe/Amsterdam (05:00 UTC winter / 04:00 UTC summer — cron is UTC-only, so this
-# fires 06:00 CET / 07:00 CEST; close enough, the source updates at most daily).
+# Nominally 03:23 UTC. GitHub delays scheduled runs under load; on-the-hour slots are the worst
+# (05:00 runs started 4-8.5h late in Oct-Nov 2026). Exact time doesn't matter: changes are
+# dated by the source's own dataUpdate.executedOn, not by when we fetch.
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "23 3 * * *"   # off the hour: on-the-hour schedules were starting 4-8.5h late (Oct-Nov 2026)
   workflow_dispatch:
     inputs:
       full:

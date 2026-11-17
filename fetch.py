@@ -10,7 +10,7 @@ Every run (cheap, ~2 requests):
   2. GET /api/manifests   — archived verbatim to data/manifests.json. Its own history is a
      useful time-series (when each operator republished each category).
 
-Full per-area sweep (~301 requests) runs ONLY when it's actually needed:
+Full per-area sweep (~590 requests, ~20 min) runs ONLY when it's actually needed:
   - the manifest fingerprint changed since the last run, OR
   - --full was passed, OR
   - it's the monthly backstop (day-of-month == 1), OR
@@ -209,16 +209,12 @@ def _post_area(client: httpx.Client, area_id: str) -> object:
 def manifest_fingerprint(manifest: dict) -> dict:
     """Signal for 'might the underlying data have changed' — decides whether to sweep.
 
-    IMPORTANT (measured 2026-07-30, do not "simplify" this):
-    `dataUpdate` is the RELIABLE trigger; the per-operator `updatedAt` values are NOT.
-    On 2026-07-30 the ingest pipeline re-ran (executedOn 07-17 -> 07-29) and 62 real changes
-    landed — including relief years moving (Oldenzaal 2026->2029) — while Enexis's and
-    Liander's `updatedAt` stayed frozen at 07-15 / 05-29. Only Stedin/KI moved. Triggering on
-    `updatedAt` alone would have missed all of it.
-
-    So: include the pipeline version id (catches everything, at the cost of an occasional
-    no-op sweep) AND the updatedAt set (belt and braces). Observed pipeline cadence is roughly
-    every 12 days, so this still means ~2-3 sweeps a month, not daily.
+    Keys on BOTH the pipeline version id (`dataUpdate.id`, changes on every republish) and the
+    per-operator `updatedAt` set. Either alone would do: re-tested 2026-11-17 over 10
+    publications, every real change came with the owning operator's `updatedAt` advancing. (A
+    July note claiming the stamps were unreliable came from the projects[].year artifact.)
+    Using both costs at most an occasional no-op sweep. Publications land every few days to a
+    few weeks, so this means a handful of sweeps a month, not daily.
     """
     du = manifest.get("dataUpdate") or {}
     updates = sorted(

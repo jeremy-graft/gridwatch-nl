@@ -3,6 +3,24 @@
 **Phase 0 discovery — completed 2026-07-28 (Europe/Amsterdam).**
 All findings below were verified live against the running application, not guessed.
 
+> ⚠️ **Corrections — read first.** Several early findings below were artifacts and are corrected
+> in place where they matter. Summary:
+> 1. **The map has ~590 areas, not 301** (2026-11-17). The area list was read from the zoom-0
+>    tile, which silently drops about half the areas (small, mostly urban), a different half per
+>    tileset rebuild. Read at zoom 7 since 2026-11-17 (equals zoom 8: 590). See §5.3.
+> 2. **"Inventory churn" (Aug −58/+61, Oct −53/+44, Nov −44/+45) was that same artifact**:
+>    148 of 155 reported retirements were still on the map. Real retirements are rare (≈7 so
+>    far; the API answers them with an empty body). See §5.7.
+> 3. **Project dates must be read from `dateString`, not `year`** (2026-10-19): `year`
+>    alternates between a range's start and end. This retracted the "40% of moves revert" and
+>    "Stedin moves 29% of its dates" findings and the summer's headline project "slips". §5.8.
+> 4. **Per-operator `updatedAt` stamps ARE reliable** (2026-11-17): every real change in the
+>    archive came with the owning operator's stamp advancing (0 exceptions once TenneT data
+>    nested in regional areas is attributed to TenneT). The July claim that they were not was
+>    the `year` artifact. §5.6(b).
+> 5. **Request counts are not comparable across operators, or across definition changes**: on
+>    2026-10-30 Stedin's count went ×5.1 on the same areas while its queue MW fell. §5.8.
+
 ---
 
 ## 0. Go / No-Go decision
@@ -169,7 +187,8 @@ Area enumeration must therefore come from the vector tiles (§5.2).
 | `totaal_opwekfgb`         | `color_code`                    | 5             | Combined injection status              |
 | `missingfgb`              | `postcode`                      | 4             | Areas with no data yet ("grey")        |
 
-→ **Unique service-area ids = 301** (measured: full decode of the `_gebied_` layers, then
+→ ⚠️ *Superseded: the true count is ~590 — this z0 decode drops about half the areas (see
+the corrections at the top and §5.3).* **Unique service-area ids = 301** (measured: full decode of the `_gebied_` layers, then
 set-union). Afname and opwek are *different* id sets (not a subset), so the union is larger
 than either — the earlier ~225 estimate was wrong. `serviceArea/get` returns both directions
 for one id, so a full sweep = **301 calls**.
@@ -377,7 +396,14 @@ Verified: a live re-fetch of 6 changed areas normalises byte-identically to the 
 ⚠️ **Phase-2 consequence:** a project's identity across snapshots is **(gridOperator, name)**.
 `projects[].id` is NOT stable and must never be used as a join key.
 
-**(b) `updatedAt` is NOT a reliable change signal — `dataUpdate` is.** The original claim that
+**(b) ⚠️ RETRACTED 2026-11-17 — `updatedAt` IS reliable.** Re-tested on the published-window
+data across all 10 publications: every real change came with the owning operator's `updatedAt`
+advancing (0 exceptions, attributing TenneT projects/fields inside regional areas to TenneT).
+The "62 changes with frozen stamps" below were the `projects[].year` artifact (§5.8). The
+fingerprint still keys on `dataUpdate.id` too — harmless and conservative. Original text kept
+for the record:
+
+~~(b) `updatedAt` is NOT a reliable change signal — `dataUpdate` is.~~ The original claim that
 the "authoritative" signal is the `gridOperatorUpdates[].updatedAt` set was **wrong**. On
 2026-07-30, Enexis and Liander shipped real changes (relief years moved, e.g. Oldenzaal
 2026→2029) while their `updatedAt` stayed frozen at 07-15 / 05-29; only Stedin/`KI` moved.
@@ -401,7 +427,11 @@ kept, id recorded in `_status.json.missing`); genuine blocks (403, or HTML body)
 A new `MAX_MISSING_RATE = 0.15` gate still refuses a sweep if a large share vanishes at once.
 Pinned by a regression test.
 
-**Inventory churn is normal and large.** The 2026-08-17 republish retired **58** ids and added
+**⚠️ Mostly an artifact (2026-11-17):** the churn below came from reading the zoom-0 tile, which
+drops a varying half of the areas; 53 of these 58 "retired" ids are still on the map. Real
+retirements are rare and show up as an empty-body API response. See §5.3.
+
+~~Inventory churn is normal and large.~~ The 2026-08-17 republish retired **58** ids and added
 **62** (301 → 305). So `data/area_ids.json` goes stale silently, and a stale list is what
 surfaces the empty-body responses. Re-run `python tools/enumerate_area_ids.py` whenever
 `_status.json` reports `missing` ids (or monthly).
@@ -430,6 +460,7 @@ them. Each would silently produce wrong numbers if treated naively.
 | ~~relief dates oscillate~~ — **retracted 2026-10-19** | the cited `MDK` 2032→2028→2032 was the `year` artifact (MDK was always "Tussen 2028 en 2032"). On the real fields nothing has reverted yet: 0 of 14 area-level moves and 0 of 4 project-window changes | — | the persistence rule (confirmed = held ≥2 publications) is kept as a cheap guard against corrections and publication glitches, but there is no measured revert rate to cite |
 | **`queue*` / capacity are unit-suffixed strings** | `"9.2 MW"`, `"-"` for n/a | string compare / float() both fail | parse to numeric + unit; `-` → NULL. NB `serviceArea.history[]` carries the same measures as **clean floats** — prefer it where present |
 | **`history[]` is forward projections, not history** | years 2026–2036, 253 areas | the name invites treating it as past data | it is a **forecast** series; never merge into the observed time-series |
+| **request counts change definition without notice** (added 2026-11-17) | on 2026-10-30 Stedin's `uniqueRequestsWithdrawal` went ×5.1 over the same 32 areas (706 → 3,620) while `queueWithdrawal` fell 917 → 805 MW: average request 1.3 → 0.2 MW. Same-day Liander/Enexis unaffected | summed regional "requests waiting" read as a +47% surge | never sum operators; compare like-for-like per operator; flag any publication where an operator's count moves ×1.5 or more (`operator_trends` in parse/report.py) and report the series as not comparable across it |
 | **ids carry stray whitespace** | `"Groningen Oost "` (trailing space) | breaks joins against the tile-derived id list | strip before joining, but keep the raw form as archived |
 
 

@@ -40,6 +40,11 @@ REPORT_MD = ROOT / "REPORT.md"
 REPORT_JSON = ROOT / "parse" / "report_data.json"
 SUMMARY_NL = ROOT / "SAMENVATTING.md"
 BUCKETS = ("liander", "enexis", "stedin", "tennet", "other")
+# Area lists built at this zoom or higher are complete. Older lists were read from the z0 tile,
+# which silently omits about half the areas (DATA_SOURCES.md §5.3): before 2026-11-17 the archive
+# covered ~300 of ~590 areas, and list-to-list "inventory changes" in that era are artifacts.
+FULL_COVERAGE_ZOOM = 7
+FULL_COVERAGE_SINCE = "2026-11-17"
 SENTINEL_YEAR = 2090           # >= this means "no date"
 MIN_TRACK_FOR_RELIABILITY = 3  # a project must be seen in >= this many ingests to be scored
 
@@ -185,9 +190,10 @@ def load_snapshots() -> list[dict]:
         live = {a["id"].strip() for a in id_list} if id_list else set(areas)
         meta = {a["id"].strip(): {"operator": a.get("operator"), "province": a.get("province")}
                 for a in id_list}
+        list_zoom = (json.loads(ids_txt).get("zoom") or 0) if ids_txt.strip() else 0
         if areas:
             out.append({"ingest": ingest, "captured": captured[:10], "sha": sha[:7],
-                        "areas": areas, "live_ids": live, "meta": meta})
+                        "areas": areas, "live_ids": live, "meta": meta, "list_zoom": list_zoom})
     return out
 
 
@@ -234,10 +240,15 @@ def queue_trend(snaps: list[dict]) -> list[dict]:
 
 def latest_like_for_like(snaps: list[dict]) -> dict | None:
     """Change between the last two publications over the areas live in BOTH, so inventory churn
-    (areas retired/added) can't masquerade as a change in the queue."""
+    (areas retired/added, or the coverage change of 2026-11-17) can't masquerade as a change in
+    the queue."""
     if len(snaps) < 2:
         return None
-    a, b = snaps[-2], snaps[-1]
+    return like_for_like(snaps[-2], snaps[-1])
+
+
+def like_for_like(a: dict, b: dict) -> dict:
+    """Queue totals in snapshots a and b over the areas live in BOTH, split regional/TenneT."""
     both = sorted(a["live_ids"] & b["live_ids"])
     out = {"from": a["ingest"], "to": b["ingest"], "areas": len(both)}
     for grid, pick in (("regional", False), ("tennet", True)):
@@ -247,6 +258,50 @@ def latest_like_for_like(snaps: list[dict]) -> dict | None:
                      "before": _queue_sums([a["areas"][i] for i in ids]),
                      "after": _queue_sums([b["areas"][i] for i in ids])}
     return out
+
+
+BREAK_RATIO = 1.5      # like-for-like requests x1.5 (or /1.5) in ONE publication = step change
+BREAK_MIN_REQUESTS = 50
+
+
+def _regional_op(s: dict, aid: str) -> str:
+    o = (s.get("meta", {}).get(aid) or {}).get("operator") or (s["areas"].get(aid) or {}).get("rnb") or "?"
+    return "Enexis" if "Enexis" in o else o
+
+
+def operator_trends(snaps: list[dict]) -> list[dict]:
+    """Like-for-like queue trend per REGIONAL operator, with step-change detection.
+
+    Summing operators hides definition changes: on 2026-10-30 Stedin's request count went x5.1
+    in one publication (706 -> 3,620 over the same areas) while its queue in MW FELL and the
+    average request shrank from 1.3 to 0.2 MW -- a change in what is counted, not new demand.
+    Summed, it read as a '+47% national surge'. A publication where an operator's like-for-like
+    request count moves by >= BREAK_RATIO is reported as a step change, and that operator's
+    long-run change is reported as not comparable across it."""
+    def lfl(a, b, op):
+        ids = [i for i in a["live_ids"] & b["live_ids"] if i in a["areas"] and i in b["areas"]
+               and not is_tennet(i, b["areas"][i], b.get("meta", {})) and _regional_op(b, i) == op]
+        rq = lambda x: sum(parse_count(x["areas"][i].get("uniqueRequestsWithdrawal")) or 0 for i in ids)
+        mw = lambda x: sum(parse_mw(x["areas"][i].get("queueWithdrawal")) or 0 for i in ids)
+        return len(ids), rq(a), rq(b), round(mw(a)), round(mw(b))
+    ops = sorted({_regional_op(snaps[-1], i) for i in snaps[-1]["live_ids"]
+                  if i in snaps[-1]["areas"] and not is_tennet(i, snaps[-1]["areas"][i], snaps[-1].get("meta", {}))})
+    out = []
+    for op in ops:
+        n, r0, r1, m0, m1 = lfl(snaps[0], snaps[-1], op)
+        if n == 0:
+            continue
+        breaks = []
+        for a, b in zip(snaps, snaps[1:]):
+            _, x0, x1, y0, y1 = lfl(a, b, op)
+            if x0 >= BREAK_MIN_REQUESTS and (x1 >= x0 * BREAK_RATIO or x1 * BREAK_RATIO <= x0):
+                breaks.append({"ingest": b["ingest"], "requests_before": x0, "requests_after": x1,
+                               "mw_before": y0, "mw_after": y1,
+                               "avg_mw_before": round(y0 / x0, 2) if x0 else None,
+                               "avg_mw_after": round(y1 / x1, 2) if x1 else None})
+        out.append({"operator": op, "areas": n, "requests_first": r0, "requests_last": r1,
+                    "mw_first": m0, "mw_last": m1, "breaks": breaks})
+    return sorted(out, key=lambda r: -r["areas"])
 
 
 def track_series(snaps: list[dict]):
@@ -425,9 +480,45 @@ def reliability_by_operator(proj_tracks: dict, ref_year: int) -> list[dict]:
     return sorted(rows, key=lambda r: -(r["moved_pct"] or 0))
 
 
+STALE_DAYS = 60   # an operator whose data is older than this at the latest publication is flagged
+
+CATEGORY_NAMES = {"ATC": "available capacity", "BTC": "required capacity", "WR": "queue",
+                  "JC": "relief year", "KI": "colour", "NU": "grid expansions"}
+
+
+def operator_freshness(manifest: dict, as_of: str) -> list[dict]:
+    """Per operator: when its data on the map was last updated (manifest gridOperatorUpdates).
+
+    Verified 2026-11-17 against every publication in the archive: each real change was
+    accompanied by the owning operator's updatedAt advancing (0 exceptions once TenneT data
+    nested inside regional areas is attributed to TenneT). An earlier conclusion that these
+    stamps were unreliable came from the projects[].year artifact."""
+    by_op: dict[str, dict] = {}
+    for u in manifest.get("gridOperatorUpdates") or []:
+        op, cat, ts = u.get("gridOperator"), u.get("categoryShort"), (u.get("updatedAt") or "")[:10]
+        if not op or not ts:
+            continue
+        d = by_op.setdefault(op, {"operator": op, "categories": {}})
+        d["categories"][cat] = ts
+    ref = datetime.fromisoformat(as_of)
+    rows = []
+    for op, d in by_op.items():
+        last = max(d["categories"].values())
+        oldest_cat = min(d["categories"], key=lambda c: d["categories"][c])
+        rows.append({**d, "last_update": last, "days_old": (ref - datetime.fromisoformat(last)).days,
+                     "oldest_category": oldest_cat, "oldest_date": d["categories"][oldest_cat],
+                     "stale": (ref - datetime.fromisoformat(last)).days > STALE_DAYS})
+    return sorted(rows, key=lambda r: -r["days_old"])
+
+
 def inventory_changes(snaps: list[dict]) -> list[dict]:
+    """Areas added/retired between consecutive publications — only where BOTH area lists were
+    built at full-coverage zoom. Comparing z0-era lists reports the tile generalizer, not the map
+    (148 of 155 'retirements' reported in Aug-Nov 2026 were still on the map)."""
     out = []
     for a, b in zip(snaps, snaps[1:]):
+        if min(a.get("list_zoom", 0), b.get("list_zoom", 0)) < FULL_COVERAGE_ZOOM:
+            continue
         added, retired = b["live_ids"] - a["live_ids"], a["live_ids"] - b["live_ids"]
         if added or retired:
             out.append({"ingest": b["ingest"], "added": len(added), "retired": len(retired),
@@ -471,7 +562,8 @@ COHORT_LABELS_EN = {"slipped": "pushed later (confirmed)",
                     "retired": "area no longer on the map (retired or renamed)"}
 
 
-def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=None) -> str:
+def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=None, lfl_all=None,
+           fresh=(), opt=()) -> str:
     first, last = snaps[0], snaps[-1]
     q0, q1 = qt[0], qt[-1]
     days = (datetime.fromisoformat(last["ingest"]) - datetime.fromisoformat(first["ingest"])).days
@@ -486,19 +578,43 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
     rv, wd = c.get("reverted", 0), c.get("withdrawn", 0)
     uc = c.get("unconfirmed_slip", 0) + c.get("unconfirmed_pull", 0)
     dr = c.get("dropped_after_move", 0)
-    r0, r1, t0, t1 = q0["regional"], q1["regional"], q0["tennet"], q1["tennet"]
-    L += ["## Headline", "",
-          f"- **Regional grids — requests waiting for withdrawal capacity: {r0['requests_withdrawal']:,} → "
-          f"{r1['requests_withdrawal']:,} ({_pct(r0['requests_withdrawal'], r1['requests_withdrawal'])})** "
-          f"since {first['ingest']}; withdrawal queue {r0['queue_withdrawal_mw']:,} → "
-          f"{r1['queue_withdrawal_mw']:,} MW.",
+    # Long-run trends are like-for-like (areas archived at BOTH ends): coverage roughly doubled on
+    # FULL_COVERAGE_SINCE, so raw first-vs-last totals would mostly measure that.
+    la = lfl_all or {"regional": {"before": q0["regional"], "after": q1["regional"], "areas": q0["regional"]["areas"]},
+                     "tennet": {"before": q0["tennet"], "after": q1["tennet"], "areas": q0["tennet"]["areas"]}}
+    r0, r1 = la["regional"]["before"], la["regional"]["after"]
+    t0, t1 = la["tennet"]["before"], la["tennet"]["after"]
+    cur = q1["regional"]
+    big = [t for t in opt if t["areas"] >= 10]
+    clean = [f"{t['operator']} {_pct(t['requests_first'], t['requests_last'])}" for t in big if not t["breaks"]]
+    broke = [t for t in big if t["breaks"]]
+    line = (f"- **Requests waiting for withdrawal capacity, like-for-like since {first['ingest']}:** "
+            + ", ".join(clean) + "." if clean else "- **Requests waiting:** see Queue by operator.")
+    for t in broke:
+        bk = t["breaks"][-1]
+        line += (f" **{t['operator']} is not comparable across {bk['ingest']}**: its count went "
+                 f"×{bk['requests_after'] / bk['requests_before']:.1f} in that one publication "
+                 f"({bk['requests_before']:,} → {bk['requests_after']:,} on the same areas) while its queue went "
+                 f"{bk['mw_before']:,} → {bk['mw_after']:,} MW — the signature of a change in what is counted, "
+                 "not of new demand.")
+    L += ["## Headline", "", line,
+          f"- Across all {cur['areas']} regional areas now covered: {cur['requests_withdrawal']:,} requests "
+          f"waiting, {cur['queue_withdrawal_mw']:,} MW (per-operator definitions differ; see Queue by operator).",
           f"- **TenneT (high voltage) — withdrawal queue: {t0['queue_withdrawal_mw']:,} → "
           f"{t1['queue_withdrawal_mw']:,} MW ({_pct(t0['queue_withdrawal_mw'], t1['queue_withdrawal_mw'])})**; "
           f"injection {t0['queue_injection_mw']:,} → {t1['queue_injection_mw']:,} MW. Reported separately: "
           "TenneT's regions overlap the regional areas and measure a different queue.",
           f"- **{q1['areas_with_withdrawal_queue']} of {q1['live_areas']} areas** currently have a withdrawal queue."]
+    for f in fresh:
+        if f["stale"]:
+            L.append(f"- **{f['operator']}'s figures were last updated {f['last_update']}** — "
+                     f"{f['days_old']} days before the latest publication. Its areas show that date's state.")
+    if snaps[-1].get("list_zoom", 0) >= FULL_COVERAGE_ZOOM and snaps[0].get("list_zoom", 0) < FULL_COVERAGE_ZOOM:
+        L.append(f"- **Coverage:** the archive covers all {q1['live_areas']} areas on the map since "
+                 f"{FULL_COVERAGE_SINCE}; before that it covered roughly half (see Methodology), so "
+                 "earlier-period figures are partial and trends are given like-for-like.")
     if lfl:
-        for grid, label in (("regional", "regional grids"), ("tennet", "TenneT")):
+        for grid, label in (("regional", "regional"), ("tennet", "TenneT")):
             g = lfl[grid]
             b0, b1 = g["before"], g["after"]
             if b0 != b1:
@@ -529,7 +645,8 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
                       overdue=f"{co['year']} passed, still unresolved")
         L += [f"## The {co['year']} promise ledger", "",
               f"On **{co['since']}**, the first publication in this archive, operators promised that "
-              f"congestion would be resolved in **{co['year']}** for **{co['total']} area/direction pairs**. "
+              f"congestion would be resolved in **{co['year']}** for **{co['total']} area/direction pairs** "
+              "(of the areas the archive covered then — about half the map; see Methodology). "
               "The source map only ever shows the *current* promise; this ledger keeps the original. "
               f"When {co['year']} ends, every entry still showing {co['year']} becomes *overdue*.", "",
               "| status | count |", "|---|---:|"]
@@ -543,6 +660,21 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
                 aid, d = r["key"]
                 now = "no date" if (r["now"] or 0) >= SENTINEL_YEAR else r["now"]
                 L.append(f"| {_area_label(aid, meta)} | {d} | {r['promised']} | {now} | {labels[r['status']]} |")
+        L.append("")
+
+    if opt:
+        L += ["## Queue by operator (like-for-like)", "",
+              f"Requests waiting and queue size for withdrawal capacity, over the areas each operator had in "
+              f"both the first ({first['ingest']}) and the latest ({last['ingest']}) publication. Operators are "
+              "never summed: they count requests differently, and a single operator's definition can change.", "",
+              "| operator | areas | requests waiting | change | queue (MW) | step changes |",
+              "|---|---:|---:|---:|---:|---|"]
+        for t in opt:
+            st = "; ".join(f"{b['ingest']}: {b['requests_before']:,} → {b['requests_after']:,} requests, "
+                           f"avg {b['avg_mw_before']} → {b['avg_mw_after']} MW/request" for b in t["breaks"]) or "—"
+            ch = "n/a (step change)" if t["breaks"] else _pct(t["requests_first"], t["requests_last"])
+            L.append(f"| {t['operator']} | {t['areas']} | {t['requests_first']:,} → {t['requests_last']:,} | {ch} | "
+                     f"{t['mw_first']:,} → {t['mw_last']:,} | {st} |")
         L.append("")
 
     L += ["## Queue trend", "",
@@ -562,7 +694,10 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
         L += ["", f"> **TenneT's queue figures were identical in {run} consecutive publications "
               f"({qt[-1 - run]['ingest']} – {qt[-2]['ingest']}) before changing in {qt[-1]['ingest']}.** "
               "Treat TenneT queue values as possibly stale between its own updates."]
-    L += ["", "> Sums over *live* areas at each publication. Inventory reorganisations (see below) can "
+    L += ["", "> Per-publication sums over the areas archived at that publication. They mix operators that "
+          f"count requests differently and, before {FULL_COVERAGE_SINCE}, covered only about half the areas — "
+          "use *Queue by operator* above for trends.", "",
+          "> Sums over *live* areas at each publication. Inventory reorganisations (see below) can "
           "move these numbers without any change in real demand — read a step change that coincides "
           "with an inventory change with care.", ""]
 
@@ -639,8 +774,26 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
                  f"{r['reverted']} ({rp}%) | {r['confirmed']} |")
     L.append("")
 
+    if fresh:
+        L += ["## Data freshness by operator", "",
+              f"When each operator last updated its figures on the map, as of the latest publication "
+              f"({last['ingest']}). Read from the source's own per-operator update stamps, which match every "
+              "observed change in the archive.", "",
+              "| operator | last update | days before latest publication | oldest category |",
+              "|---|---|---:|---|"]
+        for f in fresh:
+            oc = CATEGORY_NAMES.get(f["oldest_category"], f["oldest_category"])
+            L.append(f"| {f['operator']} | {f['last_update']} | {f['days_old']}{' ⚠️' if f['stale'] else ''} | "
+                     f"{oc} ({f['oldest_date']}) |")
+        L.append("")
+
     L += ["## Area inventory changes", ""]
-    if inv:
+    if not inv and any(x.get("list_zoom", 0) < FULL_COVERAGE_ZOOM for x in snaps):
+        L += [f"Not reported before {FULL_COVERAGE_SINCE}: area lists before then were read from a "
+              "low-zoom map tile that omits about half the areas, so list-to-list differences measured the "
+              "tile, not the map (148 of 155 'retirements' reported Aug–Nov 2026 are still on the map). "
+              "Real changes are reported from the next full-coverage refresh on.", ""]
+    elif inv:
         for i in inv:
             ex = ", ".join(f"`{x}`" for x in i["retired_ids"][:6]) + ("…" if i["retired"] > 6 else "")
             L.append(f"- **{i['ingest']}**: {i['added']} areas added, {i['retired']} retired"
@@ -650,6 +803,13 @@ def render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts=(), lfl=Non
         L += ["No inventory changes.", ""]
 
     L += ["## Methodology & caveats", "",
+          f"- **Coverage:** until {FULL_COVERAGE_SINCE} the archive read its area list from the zoom-0 map "
+          "tile, in which the whole world is one 4096-unit tile (~10 km per unit). Small, mostly urban areas "
+          "become sub-pixel there and are silently dropped — a different set after each tileset rebuild. The "
+          "archive therefore covered roughly 300 of ~590 areas (Stedin and Liander's urban areas worst), and "
+          f"what looked like area reorganisations were this artifact. Since {FULL_COVERAGE_SINCE} the list is "
+          "read at zoom 7, which matches zoom 8 exactly (590 areas). Totals from before that date are partial; "
+          "long-run trends are reported like-for-like.",
           "- **Source:** Netbeheer Nederland's public capaciteitskaart (`data.partnersinenergie.nl/api`), "
           "archived verbatim by gridwatch-nl on every source publication. The source states its figures "
           "are *indicative*, a snapshot, and that no rights can be derived from them; the same applies here.",
@@ -696,7 +856,7 @@ def _nl_delta(a, b) -> str:
     return f"{100 * (b - a) / a:+.1f}%".replace(".", ",") if a else "n.v.t."
 
 
-def render_nl(snaps, qt, cohorts, rel, generated, lfl=None) -> str:
+def render_nl(snaps, qt, cohorts, rel, generated, lfl=None, lfl_all=None, fresh=(), opt=()) -> str:
     """One-page Dutch summary for forwarding. Same numbers as REPORT.md and regenerated with it,
     so it can never drift from the data."""
     first, last = snaps[0], snaps[-1]
@@ -718,7 +878,8 @@ def render_nl(snaps, qt, cohorts, rel, generated, lfl=None) -> str:
         moved = cc.get("slipped", 0) + cc.get("slipped_unconfirmed", 0)
         L += [f"## De {co['year']}-beloftes", "",
               f"Op {co['since']} beloofden netbeheerders voor **{co['total']} gebieden** (per richting) "
-              f"dat de congestie in **{co['year']}** zou zijn opgelost. De stand nu:", "",
+              f"dat de congestie in **{co['year']}** zou zijn opgelost. Dat zijn de gebieden die toen in het "
+              "archief zaten, ongeveer de helft van de kaart (zie Methode). De stand nu:", "",
               f"- **{cc.get('kept', 0)}** zeggen nog steeds {co['year']}",
               f"- **{moved}** zijn al naar later verschoven"
               + (f", allemaal bevestigd" if moved and not cc.get("slipped_unconfirmed") else
@@ -757,12 +918,37 @@ def render_nl(snaps, qt, cohorts, rel, generated, lfl=None) -> str:
               "losse jaartal in de bron wisselt bij zulke projecten tussen begin- en eindjaar zonder dat de "
               "planning verandert, en is daarom niet bruikbaar om verschuivingen te meten.", ""]
 
-    r0, r1, t0, t1 = q0["regional"], q1["regional"], q0["tennet"], q1["tennet"]
-    L += ["## De wachtrij", "",
-          f"- **Regionale netten:** aanvragen in de wachtrij voor afname {_nl_int(r0['requests_withdrawal'])} → "
-          f"**{_nl_int(r1['requests_withdrawal'])}** "
-          f"({_nl_delta(r0['requests_withdrawal'], r1['requests_withdrawal'])}) sinds {first['ingest']}; "
-          f"gevraagd vermogen {_nl_int(r1['queue_withdrawal_mw'])} MW",
+    la = lfl_all or {"regional": {"before": q0["regional"], "after": q1["regional"], "areas": q0["regional"]["areas"]},
+                     "tennet": {"before": q0["tennet"], "after": q1["tennet"], "areas": q0["tennet"]["areas"]}}
+    r0, r1 = la["regional"]["before"], la["regional"]["after"]
+    t0, t1 = la["tennet"]["before"], la["tennet"]["after"]
+    cur = q1["regional"]
+    if fresh:
+        L += ["## Hoe actueel zijn de cijfers?", "",
+              f"Laatste update per netbeheerder op de kaart, gezien vanaf de publicatie van {last['ingest']}:", "",
+              "| netbeheerder | laatst bijgewerkt | dagen oud |", "|---|---|---:|"]
+        for f in fresh:
+            L.append(f"| {f['operator']} | {f['last_update']} | {f['days_old']}{' ⚠️' if f['stale'] else ''} |")
+        stale = [f for f in fresh if f["stale"]]
+        if stale:
+            L += ["", "Bij " + " en ".join(f["operator"] for f in stale) + " tonen de gebieden dus de stand van "
+                  "die datum, niet van vandaag."]
+        L.append("")
+
+    L += ["## De wachtrij", ""]
+    for t in [t for t in opt if t["areas"] >= 10]:
+        if t["breaks"]:
+            bk = t["breaks"][-1]
+            L.append(f"- **{t['operator']}:** niet vergelijkbaar over {bk['ingest']}. Het aantal aanvragen ging in "
+                     f"die ene publicatie van {_nl_int(bk['requests_before'])} naar {_nl_int(bk['requests_after'])} "
+                     f"(zelfde gebieden), terwijl de wachtrij daalde van {_nl_int(bk['mw_before'])} naar "
+                     f"{_nl_int(bk['mw_after'])} MW. Dat wijst op een andere telwijze, niet op nieuwe vraag.")
+        else:
+            L.append(f"- **{t['operator']}:** aanvragen in de wachtrij voor afname {_nl_int(t['requests_first'])} → "
+                     f"**{_nl_int(t['requests_last'])}** ({_nl_delta(t['requests_first'], t['requests_last'])}) "
+                     f"sinds {first['ingest']}, in de {t['areas']} gebieden die sindsdien gevolgd worden")
+    L += [f"- In alle {cur['areas']} regionale gebieden samen: {_nl_int(cur['requests_withdrawal'])} aanvragen, "
+          f"{_nl_int(cur['queue_withdrawal_mw'])} MW (netbeheerders tellen niet allemaal op dezelfde manier)",
           f"- **TenneT (hoogspanning):** afname-wachtrij {_nl_int(t0['queue_withdrawal_mw'])} → "
           f"**{_nl_int(t1['queue_withdrawal_mw'])} MW** ({_nl_delta(t0['queue_withdrawal_mw'], t1['queue_withdrawal_mw'])}). "
           "Apart vermeld: de TenneT-regio's overlappen met de regionale gebieden en meten een andere wachtrij.",
@@ -783,6 +969,10 @@ def render_nl(snaps, qt, cohorts, rel, generated, lfl=None) -> str:
           "kunnen geen rechten aan worden ontleend. Dat geldt ook voor deze samenvatting.",
           "- Netbeheerders heffen gebieden soms op of geven ze een nieuwe naam. Zo'n gebied telt niet mee als "
           "'nog steeds beloofd', omdat de oude belofte niet meer te volgen is.",
+          f"- **Dekking:** tot {FULL_COVERAGE_SINCE} volgde het archief ongeveer de helft van de ~590 gebieden. "
+          "De gebiedslijst werd gelezen uit een kaarttegel op laag zoomniveau, waarin kleine (vooral stedelijke) "
+          f"gebieden wegvallen. Sinds {FULL_COVERAGE_SINCE} worden alle gebieden gevolgd. Trends over de hele "
+          "periode gelden daarom voor de gebieden die vanaf het begin gevolgd worden.",
           f"- Korte reeks: {len(snaps)} publicaties in {weeks} weken. Lees de cijfers als vroeg signaal, "
           "niet als oordeel.",
           f"- Volledig rapport (Engels), methode en alle ruwe data: [{REPO_URL.replace('https://', '')}]({REPO_URL})", ""]
@@ -820,9 +1010,14 @@ def main() -> int:
                for y in sorted({first_year, ref_year})]
 
     lfl = latest_like_for_like(snaps)
-    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts, lfl),
+    lfl_all = like_for_like(snaps[0], snaps[-1])
+    m_txt = _show(snaps[-1]["sha"], "data/manifests.json")
+    fresh = operator_freshness(json.loads(m_txt), latest) if m_txt.strip() else []
+    opt = operator_trends(snaps)
+    REPORT_MD.write_text(render(snaps, qt, area_mv, proj_mv, rel, inv, generated, cohorts, lfl, lfl_all, fresh, opt),
                          encoding="utf-8", newline="\n")
-    SUMMARY_NL.write_text(render_nl(snaps, qt, cohorts, rel, generated, lfl), encoding="utf-8", newline="\n")
+    SUMMARY_NL.write_text(render_nl(snaps, qt, cohorts, rel, generated, lfl, lfl_all, fresh, opt),
+                          encoding="utf-8", newline="\n")
     REPORT_JSON.write_text(json.dumps({
         "generated": generated,
         "publications": [{"ingest": s["ingest"], "captured": s["captured"], "sha": s["sha"],
@@ -834,6 +1029,9 @@ def main() -> int:
         "inventory_changes": inv,
         "promise_ledgers": cohorts,
         "latest_like_for_like": lfl,
+        "since_first_like_for_like": lfl_all,
+        "operator_freshness": fresh,
+        "operator_trends": opt,
     }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {REPORT_MD.name}, {SUMMARY_NL.name} and {REPORT_JSON.relative_to(ROOT)} "
           f"({len(snaps)} publications, latest {latest})")

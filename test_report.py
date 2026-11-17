@@ -185,8 +185,8 @@ def test_queue_trend_sums_live_areas_only_and_parses_strings():
 
 
 def test_inventory_changes_detects_added_and_retired():
-    s1 = _snap("2026-08-10", {"A": {}, "B": {}})
-    s2 = _snap("2026-08-17", {"A": {}, "C": {}})
+    s1 = _snap("2026-08-10", {"A": {}, "B": {}}); s1["list_zoom"] = 7
+    s2 = _snap("2026-08-17", {"A": {}, "C": {}}); s2["list_zoom"] = 7
     inv = R.inventory_changes([s1, s2])
     assert inv == [{"ingest": "2026-08-17", "added": 1, "retired": 1,
                     "added_ids": ["C"], "retired_ids": ["B"]}]
@@ -300,7 +300,13 @@ def test_render_nl_smoke_and_dutch_formatting():
            {"operator": "Liander", "tracked": 98, "moved": 0, "moved_pct": 0.0,
             "reverted_pct_of_moved": None},
            {"operator": "Rendo", "tracked": 1, "moved": 0, "moved_pct": 0.0, "reverted_pct_of_moved": None}]
-    md = R.render_nl(snaps, qt, cohorts, rel, "2026-09-23")
+    opt = [{"operator": "Liander", "areas": 116, "requests_first": 10507, "requests_last": 11823,
+            "mw_first": 5558, "mw_last": 5793, "breaks": []},
+           {"operator": "Stedin", "areas": 55, "requests_first": 952, "requests_last": 4714, "mw_first": 994,
+            "mw_last": 883, "breaks": [{"ingest": "2026-10-30", "requests_before": 706, "requests_after": 3620,
+                                        "mw_before": 917, "mw_after": 805}]}]
+    md = R.render_nl(snaps, qt, cohorts, rel, "2026-09-23", opt=opt)
+    assert "niet vergelijkbaar over 2026-10-30" in md and "3.620" in md
     assert "De 2026-beloftes" in md
     assert "`DVTB` (Enexis, Overijssel) | afname | 2026 | 2029 | bevestigd" in md
     assert "staan niet meer op de kaart" in md
@@ -431,6 +437,80 @@ def test_latest_like_for_like_ignores_retired_and_added_areas():
     assert lfl["tennet"]["before"]["queue_withdrawal_mw"] == 100
     assert lfl["tennet"]["after"]["queue_withdrawal_mw"] == 40
     assert lfl["regional"]["before"] == lfl["regional"]["after"]
+
+
+def test_inventory_changes_ignores_low_zoom_lists():
+    """Regression (2026-11-17): z0 area lists omit ~half the map, a different half per tileset
+    rebuild, so z0-vs-z0 or z0-vs-z7 differences are artifacts (148 of 155 'retirements')."""
+    z0a = _snap("2026-10-12", {"A": {}, "B": {}})                      # no list_zoom -> z0 era
+    z0b = _snap("2026-10-19", {"A": {}, "C": {}})
+    full = _snap("2026-10-30", {"A": {}, "B": {}, "C": {}, "D": {}}); full["list_zoom"] = 7
+    assert R.inventory_changes([z0a, z0b]) == []
+    assert R.inventory_changes([z0b, full]) == [], "the coverage switch itself is not a reorganisation"
+
+
+def test_like_for_like_since_first_uses_only_areas_at_both_ends():
+    a = _snap("2026-07-17", {"R1": {"uniqueRequestsWithdrawal": "10"}}, live={"R1"})
+    b = _snap("2026-10-30", {"R1": {"uniqueRequestsWithdrawal": "12"},
+                             "R2": {"uniqueRequestsWithdrawal": "500"}}, live={"R1", "R2"})
+    for s in (a, b):
+        s["meta"] = {k: {"operator": "Liander"} for k in s["areas"]}
+    lfl = R.like_for_like(a, b)
+    assert lfl["regional"]["areas"] == 1
+    assert (lfl["regional"]["before"]["requests_withdrawal"], lfl["regional"]["after"]["requests_withdrawal"]) == (10, 12)
+
+
+def test_operator_freshness_flags_stale_operators():
+    m = {"gridOperatorUpdates": [
+        {"gridOperator": "Enexis", "categoryShort": "WR", "updatedAt": "2026-08-01T02:00:00+02:00"},
+        {"gridOperator": "Enexis", "categoryShort": "NU", "updatedAt": "2026-08-01T02:00:00+02:00"},
+        {"gridOperator": "Liander", "categoryShort": "WR", "updatedAt": "2026-10-30T02:00:00+01:00"},
+        {"gridOperator": "Liander", "categoryShort": "KI", "updatedAt": "2026-09-25T02:00:00+02:00"},
+        {"gridOperator": "Stedin", "categoryShort": "WR", "updatedAt": None},
+    ]}
+    rows = {r["operator"]: r for r in R.operator_freshness(m, "2026-10-30")}
+    assert rows["Enexis"]["last_update"] == "2026-08-01" and rows["Enexis"]["days_old"] == 90
+    assert rows["Enexis"]["stale"] is True
+    assert rows["Liander"]["days_old"] == 0 and rows["Liander"]["stale"] is False
+    assert rows["Liander"]["oldest_category"] == "KI"
+    assert "Stedin" not in rows, "an operator with no dated stamp has no freshness to report"
+    assert [r["operator"] for r in R.operator_freshness(m, "2026-10-30")][0] == "Enexis"  # stalest first
+
+
+def _opsnap(ingest, rows):
+    """rows: {area: (operator, requests, mw)}"""
+    areas = {k: {"uniqueRequestsWithdrawal": str(r), "queueWithdrawal": f"{m} MW"} for k, (o, r, m) in rows.items()}
+    s = _snap(ingest, areas)
+    s["meta"] = {k: {"operator": o} for k, (o, r, m) in rows.items()}
+    return s
+
+
+def test_operator_trends_flags_definition_break_and_keeps_operators_separate():
+    """Regression (2026-11-17): Stedin's like-for-like request count went x5.1 in one publication
+    while its MW fell. Summed with the others it read as a '+47% surge'."""
+    s1 = _opsnap("2026-07-17", {"L1": ("Liander", 100, 50), "S1": ("Stedin", 40, 40), "S2": ("Stedin", 60, 60)})
+    s2 = _opsnap("2026-10-19", {"L1": ("Liander", 105, 52), "S1": ("Stedin", 42, 41), "S2": ("Stedin", 64, 60)})
+    s3 = _opsnap("2026-10-30", {"L1": ("Liander", 109, 55), "S1": ("Stedin", 210, 35), "S2": ("Stedin", 330, 52)})
+    rows = {r["operator"]: r for r in R.operator_trends([s1, s2, s3])}
+    assert rows["Liander"]["breaks"] == []
+    assert (rows["Liander"]["requests_first"], rows["Liander"]["requests_last"]) == (100, 109)
+    bk = rows["Stedin"]["breaks"]
+    assert len(bk) == 1 and bk[0]["ingest"] == "2026-10-30"
+    assert (bk[0]["requests_before"], bk[0]["requests_after"]) == (106, 540)
+    assert bk[0]["avg_mw_after"] < bk[0]["avg_mw_before"]
+
+
+def test_operator_trends_ignores_small_bases_and_moderate_growth():
+    s1 = _opsnap("2026-07-17", {"E1": ("Enexis", 5985, 2840), "W1": ("Westland", 2, 1)})
+    s2 = _opsnap("2026-08-10", {"E1": ("Enexis", 6770, 3028), "W1": ("Westland", 9, 1)})   # x1.13; tiny base
+    rows = {r["operator"]: r for r in R.operator_trends([s1, s2])}
+    assert rows["Enexis"]["breaks"] == [] and rows["Westland"]["breaks"] == []
+
+
+def test_operator_trends_never_includes_tennet():
+    s1 = _opsnap("2026-10-12", {"T1": ("TenneT", 110, 14209), "L1": ("Liander", 10, 5)})
+    s2 = _opsnap("2026-10-19", {"T1": ("TenneT", 75, 8360), "L1": ("Liander", 10, 5)})
+    assert [r["operator"] for r in R.operator_trends([s1, s2])] == ["Liander"]
 
 
 if __name__ == "__main__":

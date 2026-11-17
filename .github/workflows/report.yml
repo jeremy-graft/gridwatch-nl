@@ -6,7 +6,7 @@ name: weekly report
 # The report is stamped with the data date, so a week without a publication commits nothing.
 on:
   schedule:
-    - cron: "0 8 * * 1"   # weekly (Mon); the report only changes when a new publication landed
+    - cron: "37 10 * * 1"  # weekly, off the hour (Mon); the report only changes when a new publication landed
   workflow_dispatch:
 
 # Same group as the daily snapshot so the two never race on a push.
